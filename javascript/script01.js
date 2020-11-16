@@ -1,12 +1,23 @@
-var script = document.createElement('script');
-script.src = 'https://code.jquery.com/jquery-3.4.1.min.js';
-script.type = 'text/javascript';
-document.getElementsByTagName('head')[0].appendChild(script);
+function importJQuery() {
 
-setInterval(() => {
-    log();
-}, 100);
+    return new Promise(function (resolve, reject) {
+        var script = document.createElement('script');
+        script.src = '../javascript/jquery.js';
+        script.type = 'text/javascript';
+        document.getElementsByTagName('head')[0].appendChild(script);
+        resolve();
+    })
+}
 
+function init() {
+    importJQuery().then(() => {
+        setInterval(() => {
+            log();
+        }, 100);
+    })
+}
+
+init();
 
 const PART1_PAGE1 = 100;
 const PART1_PAGE2 = PART1_PAGE1 + 364;
