@@ -10,6 +10,7 @@ function importJQuery() {
 }
 
 function init() {
+    console.log("LATEST VERSION")
     importJQuery().then(() => {
         setInterval(() => {
             log();
