@@ -1,3 +1,10 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
 /* PAGE #1 */
 #part1_page1 {
     height: 100%;
