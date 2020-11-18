@@ -16,6 +16,7 @@ html {
     height: 27%;
     width: 38%;
     background-image: url(../src/p1_p1_logo.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -28,6 +29,7 @@ html {
     height: 2%;
     width: 14%;
     background-image: url(../src/p1_p1_scroll_to_explore.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -47,12 +49,14 @@ html {
 #page2_MEME_BOX {
     height: 15%;
     width: 100%;
+    position: relative;
 }
 
 #page2_meme {
     height: 39%;
-    width: 73%;
+    width: 46%;
     background-image: url(../src/p1_p2_meme.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-y: center;
     position: relative;
@@ -66,6 +70,7 @@ html {
     /* 18 되어야함 */
     width: 42%;
     background-image: url(../src/p1_p2_meme_sub.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
 
@@ -87,6 +92,7 @@ html {
     height: 73%;
     width: 62%;
     background-image: url(../src/p1_p2_phone.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -98,163 +104,93 @@ html {
 }
 
 #page2_bomb {
-    height: 22%;
-    width: 10%;
+    width: 15.3%;
     background-image: url(../src/p1_p2_phone_bomb.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
 
     position: absolute;
     z-index: 2;
-    left: 17%;
-    top: 3%;
+    left: -2.8%;
+    top: -21.6%;
 }
 
 #page2_cool {
-    height: 19%;
-    width: 12%;
+    width: 19%;
     background-image: url(../src/p1_p2_phone_cool.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
 
     position: absolute;
     z-index: 3;
-    left: 63%;
-    bottom: 40%;
+    left: 70%;
+    top: 27.8%;
 }
 
 #page2_finger {
-    height: 31%;
-    width: 13%;
+    width: 20.5%;
     background-image: url(../src/p1_p2_phone_finger.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
 
     position: absolute;
     z-index: 2;
-    left: 23%;
-    top: 25%;
+    left: 5.8%;
+    top: 8.4%;
 }
 
 #page2_gummybear {
-    height: 34%;
-    width: 12%;
+    width: 18.8%;
     background-image: url(../src/p1_p2_phone_gummybear.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
 
     position: absolute;
     z-index: 3;
-    left: 43%;
-    top: 25%;
+    left: 36%;
+    top: 8.5%;
 }
 
 #page2_magichat {
-    height: 46%;
-    width: 20%;
+    width: 32.2%;
     background-image: url(../src/p1_p2_phone_magichat.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
 
     position: absolute;
     z-index: 2;
-    left: 66%;
-    bottom: 53%;
+    left: 76%;
+    top: -26.2%;
 }
 
 #page2_rainbow {
-    height: 18%;
-    width: 15%;
+    width: 23.5%;
     background-image: url(../src/p1_p2_phone_rainbow.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
 
     position: absolute;
     z-index: 3;
-    left: 30%;
-    bottom: 62%;
+    left: 17.5%;
+    top: 2.6%;
 }
 
 #page2_sad {
-    height: 15%;
-    width: 7%;
+    width: 11.5%;
     background-image: url(../src/p1_p2_phone_sad.png);
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: center;
-
-    position: absolute;
-    z-index: 2;
-    left: 59%;
-    top: 55%;
-}
-
-#page2_smile {
-    height: 8%;
-    width: 4%;
-    background-image: url(../src/p1_p2_phone_smile.png);
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: center;
-
-    position: absolute;
-    z-index: 2;
-    left: 39%;
-    bottom: 58%;
-}
-
-#page2_spring1 {
-    height: 23%;
-    width: 14%;
-    background-image: url(../src/p1_p2_phone_spring1.png);
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: center;
-
-    position: absolute;
-    z-index: 4;
-    left: 53%;
-    bottom: 51%;
-}
-
-#page2_spring2 {
-    height: 20%;
-    width: 8%;
-    background-image: url(../src/p1_p2_phone_spring2.png);
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: center;
-
-    position: absolute;
-    z-index: 2;
-    left: 47%;
-    top: 64%;
-}
-
-#page2_star {
-    height: 8%;
-    width: 4%;
-    background-image: url(../src/p1_p2_phone_star.png);
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: center;
-
-    position: absolute;
-    z-index: 3;
-    left: 52%;
-    bottom: 36%;
-}
-
-#page2_wow {
-    height: 11%;
-    width: 5%;
-    background-image: url(../src/p1_p2_phone_wow.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -262,21 +198,91 @@ html {
     position: absolute;
     z-index: 2;
     left: 60%;
-    bottom: 73%;
+    top: 47.8%;
 }
 
-#page2_heart {
-    height: 11%;
-    width: 5%;
-    background-image: url(../src/p1_p2_phone_heart.png);
+#page2_smile {
+    width: 6.3%;
+    background-image: url(../src/p1_p2_phone_smile.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+
+    position: absolute;
+    z-index: 2;
+    left: 30.2%;
+    top: 20.7%;
+}
+
+#page2_spring1 {
+    width: 22.5%;
+    background-image: url(../src/p1_p2_phone_spring1.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+
+    position: absolute;
+    z-index: 4;
+    left: 54%;
+    top: 7%;
+}
+
+#page2_spring2 {
+    width: 12.1%;
+    background-image: url(../src/p1_p2_phone_spring2.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+
+    position: absolute;
+    z-index: 2;
+    left: 43.2%;
+    top: 61%;
+}
+
+#page2_star {
+    width: 6%;
+    background-image: url(../src/p1_p2_phone_star.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
 
     position: absolute;
     z-index: 3;
-    left: 55%;
-    bottom: 70%;
+    left: 50.5%;
+    top: 51%;
+}
+
+#page2_wow {
+    width: 8%;
+    background-image: url(../src/p1_p2_phone_wow.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+
+    position: absolute;
+    z-index: 2;
+    left: 65.3%;
+    top: -2.2%;
+}
+
+#page2_heart {
+    width: 3.3%;
+    background-image: url(../src/p1_p2_phone_heart.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+
+    position: absolute;
+    z-index: 3;
+    left: 55.3%;
+    top: 6.6%;
 }
 
 #page2_MZ_GENERATION_BOX {
@@ -290,6 +296,7 @@ html {
     width: 35%;
     height: 17%;
     background-image: url(../src/p1_p2_question1.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -344,6 +351,7 @@ html {
     width: 40%;
 
     background-image: url(../src/p1_p2_people1_title.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -358,6 +366,7 @@ html {
     width: 52%;
 
     background-image: url(../src/p1_p2_people1_face.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -397,6 +406,7 @@ html {
     width: 84%;
 
     background-image: url(../src/p1_p2_people1_detail.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -412,6 +422,7 @@ html {
     width: 40%;
 
     background-image: url(../src/p1_p2_people2_title.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -426,6 +437,7 @@ html {
     width: 52%;
 
     background-image: url(../src/p1_p2_people2_face.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -441,6 +453,7 @@ html {
     width: 84%;
 
     background-image: url(../src/p1_p2_people2_detail.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -456,6 +469,7 @@ html {
     width: 40%;
 
     background-image: url(../src/p1_p2_people3_title.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -470,6 +484,7 @@ html {
     width: 52%;
 
     background-image: url(../src/p1_p2_people3_face.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -485,6 +500,7 @@ html {
     width: 84%;
 
     background-image: url(../src/p1_p2_people3_detail.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -507,6 +523,7 @@ html {
     width: 66%;
 
     background-image: url(../src/p1_p2_invite.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -523,6 +540,7 @@ html {
     width: 40%;
 
     background-image: url(../src/p1_p2_shall_we_start.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -539,6 +557,7 @@ html {
     width: 6%;
 
     background-image: url(../src/p1_p2_invite_bear1.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -555,6 +574,7 @@ html {
     width: 7%;
 
     background-image: url(../src/p1_p2_invite_bear2.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -571,6 +591,7 @@ html {
     width: 7%;
 
     background-image: url(../src/p1_p2_invite_bomb.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -587,6 +608,7 @@ html {
     width: 8%;
 
     background-image: url(../src/p1_p2_invite_book.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -603,6 +625,7 @@ html {
     width: 9%;
 
     background-image: url(../src/p1_p2_invite_cool.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -619,6 +642,7 @@ html {
     width: 6%;
 
     background-image: url(../src/p1_p2_invite_face.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -635,6 +659,7 @@ html {
     width: 6%;
 
     background-image: url(../src/p1_p2_invite_finger1.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -651,6 +676,7 @@ html {
     width: 9%;
 
     background-image: url(../src/p1_p2_invite_finger2.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -667,6 +693,7 @@ html {
     width: 8%;
 
     background-image: url(../src/p1_p2_invite_hat1.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -683,6 +710,7 @@ html {
     width: 10%;
 
     background-image: url(../src/p1_p2_invite_hat2.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -699,6 +727,7 @@ html {
     width: 6%;
 
     background-image: url(../src/p1_p2_invite_heart1.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -715,6 +744,7 @@ html {
     width: 4%;
 
     background-image: url(../src/p1_p2_invite_heart2.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -731,6 +761,7 @@ html {
     width: 7%;
 
     background-image: url(../src/p1_p2_invite_star.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -1040,7 +1071,7 @@ html {
     height: 25%;
 
     background-image: url('../src/p1_p4_bottom_background1.png');
-    background-size: contain;
+    background-size: cover;
     background-repeat: repeat-x;
 
     background-position-y: center;
@@ -1053,7 +1084,7 @@ html {
     height: 25%;
 
     background-image: url('../src/p1_p4_bottom_background2.png');
-    background-size: contain;
+    background-size: cover;
     background-repeat: repeat-x;
 
     background-position-y: center;
@@ -1066,7 +1097,7 @@ html {
     height: 25%;
 
     background-image: url('../src/p1_p4_bottom_background3.png');
-    background-size: contain;
+    background-size: cover;
     background-repeat: repeat-x;
 
     background-position-y: center;

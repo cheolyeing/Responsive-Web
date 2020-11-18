@@ -14,12 +14,53 @@ function init() {
     console.log("TEST");
     importJQuery().then(() => {
         setInterval(() => {
+            setSizeInit();
             log();
         }, 100);
     })
 }
 
 init();
+
+function setSizeInit() {
+    { // for page2_phone
+        const IMAGE_WIDTH = 1104;
+        const IMAGE_HEIGHT = 619;
+        var width = document.getElementById("page2_phone").offsetWidth;
+
+        console.log(width);
+        $("#page2_phone").css({
+            height: width * IMAGE_HEIGHT / IMAGE_WIDTH + "px",
+        })
+    }
+
+    { // for page2_phone_icon
+        const ID = ["bomb",
+            "cool",
+            "finger",
+            "gummybear",
+            "magichat",
+            "rainbow",
+            "sad",
+            "smile",
+            "spring1",
+            "spring2",
+            "star",
+            "wow",
+            "heart"
+        ]
+        const WIDTH = [169, 210, 226, 208, 356, 260, 127, 70, 249, 134, 66, 89, 37]
+        const HEIGHT = [181, 161, 260, 283, 390, 150, 126, 68, 196, 167, 66, 88, 38]
+
+        for (var i = 0; i < 13; i++) {
+            var id = "page2_" + ID[i];
+            var width = document.getElementById(id).offsetWidth;
+            $("#" + id).css({
+                height: width * HEIGHT[i] / WIDTH[i] + "px",
+            })
+        }
+    }
+}
 
 const PART1_PAGE1 = 100;
 const PART1_PAGE2 = PART1_PAGE1 + 364;
@@ -54,7 +95,9 @@ function bottom_background_Effect() {
 function meme_Effect(scrollY) {
     const START = 55;
     const RANGE = 20;
-    const GOAL_SIZE = 73;
+    const GOAL_SIZE = 46;
+    console.log(window.innerWidth);
+    console.log("width : " + $("#page2_meme").width());
 
     const SIZE = Math.max(0, Math.min(((scrollY - START) / RANGE) * GOAL_SIZE, GOAL_SIZE));
 
@@ -62,9 +105,9 @@ function meme_Effect(scrollY) {
         $("#page2_meme").css({
             "width": "0%",
         });
-    } else if (SIZE == 73) {
+    } else if (SIZE == GOAL_SIZE) {
         $("#page2_meme").css({
-            "width": "73%",
+            "width": GOAL_SIZE + "%",
             "background-image": "url('../src/p1_p2_meme.png')",
         });
     } else {
