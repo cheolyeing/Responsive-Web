@@ -6,6 +6,16 @@ html {
 }
 
 /* PAGE #1 */
+#following {
+    position: absolute;
+    background: red;
+    width: 30px;
+    height: 30px;
+    opacity: 0.4;
+    border-radius: 100%;
+
+}
+
 #part1_page1 {
     height: 100%;
     width: 100%;
@@ -44,24 +54,18 @@ html {
     height: 364%;
     width: 100%;
     background-color: #f3f8ff;
-}
-
-#page2_MEME_BOX {
-    height: 15%;
-    width: 100%;
-    position: relative;
+    position: static;
 }
 
 #page2_meme {
-    height: 39%;
-    width: 46%;
+    width: 36%;
     background-image: url(../src/p1_p2_meme.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position-y: center;
-    position: relative;
-    left: 27%;
-    top: 34%;
+    position: fixed;
+    left: 32%;
+    top: 2%;
 }
 
 #page2_meme_sub {
@@ -74,7 +78,7 @@ html {
     background-repeat: no-repeat;
     background-position-x: center;
 
-    position: relative;
+    position: fixed;
     z-index: 2;
     left: 29%;
     top: 44%;
@@ -91,19 +95,21 @@ html {
 #page2_phone {
     height: 73%;
     width: 62%;
+    display: none;
     background-image: url(../src/p1_p2_phone.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
 
-    position: relative;
+    position: fixed;
     z-index: 1;
     left: 19%;
-    top: 20%;
+    top: 35%;
 }
 
 #page2_bomb {
+    display: none;
     width: 15.3%;
     background-image: url(../src/p1_p2_phone_bomb.png);
     background-size: contain;
@@ -118,6 +124,7 @@ html {
 }
 
 #page2_cool {
+    display: none;
     width: 19%;
     background-image: url(../src/p1_p2_phone_cool.png);
     background-size: contain;
@@ -132,6 +139,7 @@ html {
 }
 
 #page2_finger {
+    display: none;
     width: 20.5%;
     background-image: url(../src/p1_p2_phone_finger.png);
     background-size: contain;
@@ -146,6 +154,7 @@ html {
 }
 
 #page2_gummybear {
+    display: none;
     width: 18.8%;
     background-image: url(../src/p1_p2_phone_gummybear.png);
     background-size: contain;
@@ -160,6 +169,7 @@ html {
 }
 
 #page2_magichat {
+    display: none;
     width: 32.2%;
     background-image: url(../src/p1_p2_phone_magichat.png);
     background-size: contain;
@@ -174,6 +184,7 @@ html {
 }
 
 #page2_rainbow {
+    display: none;
     width: 23.5%;
     background-image: url(../src/p1_p2_phone_rainbow.png);
     background-size: contain;
@@ -188,6 +199,7 @@ html {
 }
 
 #page2_sad {
+    display: none;
     width: 11.5%;
     background-image: url(../src/p1_p2_phone_sad.png);
     background-size: contain;
@@ -202,6 +214,7 @@ html {
 }
 
 #page2_smile {
+    display: none;
     width: 6.3%;
     background-image: url(../src/p1_p2_phone_smile.png);
     background-size: contain;
@@ -216,6 +229,7 @@ html {
 }
 
 #page2_spring1 {
+    display: none;
     width: 22.5%;
     background-image: url(../src/p1_p2_phone_spring1.png);
     background-size: contain;
@@ -230,6 +244,7 @@ html {
 }
 
 #page2_spring2 {
+    display: none;
     width: 12.1%;
     background-image: url(../src/p1_p2_phone_spring2.png);
     background-size: contain;
@@ -244,6 +259,7 @@ html {
 }
 
 #page2_star {
+    display: none;
     width: 6%;
     background-image: url(../src/p1_p2_phone_star.png);
     background-size: contain;
@@ -258,6 +274,7 @@ html {
 }
 
 #page2_wow {
+    display: none;
     width: 8%;
     background-image: url(../src/p1_p2_phone_wow.png);
     background-size: contain;
@@ -272,6 +289,7 @@ html {
 }
 
 #page2_heart {
+    display: none;
     width: 3.3%;
     background-image: url(../src/p1_p2_phone_heart.png);
     background-size: contain;
@@ -285,10 +303,57 @@ html {
     top: 6.6%;
 }
 
+@-webkit-keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        -webkit-transform: translateY(0);
+    }
+
+    40% {
+        -webkit-transform: translateY(-30px)
+    }
+
+    60% {
+        -webkit-transform: translateY(-20px);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-30px);
+    }
+
+    60% {
+        transform: translateY(-20px);
+    }
+}
+
+
+.bounce {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-name: bounce;
+    animation-name: bounce;
+}
+
 #page2_MZ_GENERATION_BOX {
     /* height : 1167px */
     height: 25%;
     width: 100%;
+    display: none;
     position: relative;
 }
 
@@ -514,7 +579,7 @@ html {
 #page2_INVITE_BOX {
     height: 35%;
     width: 100%;
-
+    display: none;
     position: relative;
 }
 
@@ -787,6 +852,7 @@ html {
     height: 1%;
 
     background-image: url(../src/p1_p3_title.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -801,6 +867,7 @@ html {
     height: 3.75%;
 
     background-image: url(../src/p1_p3_title_sub.png);
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
