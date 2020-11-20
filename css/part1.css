@@ -351,13 +351,17 @@ html {
 
 #page2_MZ_GENERATION_BOX {
     /* height : 1167px */
-    height: 25%;
+    height: 100%;
     width: 100%;
+
     display: none;
-    position: relative;
+    position: fixed;
+    left: 0%;
+    top: 0%;
 }
 
 #page2_question1 {
+    display: none;
     width: 35%;
     height: 17%;
     background-image: url(../src/p1_p2_question1.png);
@@ -366,47 +370,82 @@ html {
     background-position-x: center;
     background-position-y: center;
 
-    position: relative;
+    z-index: 2;
+    position: fixed;
     left: 32.5%;
-    top: 14%;
+    top: 15%;
 }
 
-#page2_question2 {}
+#page2_question2 {
+    display: none;
+    width: 40%;
+    height: 17%;
+    background-image: url(../src/p1_p2_question2.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+
+    z-index: 2;
+    position: fixed;
+    left: 30%;
+    top: 15%;
+}
 
 #page2_peoples_box {
     width: 100%;
-    height: 69%;
+    height: 65%;
 
     background-color: #f3f8ff;
-    position: relative;
-    top: 14%;
+
+    z-index: 1;
+    position: fixed;
+    top: 25%;
+}
+
+h3 {
+    font-family: NotoSansCJKKR;
+    font-size: 27px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.54px;
+    display: inline;
+}
+
+#bold {
+    font-weight: bold;
 }
 
 #page2_people1 {
+    display: none;
     /* height : 488px
     width : 421px */
     height: 75%;
     width: 24%;
 
-    position: absolute;
+    position: fixed;
     left: 11%;
     top: 8%;
 }
 
 #page2_people2 {
+    display: none;
     height: 75%;
     width: 24%;
 
-    position: absolute;
+    position: fixed;
     left: 38%;
     top: 8%;
 }
 
 #page2_people3 {
+    display: none;
     height: 75%;
     width: 24%;
 
-    position: absolute;
+    position: fixed;
     right: 11%;
     top: 8%;
 }
@@ -423,7 +462,7 @@ html {
 
     position: absolute;
     left: 30%;
-    top: 0%;
+    top: 15%;
 }
 
 #page2_people1_face {
@@ -439,47 +478,29 @@ html {
     z-index: 3;
     position: absolute;
     left: 24%;
-    top: 14%;
+    top: 15%;
 }
 
 #page2_people_box {
-    height: 60%;
+    height: 40%;
     width: 100%;
     background-color: white;
     border-radius: 50px;
 
     position: absolute;
-    bottom: -4%;
+    top: 50%;
 }
-
-/* #page2_people_box {
-    height: 73%;
-    width: 100%;
-
-    background-image: url(../src/Rectangle\ 200.png);
-    background-color: #f3f8ff;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: center;
-
-    position: absolute;
-    bottom: -4%;
-} */
 
 #page2_people1_detail {
     height: 20%;
     width: 84%;
 
-    background-image: url(../src/p1_p2_people1_detail.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: center;
-
     z-index: 3;
     position: absolute;
-    bottom: 4%;
+
+    top: 73%;
     left: 8%;
+    text-align: center;
 }
 
 #page2_people2_title {
@@ -494,7 +515,7 @@ html {
 
     position: absolute;
     left: 30%;
-    top: 0%;
+    top: 15%;
 }
 
 #page2_people2_face {
@@ -510,23 +531,18 @@ html {
     z-index: 3;
     position: absolute;
     left: 24%;
-    top: 14%;
+    top: 15%;
 }
 
 #page2_people2_detail {
     height: 20%;
     width: 84%;
 
-    background-image: url(../src/p1_p2_people2_detail.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: center;
-
     z-index: 3;
     position: absolute;
-    bottom: 4%;
+    top: 73%;
     left: 8%;
+    text-align: center;
 }
 
 #page2_people3_title {
@@ -541,7 +557,7 @@ html {
 
     position: absolute;
     left: 30%;
-    top: 0%;
+    top: 15%;
 }
 
 #page2_people3_face {
@@ -557,23 +573,18 @@ html {
     z-index: 3;
     position: absolute;
     left: 24%;
-    top: 14%;
+    top: 15%;
 }
 
 #page2_people3_detail {
     height: 20%;
     width: 84%;
 
-    background-image: url(../src/p1_p2_people3_detail.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: center;
-
     z-index: 3;
     position: absolute;
-    bottom: 4%;
+    top: 73%;
     left: 8%;
+    text-align: center;
 }
 
 #page2_INVITE_BOX {

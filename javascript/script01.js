@@ -33,13 +33,13 @@ function init() {
         setInterval(() => {
             interval();
             setSizeInit();
-            log();
         }, 100);
     })
 }
 
 function interval() {
     page2_effect();
+    bottom_background_effect();
 }
 
 function page1_init() {
@@ -97,65 +97,55 @@ function page2_effect() {
     console.log("scrollY", scrollY)
 
 
-    meme_Effect(scrollY);
+    meme_effect(scrollY);
     meme_sub_Effeect(scrollY);
-    phone_Effect(scrollY);
+    phone_effect(scrollY);
+    MZ_generation_effect(scrollY);
 }
 
-
-
-function bottom_background_Effect() {
-    var date = new Date();
-    var h = date.getHours();
-    var m = date.getMinutes();
-    var s = date.getSeconds();
-    var ms = date.getMilliseconds();
-
-    const SPEED_DIVIDER = 10000;
-
-    var pos_to_right = (ms + 1000 * (s + 60 * m + 3600 * h)) % SPEED_DIVIDER;
-    var pos_to_left = -(ms + 1000 * (s + 60 * m + 3600 * h)) % SPEED_DIVIDER;
-
-    $("#page4_bottom_background1").css({
-        "background-position-x": pos_to_left + "px",
-    })
-
-    $("#page4_bottom_background2").css({
-        "background-position-x": pos_to_right + "px",
-    })
-
-    $("#page4_bottom_background3").css({
-        "background-position-x": pos_to_left + "px",
-    })
-}
-
-function meme_Effect(scrollY) {
+function meme_effect(scrollY) {
     const START = 100;
     const RANGE = 20;
     const GOAL_SIZE = 36;
 
     const SIZE = Math.max(0, Math.min(((scrollY - START) / RANGE) * GOAL_SIZE, GOAL_SIZE));
 
+    const FINISH = 190;
+    const F_RANGE = 10;
+
+    const TOP = 2 - (scrollY - FINISH) + "%";
+    const OPACITY = 1 - Math.min((scrollY - FINISH) / F_RANGE, 1)
+
     if (scrollY < START) {
         $("#page2_meme").css({
             "width": "0%",
             'display': 'none',
         });
-    } else if (SIZE == GOAL_SIZE) {
-        $("#page2_meme").css({
-            "width": GOAL_SIZE + "%",
-            "background-image": "url('../src/p1_p2_meme.png')",
-            'display': 'block',
-        });
     } else {
-        $("#page2_meme").css({
-            "width": SIZE + "%",
-            "background-image": "linear-gradient(to right, transparent, #f3f8ff), url('../src/p1_p2_meme.png')",
-            'display': 'block',
-        });
-        $("#page2_meme_sub").css({
-            "display": "none",
-        });
+        if (scrollY >= FINISH) {
+            $("#page2_meme").css({
+                "width": GOAL_SIZE + "%",
+                "background-image": "url('../src/p1_p2_meme.png')",
+                'display': 'block',
+                'top': TOP,
+                'opacity': OPACITY,
+            });
+        } else if (SIZE == GOAL_SIZE) {
+            $("#page2_meme").css({
+                "width": GOAL_SIZE + "%",
+                "background-image": "url('../src/p1_p2_meme.png')",
+                'display': 'block',
+            });
+        } else {
+            $("#page2_meme").css({
+                "width": SIZE + "%",
+                "background-image": "linear-gradient(to right, transparent, #f3f8ff), url('../src/p1_p2_meme.png')",
+                'display': 'block',
+            });
+            $("#page2_meme_sub").css({
+                "display": "none",
+            });
+        }
     }
 }
 
@@ -169,35 +159,62 @@ function meme_sub_Effeect(scrollY) {
     const HEIGHT = Math.min(((scrollY - START) / RANGE) * ((scrollY - START) / RANGE) * GOAL_HEIGHT, GOAL_HEIGHT) + "%";
     const TOP = 87 - Math.min(((scrollY - START) / RANGE) * ((scrollY - START) / RANGE) * GOAL_TOP, GOAL_TOP) + "%";
 
+    const FINISH = 195;
+    const F_RANGE = 10;
+
+    const F_TOP = 21 - (scrollY - FINISH) + "%";
+    const OPACITY = 1 - Math.min((scrollY - FINISH) / F_RANGE, 1)
+
     if (scrollY < START) {
         $("#page2_meme_sub").css({
             "display": "none",
         })
-    } else if (scrollY >= START) {
-        $("#page2_meme_sub").css({
-            "display": "block",
-            "height": HEIGHT,
-            "top": TOP,
-        })
+    } else {
+        if (scrollY >= FINISH) {
+            $("#page2_meme_sub").css({
+                'top': F_TOP,
+                'opacity': OPACITY,
+            })
+        } else if (scrollY >= START) {
+            $("#page2_meme_sub").css({
+                "display": "block",
+                "height": HEIGHT,
+                "top": TOP,
+            })
+        }
     }
 }
 
-function phone_Effect(scrollY) {
+function phone_effect(scrollY) {
     {
         const START = 140;
         const RANGE = 20;
         const GOAL_TOP = 35;
 
         const TOP = 70 - Math.min(((scrollY - START) / RANGE) * ((scrollY - START) / RANGE) * GOAL_TOP, GOAL_TOP) + "%";
+
+        const FINISH = 200;
+        const F_RANGE = 10;
+
+        const F_TOP = 21 - (scrollY - FINISH) + "%";
+        const OPACITY = 1 - Math.min((scrollY - FINISH) / F_RANGE, 1)
+
         if (scrollY < START) {
             $("#page2_phone").css({
                 "display": "none",
             })
-        } else if (scrollY >= START) {
-            $("#page2_phone").css({
-                "display": "block",
-                "top": TOP,
-            })
+        } else {
+            if (scrollY >= FINISH) {
+                $("#page2_phone").css({
+                    'top': F_TOP,
+                    'opacity': OPACITY,
+                })
+            } else if (scrollY >= START) {
+                $("#page2_phone").css({
+                    "display": "block",
+                    "top": TOP,
+                })
+            }
         }
     }
 
@@ -236,83 +253,150 @@ function phone_Effect(scrollY) {
     }
 }
 
-// function effect_PART1(scrollY) {
-//     // meme Effect
-//     if (scrollY < 100) {
-//         meme_Effect(scrollY);
-//     }
+function MZ_generation_effect(scrollY) {
+    {
+        const START = 180;
+        const RANGE = 40;
+        const TOP = 10;
 
-//     // meme_sub Effect
-//     if (scrollY < 140) {
-//         meme_sub_Effeect(scrollY);
-//     }
-// }
+        const FINISH = 1000;
+
+        if (scrollY < START) {
+            $('#page2_MZ_GENERATION_BOX').css({
+                'display': 'none',
+            })
+        } else {
+            if (scrollY >= FINISH) {
+                $('#page2_MZ_GENERATION_BOX').css({
+                    'display': 'none',
+                })
+            } else {
+                $('#page2_MZ_GENERATION_BOX').css({
+                    'display': 'block',
+                })
+            }
+        }
+    } {
+        const START = 210;
+        const RANGE = 40;
+        const TOP = 50 - Math.min((scrollY - START), RANGE) + "%";
+        const OPACITY = (scrollY - START) / RANGE;
+
+        const FINISH = 320;
+        const F_TOP = 10 - (scrollY - FINISH) + "%";
+        const F_OPACITY = 1 - (scrollY - FINISH) / 10;
+
+        if (scrollY < START) { // 아무일 없음
+            $('#page2_question1').css({
+                'display': 'none',
+            })
+        } else {
+            if (scrollY >= FINISH) { // 사라짐
+                $('#page2_question1').css({
+                    'top': F_TOP,
+                    'opacity': F_OPACITY,
+                })
+            } else { // 나타남
+                console.log("TOP", TOP)
+                $('#page2_question1').css({
+                    'display': 'block',
+                    'top': TOP,
+                    'opacity': OPACITY,
+                })
+            }
+        }
+    } {
+        const START = 325;
+        const RANGE = 10;
+        const TOP = 20 - Math.min((scrollY - START), RANGE) + "%";
+        const OPACITY = (scrollY - START) / RANGE;
+
+        const FINISH = 360;
+        const F_TOP = 10 - (scrollY - FINISH) + "%";
+        const F_OPACITY = 1 - (scrollY - FINISH) / 10;
+
+        if (scrollY < START) { // 아무일 없음
+            $('#page2_question2').css({
+                'display': 'none',
+            })
+        } else {
+            if (scrollY >= FINISH) { // 사라짐
+                $('#page2_question2').css({
+                    'top': F_TOP,
+                    'opacity': F_OPACITY,
+                })
+            } else { // 나타남
+                console.log("TOP", TOP)
+                $('#page2_question2').css({
+                    'display': 'block',
+                    'top': TOP,
+                    'opacity': OPACITY,
+                })
+            }
+        }
+    } {
+        const START = [0, 250, 270, 290];
+        const RANGE = 20;
+        const FINISH = 370;
+        const F_TOP = 10 - (scrollY - FINISH) + "%";
+        const F_OPACITY = 1 - (scrollY - FINISH) / 10;
+
+        for (var i = 1; i < 4; i++) {
+            const TOP = 40 - Math.min((scrollY - START[i]), RANGE) + "%";
+            const OPACITY = (scrollY - START[i]) / RANGE;
+
+            if (scrollY < START[i]) {
+                $('#page2_people' + i).css({
+                    'display': 'none',
+                })
+            } else {
+                if (scrollY >= FINISH) {
+                    $('#page2_people' + i).css({
+                        'top': F_TOP,
+                        'opacity': F_OPACITY,
+                    })
+                } else {
+                    $('#page2_people' + i).css({
+                        'display': 'block',
+                        'top': TOP,
+                        'opacity': OPACITY,
+                    })
+                }
+            }
+        }
+    }
+}
+
+function bottom_background_effect() {
+    var date = new Date();
+    var h = date.getHours();
+    var m = date.getMinutes();
+    var s = date.getSeconds();
+    var ms = date.getMilliseconds();
+
+    const SPEED_DIVIDER = 10000;
+
+    var pos_to_right = (ms + 1000 * (s + 60 * m + 3600 * h)) % SPEED_DIVIDER;
+    var pos_to_left = -(ms + 1000 * (s + 60 * m + 3600 * h)) % SPEED_DIVIDER;
+
+    $("#page4_bottom_background1").css({
+        "background-position-x": pos_to_left + "px",
+    })
+
+    $("#page4_bottom_background2").css({
+        "background-position-x": pos_to_right + "px",
+    })
+
+    $("#page4_bottom_background3").css({
+        "background-position-x": pos_to_left + "px",
+    })
+}
+
 
 function getScrollY() {
     var winHeight = window.innerHeight;
     var scrollY = window.scrollY;
     return (scrollY / winHeight) * 100;
-}
-
-function log() {
-
-    bottom_background_Effect();
-
-    // // Effect #6
-    // start = 3000;
-    // range = 400;
-    // var opacity = Math.min((scrollY-start)/range, 1);
-    // $("#page2_06").css({
-    //     "opacity" : opacity
-    // })
-
-    // if(true) {
-    //     var date = new Date();
-    //     var ms = Math.log(date.getMilliseconds()/10);
-    //     var tx = Math.sin(ms) * Math.sin(ms)*2 + "px";
-    //     var ty = Math.cos(ms) * Math.sin(ms)*2 + "px";
-    //     var transform1 = "translateX(" + tx + ") translateY(" + ty + ")"
-    //     var transform2 = "translateX(-" + tx + ") translateY(" + ty + ")"
-    //     var transform3 = "translateX(" + tx + ") translateY(-" + ty + ")"
-    //     var transform4 = "translateX(-" + tx + ") translateY(-" + ty + ")"
-
-    //     $("#icon05").css({
-    //         "opacity" : scrollY>=3000 ? "1" : "0",
-    //         "transform": transform1,
-    //     })
-
-    //     $("#icon03").css({
-    //         "opacity" : scrollY>=3040 ? "1" : "0",
-    //         "transform": transform2,
-    //     })
-
-    //     $("#icon06").css({
-    //         "opacity" : scrollY>=3080 ? "1" : "0",
-    //         "transform": transform3,
-    //     })
-
-    //     $("#icon02").css({
-    //         "opacity" : scrollY>=3120 ? "1" : "0",
-    //         "transform": transform4,
-    //     })
-
-    //     $("#icon04").css({
-    //         "opacity" : scrollY>=3160 ? "1" : "0",
-    //         "transform": transform1,
-    //     })
-
-    //     $("#icon07").css({
-    //         "opacity" : scrollY>=3200 ? "1" : "0",
-    //         "transform": transform2,
-    //     })
-
-    //     $("#icon01").css({
-    //         "opacity" : scrollY>=3240 ? "1" : "0",
-    //         "transform": transform3,
-    //     })
-    // }
-
-    // console.log(scrollY);
 }
 
 function setSizeInit() {
@@ -363,5 +447,25 @@ function setSizeInit() {
                 height: width * HEIGHT[i] / WIDTH[i] + "px",
             })
         }
+    }
+
+    { // for page2_MZ_GENERATION_BOX
+        const WIDTH = window.innerWidth;
+        const HEIGHT = window.innerHeight;
+        $("#page2_MZ_GENERATION_BOX").css({
+            width: WIDTH + 'px',
+            height: HEIGHT + 'px',
+        })
+    }
+
+    {
+        const IMAGE_WIDTH = 617;
+        const IMAGE_HEIGHT = 144;
+        const WIDTH = window.innerWidth;
+
+        var width = document.getElementById("page2_question1").offsetWidth;
+        $("#page2_question1").css({
+            height: width * IMAGE_HEIGHT / IMAGE_WIDTH + "px",
+        })
     }
 }
