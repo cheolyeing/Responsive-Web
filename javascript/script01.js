@@ -50,6 +50,11 @@ function page1_init() {
     page1_toNext();
 }
 
+function page1_effect() {
+    page1_following();
+    page1_toNext();
+}
+
 function page1_following() {
     document.addEventListener("mousemove", function (e) {
         var x = e.clientX
@@ -109,13 +114,14 @@ function meme_effect(scrollY) {
     const RANGE = 20;
     const GOAL_SIZE = 36;
 
+    const OPACITY = (scrollY - START) / RANGE;
     const SIZE = Math.max(0, Math.min(((scrollY - START) / RANGE) * GOAL_SIZE, GOAL_SIZE));
 
     const FINISH = 190;
     const F_RANGE = 10;
 
     const TOP = 2 - (scrollY - FINISH) + "%";
-    const OPACITY = 1 - Math.min((scrollY - FINISH) / F_RANGE, 1)
+    const F_OPACITY = 1 - Math.min((scrollY - FINISH) / F_RANGE, 1)
 
     if (scrollY < START) {
         $("#page2_meme").css({
@@ -129,19 +135,23 @@ function meme_effect(scrollY) {
                 "background-image": "url('../src/p1_p2_meme.png')",
                 'display': 'block',
                 'top': TOP,
-                'opacity': OPACITY,
+                'opacity': F_OPACITY,
             });
         } else if (SIZE == GOAL_SIZE) {
             $("#page2_meme").css({
                 "width": GOAL_SIZE + "%",
                 "background-image": "url('../src/p1_p2_meme.png')",
                 'display': 'block',
+                opacity: OPACITY,
+                top: '2%',
             });
         } else {
             $("#page2_meme").css({
                 "width": SIZE + "%",
                 "background-image": "linear-gradient(to right, transparent, #f3f8ff), url('../src/p1_p2_meme.png')",
                 'display': 'block',
+                opacity: OPACITY,
+                top: '2%',
             });
             $("#page2_meme_sub").css({
                 "display": "none",
@@ -159,12 +169,13 @@ function meme_sub_Effeect(scrollY) {
 
     const HEIGHT = Math.min(((scrollY - START) / RANGE) * ((scrollY - START) / RANGE) * GOAL_HEIGHT, GOAL_HEIGHT) + "%";
     const TOP = 87 - Math.min(((scrollY - START) / RANGE) * ((scrollY - START) / RANGE) * GOAL_TOP, GOAL_TOP) + "%";
+    const OPACITY = (scrollY - START) / RANGE;
 
     const FINISH = 195;
     const F_RANGE = 10;
 
     const F_TOP = 21 - (scrollY - FINISH) + "%";
-    const OPACITY = 1 - Math.min((scrollY - FINISH) / F_RANGE, 1)
+    const F_OPACITY = 1 - Math.min((scrollY - FINISH) / F_RANGE, 1)
 
     if (scrollY < START) {
         $("#page2_meme_sub").css({
@@ -174,13 +185,14 @@ function meme_sub_Effeect(scrollY) {
         if (scrollY >= FINISH) {
             $("#page2_meme_sub").css({
                 'top': F_TOP,
-                'opacity': OPACITY,
+                'opacity': F_OPACITY,
             })
         } else if (scrollY >= START) {
             $("#page2_meme_sub").css({
                 "display": "block",
                 "height": HEIGHT,
                 "top": TOP,
+                opacity: OPACITY,
             })
         }
     }
@@ -193,12 +205,13 @@ function phone_effect(scrollY) {
         const GOAL_TOP = 30;
 
         const TOP = 70 - Math.min(((scrollY - START) / RANGE) * ((scrollY - START) / RANGE) * GOAL_TOP, GOAL_TOP) + "%";
+        const OPACITY = (scrollY - START) / RANGE;
 
         const FINISH = 200;
         const F_RANGE = 10;
 
         const F_TOP = 21 - (scrollY - FINISH) + "%";
-        const OPACITY = 1 - Math.min((scrollY - FINISH) / F_RANGE, 1)
+        const F_OPACITY = 1 - Math.min((scrollY - FINISH) / F_RANGE, 1)
 
         if (scrollY < START) {
             $("#page2_phone").css({
@@ -208,12 +221,13 @@ function phone_effect(scrollY) {
             if (scrollY >= FINISH) {
                 $("#page2_phone").css({
                     'top': F_TOP,
-                    'opacity': OPACITY,
+                    'opacity': F_OPACITY,
                 })
             } else if (scrollY >= START) {
                 $("#page2_phone").css({
                     "display": "block",
                     "top": TOP,
+                    opacity: OPACITY,
                 })
             }
         }
@@ -300,7 +314,6 @@ function MZ_generation_effect(scrollY) {
                     'opacity': F_OPACITY,
                 })
             } else { // 나타남
-                console.log("TOP", TOP)
                 $('#page2_question1').css({
                     'display': 'block',
                     'top': TOP,
@@ -329,7 +342,6 @@ function MZ_generation_effect(scrollY) {
                     'opacity': F_OPACITY,
                 })
             } else { // 나타남
-                console.log("TOP", TOP)
                 $('#page2_question2').css({
                     'display': 'block',
                     'top': TOP,
@@ -345,7 +357,7 @@ function MZ_generation_effect(scrollY) {
         const F_OPACITY = 1 - (scrollY - FINISH) / 10;
 
         for (var i = 1; i < 4; i++) {
-            const TOP = 40 - Math.min((scrollY - START[i]), RANGE) + "%";
+            const TOP = 50 - Math.min((scrollY - START[i]), RANGE) + "%";
             const OPACITY = (scrollY - START[i]) / RANGE;
 
             if (scrollY < START[i]) {
@@ -385,7 +397,6 @@ function invite_effect(scrollY) {
         if (scrollY >= FINISH) {
 
         } else {
-            console.log("YES")
             $('#page2_INVITE_BOX').css({
                 display: 'block',
                 position: 'fixed',
@@ -484,17 +495,48 @@ function setSizeInit() {
             width: WIDTH + 'px',
             height: HEIGHT + 'px',
         })
-    }
 
-    {
-        const IMAGE_WIDTH = 617;
-        const IMAGE_HEIGHT = 144;
-        const WIDTH = window.innerWidth;
 
         var width = document.getElementById("page2_question1").offsetWidth;
-        $("#page2_question1").css({
-            height: width * IMAGE_HEIGHT / IMAGE_WIDTH + "px",
-        })
+
+        { // question1
+            const IMAGE_HEIGHT = 178;
+            const IMAGE_WIDTH = 624;
+            $('#page2_question1').css({
+                height: width * IMAGE_HEIGHT / IMAGE_WIDTH + 'px',
+            })
+        }
+
+        { // question2
+            const IMAGE_WIDTH = 617;
+            const IMAGE_HEIGHT = 144;
+            $("#page2_question1").css({
+                height: width * IMAGE_HEIGHT / IMAGE_WIDTH + "px",
+            })
+        }
+
+        { // peoples
+            const IMAGE_WIDTH = 421 * WIDTH / 1920;
+            const IMAGE_HEIGHT = 488 * WIDTH / 1920;
+
+            $('#page2_people1').css({
+                width: IMAGE_WIDTH,
+                height: IMAGE_HEIGHT,
+                left: (WIDTH / 2 - 1.5 * IMAGE_WIDTH) * 2 / 3 + 'px',
+            })
+
+            $('#page2_people2').css({
+                width: IMAGE_WIDTH,
+                height: IMAGE_HEIGHT,
+                left: (WIDTH - IMAGE_WIDTH) / 2 + 'px',
+            })
+
+            $('#page2_people3').css({
+                width: IMAGE_WIDTH,
+                height: IMAGE_HEIGHT,
+                right: (WIDTH / 2 - 1.5 * IMAGE_WIDTH) * 2 / 3 + 'px',
+            })
+        }
     }
 
     { // for page2_INVITE_BOX
@@ -504,5 +546,30 @@ function setSizeInit() {
             width: WIDTH + 'px',
             height: HEIGHT + 'px',
         })
+
+        const ID = ['bear1', 'bear2', 'bomb', 'book', 'cool', 'face', 'finger', 'hat1', 'hat2', 'heart1', 'heart2', 'star1', 'star2']
+        const ICON_WIDTH = [83, 88, 87, 96, 94, 74, 71, 90, 102, 70, 62, 71, 67];
+        const ICON_HEIGHT = [110, 99, 94, 94, 83, 75, 111, 109, 105, 64, 70, 71, 80];
+
+        const LEFT = [1195, 494, 1516, 291, 1319, 652, 216, 1758, 1279, 80, 1858, 1645, 0];
+        const BOTTOM = [867, 231, 460, 946, 1124, 1110, 515, 1201, 193, 1181, 343, 899, 315];
+
+        for (var i = 0; i < 13; i++) {
+            var id = "page2_invite_" + ID[i];
+
+            var width = ICON_WIDTH[i] / 1920 * WIDTH;
+            var height = width * ICON_HEIGHT[i] / ICON_WIDTH[i] + 'px';
+            width = width + 'px';
+
+            var left = LEFT[i] / 1920 * 100 + '%';
+            var bottom = (BOTTOM[i] - 175) / 1080 * 100 + '%';
+
+            $("#" + id).css({
+                width: width,
+                height: height,
+                left: left,
+                bottom: bottom,
+            })
+        }
     }
 }
