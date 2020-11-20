@@ -101,6 +101,7 @@ function page2_effect() {
     meme_sub_Effeect(scrollY);
     phone_effect(scrollY);
     MZ_generation_effect(scrollY);
+    invite_effect(scrollY);
 }
 
 function meme_effect(scrollY) {
@@ -153,8 +154,8 @@ function meme_sub_Effeect(scrollY) {
 
     const START = 120;
     const RANGE = 20;
-    const GOAL_HEIGHT = 18;
-    const GOAL_TOP = 66;
+    const GOAL_HEIGHT = 24;
+    const GOAL_TOP = 63;
 
     const HEIGHT = Math.min(((scrollY - START) / RANGE) * ((scrollY - START) / RANGE) * GOAL_HEIGHT, GOAL_HEIGHT) + "%";
     const TOP = 87 - Math.min(((scrollY - START) / RANGE) * ((scrollY - START) / RANGE) * GOAL_TOP, GOAL_TOP) + "%";
@@ -189,7 +190,7 @@ function phone_effect(scrollY) {
     {
         const START = 140;
         const RANGE = 20;
-        const GOAL_TOP = 35;
+        const GOAL_TOP = 30;
 
         const TOP = 70 - Math.min(((scrollY - START) / RANGE) * ((scrollY - START) / RANGE) * GOAL_TOP, GOAL_TOP) + "%";
 
@@ -233,17 +234,19 @@ function phone_effect(scrollY) {
             "wow",
             "heart"
         ]
-        const START = [160, 162, 164, 166, 168, 170, 172, 174, 176, 178, 180, 182, 184];
-        const RANGE = 10;
-        const TOP = [-21.6, 27, 8, 8.4, 8.5, -26.2, 2.6, 47.8, 20.7, 7, 61, 51, -2.2, 6.6];
+        const START = 140;
+        const RANGE = 20;
+        // const START = [160, 162, 164, 166, 168, 170, 172, 174, 176, 178, 180, 182, 184];
+        // const RANGE = 10;
+        // const TOP = [-21.6, 27, 8, 8.4, 8.5, -26.2, 2.6, 47.8, 20.7, 7, 61, 51, -2.2, 6.6];
 
         for (var i = 0; i < 13; i++) {
-            if (START[i] <= scrollY) {
+            if (START <= scrollY) {
                 $("#page2_" + ID[i]).css({
                     'display': 'block',
                 })
-                var element = document.getElementById("page2_" + ID[i])
-                element.classList.add("bounce");
+                // var element = document.getElementById("page2_" + ID[i])
+                // element.classList.add("bounce");
             } else {
                 $("#page2_" + ID[i]).css({
                     'display': 'none',
@@ -367,6 +370,31 @@ function MZ_generation_effect(scrollY) {
     }
 }
 
+function invite_effect(scrollY) {
+    const START = 390;
+    const RANGE = 40;
+    const FINISH = 440;
+
+    const OPACITY = (scrollY - START) / RANGE;
+
+    if (scrollY < START) {
+        $('#page2_INVITE_BOX').css({
+            display: 'none',
+        })
+    } else {
+        if (scrollY >= FINISH) {
+
+        } else {
+            console.log("YES")
+            $('#page2_INVITE_BOX').css({
+                display: 'block',
+                position: 'fixed',
+                opacity: OPACITY,
+            })
+        }
+    }
+}
+
 function bottom_background_effect() {
     var date = new Date();
     var h = date.getHours();
@@ -466,6 +494,15 @@ function setSizeInit() {
         var width = document.getElementById("page2_question1").offsetWidth;
         $("#page2_question1").css({
             height: width * IMAGE_HEIGHT / IMAGE_WIDTH + "px",
+        })
+    }
+
+    { // for page2_INVITE_BOX
+        const WIDTH = window.innerWidth;
+        const HEIGHT = window.innerHeight;
+        $('#page2_INVITE_BOX').css({
+            width: WIDTH + 'px',
+            height: HEIGHT + 'px',
         })
     }
 }

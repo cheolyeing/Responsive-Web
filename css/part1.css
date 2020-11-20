@@ -51,7 +51,7 @@ html {
 
 /* PAGE #2 */
 #part1_page2 {
-    height: 364%;
+    height: 464%;
     width: 100%;
     background-color: #f3f8ff;
     position: static;
@@ -72,7 +72,7 @@ html {
     display: none;
     height: 18%;
     /* 18 되어야함 */
-    width: 42%;
+    width: 34%;
     background-image: url(../src/p1_p2_meme_sub.png);
     background-size: contain;
     background-repeat: no-repeat;
@@ -80,7 +80,7 @@ html {
 
     position: fixed;
     z-index: 2;
-    left: 29%;
+    left: 33%;
     top: 44%;
     /* 44 되어야함 */
 }
@@ -94,7 +94,7 @@ html {
 
 #page2_phone {
     height: 73%;
-    width: 62%;
+    width: 60%;
     display: none;
     background-image: url(../src/p1_p2_phone.png);
     background-size: contain;
@@ -588,10 +588,12 @@ h3 {
 }
 
 #page2_INVITE_BOX {
-    height: 35%;
-    width: 100%;
     display: none;
-    position: relative;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color: #f3f8ff;
+    bottom: 0%;
 }
 
 #page2_invite {
@@ -606,7 +608,7 @@ h3 {
 
 
     z-index: 1;
-    position: absolute;
+    position: fixed;
     left: 17%;
     top: 26%;
 }
@@ -623,7 +625,7 @@ h3 {
 
 
     z-index: 1;
-    position: absolute;
+    position: fixed;
     left: 30%;
     top: 62%;
 }
@@ -640,7 +642,7 @@ h3 {
 
 
     z-index: 2;
-    position: absolute;
+    position: fixed;
     left: 62%;
     top: 25%;
 }
@@ -657,7 +659,7 @@ h3 {
 
 
     z-index: 2;
-    position: absolute;
+    position: fixed;
     left: 23%;
     bottom: 6%;
 }
@@ -674,7 +676,7 @@ h3 {
 
 
     z-index: 2;
-    position: absolute;
+    position: fixed;
     right: 10%;
     bottom: 33%;
 }
@@ -691,7 +693,7 @@ h3 {
 
 
     z-index: 2;
-    position: absolute;
+    position: fixed;
     left: 10%;
     top: 22%;
 }
@@ -708,7 +710,7 @@ h3 {
 
 
     z-index: 2;
-    position: absolute;
+    position: fixed;
     left: 73%;
     bottom: 5%;
 }
@@ -725,7 +727,7 @@ h3 {
 
 
     z-index: 2;
-    position: absolute;
+    position: fixed;
     left: 32%;
     top: 12%;
 }
@@ -742,7 +744,7 @@ h3 {
 
 
     z-index: 2;
-    position: absolute;
+    position: fixed;
     left: 55%;
     top: -1%;
 }
@@ -759,7 +761,7 @@ h3 {
 
 
     z-index: 2;
-    position: absolute;
+    position: fixed;
     left: 5%;
     bottom: 32%;
 }
@@ -776,7 +778,7 @@ h3 {
 
 
     z-index: 2;
-    position: absolute;
+    position: fixed;
     left: 90%;
     top: 3%;
 }
@@ -793,7 +795,7 @@ h3 {
 
 
     z-index: 2;
-    position: absolute;
+    position: fixed;
     left: 0%;
     bottom: 16%;
 }
@@ -810,7 +812,7 @@ h3 {
 
 
     z-index: 2;
-    position: absolute;
+    position: fixed;
     left: 4%;
     top: 6%;
 }
@@ -827,7 +829,7 @@ h3 {
 
 
     z-index: 2;
-    position: absolute;
+    position: fixed;
     right: 0%;
     bottom: 17%;
 }
@@ -844,7 +846,7 @@ h3 {
 
 
     z-index: 2;
-    position: absolute;
+    position: fixed;
     left: 77%;
     top: 17%;
 }
