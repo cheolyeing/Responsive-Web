@@ -42,6 +42,7 @@ function interval() {
     page2_effect();
     bottom_background_effect();
     phone_zoom_effect(getScrollY());
+    part2_page1_init();
 }
 
 function page1_init() {
@@ -430,7 +431,7 @@ function mid_background_effect(scrollY) {
 
     for (var i = 1; i < 6; i++) {
         var pos = DIRECTION[i] * ((scrollY % RANGE[i]) * 2 - RANGE[i]) / RANGE[i] * window.innerWidth + 'px';
-        console.log(i, pos)
+
         $('#page3_background' + i).css({
             backgroundPositionX: pos,
         })
@@ -443,7 +444,7 @@ function bottom_background_effect() {
 
     for (var i = 1; i < 4; i++) {
         var pos = DIRECTION[i] * ((scrollY % RANGE[i]) * 2 - RANGE[i]) / RANGE[i] * window.innerWidth + 'px';
-        console.log(i, pos)
+
         $('#page3_bottom_background' + i).css({
             backgroundPositionX: pos,
         })
@@ -762,7 +763,7 @@ function setSizeInit_PART1() {
             const TOP = [0, 5072, 5340, 5608];
 
             for (var i = 1; i < 4; i++) {
-                const top = (TOP[i] - (TOP[1] - 4824)) * HEIGHT / 1080;
+                const top = (TOP[i]) * HEIGHT / 1080;
                 const url = 'url(\'../src/p1_p3_bottom_background' + i + '.png\''
                 $('#page3_bottom_background' + i).css({
                     height: IMAGE_HEIGHT * HEIGHT / 1080 + 'px',
@@ -810,58 +811,207 @@ function setSizeInit_PART2() {
     { // page1
         { // BOX
             const width = 1920;
-            const height = 2628;
+            const height = 3100;
             $('#part2_page1').css({
-                width: getPixel(getWidth(width)),
-                height: getPixel(getHeight(height)),
+                width: getWidth(width, false),
+                height: getHeight(height, false),
             })
         }
 
-        { // red line
-            const width = 156;
-            const height = 1080;
-            const top = [0, 0, 1308];
-
-            for (var i = 1; i < 3; i++) {
-                $('#page1_redline' + i).css({
-                    width: getPixel(getWidth(width)),
-                    height: getPixel(getHeight(height)),
-                    top: getPixel(getTop(top[i])),
-                })
-            }
-        }
-
         {
-            const width = 221;
-            const height = 47;
-            const top = [0, 239, 1424];
-            const left = 125;
+            const width = 1920;
+            const height = 2628;
+            $('#part2_page2').css({
+                width: getWidth(width, false),
+                height: getHeight(height, false),
+            })
+        }
+    }
+}
 
-            for (var i = 1; i < 3; i++) {
-                $('#page1_livequest' + i).css({
-                    width: getPixel(getWidth(width)),
-                    height: getPixel(getHeight(height)),
-                    top: getPixel(getTop(top[i])),
-                    left: getPixel(getLeft(left)),
+function part2_page1_init() {
+    const scrollY = getScrollY();
+    part2_page1_effect(scrollY);
+}
+
+function part2_page1_effect(scrollY) {
+    const START = 1070;
+    const RANGE = 40;
+    const GOAL_TOP = 22;
+    const GOAL_LEFT = 49.8;
+
+    const TOP = 44 - Math.min(((scrollY - START) / RANGE) * ((scrollY - START) / RANGE) * GOAL_TOP, GOAL_TOP);
+    const OPACITY = (scrollY - START) / RANGE;
+
+    const FINISH = 1120;
+
+    const PHONE_WIDTH = 46.66;
+    const PHONE_HEIGHT = 96.33;
+
+    const PHONE_GOAL_WIDTH = 22.55;
+    const PHONE_GOAL_HEIGHT = 82.77;
+
+    const PHONE_GOAL_TOP = 11;
+    const PHONE_GOAL_LEFT = 61.8;
+
+    const phone_width = PHONE_WIDTH - Math.min(1, (scrollY - FINISH) / 100) * (PHONE_WIDTH - PHONE_GOAL_WIDTH);
+    const phone_height = PHONE_HEIGHT - Math.min(1, (scrollY - FINISH) / 100) * (PHONE_HEIGHT - PHONE_GOAL_HEIGHT);
+    const phone_top = GOAL_TOP - Math.min(1, (scrollY - FINISH) / 100) * (GOAL_TOP - PHONE_GOAL_TOP);
+    const phone_left = GOAL_LEFT - Math.min(1, (scrollY - FINISH) / 100) * (GOAL_LEFT - PHONE_GOAL_LEFT);
+
+    const F_TOP = 22 - (scrollY - FINISH);
+    if (scrollY < START) {
+        $("#page1_livequest1").css({
+            display: "none",
+        })
+        $("#page1_title1").css({
+            display: "none",
+        })
+        $('#page1_phone').css({
+            display: "none",
+        })
+    } else {
+        if (scrollY >= FINISH) {
+            $("#page1_livequest1").css({
+                top: F_TOP + "%",
+            })
+            $("#page1_title1").css({
+                top: F_TOP + 4.8 + "%",
+            })
+            $('#page1_phone').css({
+                width: phone_width + '%',
+                height: phone_height + '%',
+                top: phone_top + "%",
+                left: phone_left + "%",
+                position: 'fixed',
+                display: "block",
+                opacity: 1,
+            })
+        } else if (scrollY >= START) {
+            $("#page1_livequest1").css({
+                position: 'fixed',
+                display: "block",
+                top: TOP + "%",
+                opacity: OPACITY,
+            })
+
+            $("#page1_title1").css({
+                position: 'fixed',
+                display: "block",
+                top: TOP + 4.8 + "%",
+                opacity: OPACITY,
+            })
+
+            $('#page1_phone').css({
+                width: 46.66 + '%',
+                height: 96.33 + '%',
+                position: 'fixed',
+                display: "block",
+                top: TOP + "%",
+                opacity: OPACITY,
+            })
+        }
+    }
+
+    const STOP = 1240;
+
+    if (scrollY < STOP) {
+        const top = 1500;
+        $('#page1_livequest2').css({
+            position: 'absolute',
+            width: 221 * window.innerWidth / 1920 + 'px',
+            height: 47 * window.innerHeight / 1080 + 'px',
+            top: top * window.innerHeight / 1080 + 'px',
+        })
+
+        const width = 631;
+        const height = 237;
+
+        $('#page1_title2').css({
+            position: 'absolute',
+            width: width * window.innerWidth / 1920 + 'px',
+            height: height * window.innerHeight / 1080 + 'px',
+            top: (top + 52) * window.innerHeight / 1080 + 'px',
+        })
+    } else {
+        $('#page1_title2').css({
+            position: 'fixed',
+            top: '15.55%',
+            left: '6.5%',
+        })
+        $('#page1_livequest2').css({
+            position: 'fixed',
+            top: '10.74%',
+            left: '6.5%',
+        })
+    }
+
+    const APPEAR = [1240, 1270, 1260, 1280, 1250, 1280]
+    const DISAPPEAR = 1400;
+    const width = [351, 345, 261, 280, 313, 351];
+    const height = [94, 195, 187, 160, 198, 208];
+    const left = [793, 43, 363, 550, 814, 1548];
+    const top = [311, 637, 820, 623, 799, 530];
+
+    for (var i = 0; i < 6; i++) {
+
+        const OPACITY = (scrollY - APPEAR[i]) / 10;
+        if (scrollY < APPEAR[i]) {
+            $('#page1_card' + i).css({
+                display: 'none',
+            })
+        } else {
+            if (scrollY >= DISAPPEAR) {
+                $('#page1_card' + i).css({
+                    display: 'block',
+                    position: 'fixed',
+                    opacity: 1,
+                })
+            } else {
+                console.log("APPEAR")
+                $('#page1_card' + i).css({
+                    display: 'block',
+                    position: 'fixed',
+                    width: getWidth(width[i], true),
+                    height: getHeight(height[i], true),
+                    left: getLeft(left[i], true),
+                    top: getTop(top[i], true),
+                    backgroundColor: 'yellow',
+                    opacity: OPACITY,
                 })
             }
         }
+    }
+}
 
-        {
-            const width = 631;
-            const height = 237;
-            const top = [0, 291, 1476];
-            const left = 120;
+function getWidth(width, percent) {
+    if (percent) {
+        return width * 100 / 1920 + '%';
+    } else {
+        return width * window.innerWidth / 1920 + 'px';
+    }
+}
 
-            for (var i = 1; i < 3; i++) {
-                $('#page1_title' + i).css({
-                    backgroundImage: 'url(\'../src/p2_p1_title' + i + '.png\')',
-                    width: getPixel(getWidth(width)),
-                    height: getPixel(getHeight(height)),
-                    top: getPixel(getTop(top[i])),
-                    left: getPixel(getLeft(left)),
-                })
-            }
-        }
+function getHeight(height, percent) {
+    if (percent) {
+        return height * 100 / 1080 + '%';
+    } else {
+        return height * window.innerHeight / 1080 + 'px';
+    }
+}
+
+function getLeft(left, percent) {
+    if (percent) {
+        return left * 100 / 1920 + '%';
+    } else {
+        return left * window.innerWidth / 1920 + 'px';
+    }
+}
+
+function getTop(top, percent) {
+    if (percent) {
+        return top * 100 / 1080 + '%';
+    } else {
+        return top * window.innerHeight / 1080 + 'px';
     }
 }

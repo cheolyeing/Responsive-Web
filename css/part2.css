@@ -12,6 +12,9 @@
 
 #page1_livequest1,
 #page1_livequest2 {
+    width: 11.5%;
+    height: 4.35%;
+    left: 6.5%;
     position: absolute;
     background-image: url(../src/p2_p1_livequest.png);
     background-repeat: no-repeat;
@@ -21,14 +24,36 @@
 
 #page1_title1,
 #page1_title2 {
+    width: 33%;
+    height: 22%;
+    left: 6.5%;
+    background-color: red;
     position: absolute;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
 }
 
+#page1_title1 {
+    background-image: url(../src/p2_p1_title1.png);
+}
+
+#page1_title2 {
+    position: absolute;
+    background-image: url(../src/p2_p1_title2.png);
+}
+
 #page1_phone {
     position: fixed;
+    left: 49.8%;
     background-image: url('../src/p2_p1_phone.png');
+    background-color: red;
     background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#part2_page2 {
+    background-color: #f3f8ff;
+    position: relative;
 }
