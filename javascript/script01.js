@@ -82,6 +82,13 @@ function page1_toNext() {
             scrollTop: window.innerHeight,
         }, 400);
 
+        setTimeout(() => {
+            $('body').css({
+                overflowX: 'hidden',
+                overflowY: 'auto',
+            })
+        }, 500);
+
         document.removeEventListener("click", click);
 
         page2_init();
@@ -385,7 +392,7 @@ function MZ_generation_effect(scrollY) {
 function invite_effect(scrollY) {
     const START = 390;
     const RANGE = 40;
-    const FINISH = 440;
+    const FINISH = 600;
 
     const OPACITY = (scrollY - START) / RANGE;
 
@@ -395,7 +402,9 @@ function invite_effect(scrollY) {
         })
     } else {
         if (scrollY >= FINISH) {
-
+            $('#page2_INVITE_BOX').css({
+                display: 'none',
+            })
         } else {
             $('#page2_INVITE_BOX').css({
                 display: 'block',
@@ -413,20 +422,20 @@ function bottom_background_effect() {
     var s = date.getSeconds();
     var ms = date.getMilliseconds();
 
-    const SPEED_DIVIDER = 10000;
+    const SPEED_DIVIDER = 5;
 
-    var pos_to_right = (ms + 1000 * (s + 60 * m + 3600 * h)) % SPEED_DIVIDER;
-    var pos_to_left = -(ms + 1000 * (s + 60 * m + 3600 * h)) % SPEED_DIVIDER;
+    var pos_to_right = ((ms + 1000 * (s + 60 * m + 3600 * h)) / SPEED_DIVIDER);
+    var pos_to_left = -((ms + 1000 * (s + 60 * m + 3600 * h)) / SPEED_DIVIDER);
 
-    $("#page4_bottom_background1").css({
+    $("#page3_bottom_background1").css({
         "background-position-x": pos_to_left + "px",
     })
 
-    $("#page4_bottom_background2").css({
+    $("#page3_bottom_background2").css({
         "background-position-x": pos_to_right + "px",
     })
 
-    $("#page4_bottom_background3").css({
+    $("#page3_bottom_background3").css({
         "background-position-x": pos_to_left + "px",
     })
 }
@@ -571,5 +580,156 @@ function setSizeInit() {
                 bottom: bottom,
             })
         }
+    }
+
+    { // for page3
+        const WIDTH = window.innerWidth;
+        const HEIGHT = window.innerHeight;
+
+        { // title
+            const IMAGE_WIDTH = 202
+            const IMAGE_HEIGHT = 28
+            const TOP = 207;
+
+            const width = IMAGE_WIDTH * WIDTH / 1920;
+            const height = width * IMAGE_HEIGHT / IMAGE_WIDTH;
+
+            const left = (WIDTH - width) / 2;
+            const top = TOP * HEIGHT / 1080;
+
+            $('#page3_title').css({
+                width: width + 'px',
+                height: height + 'px',
+                left: left + 'px',
+                top: top + 'px',
+            })
+        }
+
+        { // title_sub
+            const IMAGE_WIDTH = 727
+            const IMAGE_HEIGHT = 212
+            const TOP = 283;
+
+            const width = IMAGE_WIDTH * WIDTH / 1920;
+            const height = width * IMAGE_HEIGHT / IMAGE_WIDTH;
+
+            const left = (WIDTH - width) / 2;
+            const top = TOP * HEIGHT / 1080;
+
+            $('#page3_title_sub').css({
+                width: width + 'px',
+                height: height + 'px',
+                left: left + 'px',
+                top: top + 'px',
+            })
+        }
+
+        { // phone
+            const IMAGE_WIDTH = 655
+            const IMAGE_HEIGHT = 1352
+            const TOP = 656;
+
+            const width = IMAGE_WIDTH * WIDTH / 1920;
+            const height = width * IMAGE_HEIGHT / IMAGE_WIDTH;
+
+            const left = (WIDTH - width) / 2;
+            const top = TOP * HEIGHT / 1080;
+
+            $('#page3_phone').css({
+                width: width + 'px',
+                height: height + 'px',
+                left: left + 'px',
+                top: top + 'px',
+            })
+        }
+
+        { // phone_video
+            const IMAGE_WIDTH = 599;
+            const IMAGE_HEIGHT = 2550 * 599 / 357;
+            const TOP = 673;
+
+            const width = IMAGE_WIDTH * WIDTH / 1920;
+            const height = width * IMAGE_HEIGHT / IMAGE_WIDTH;
+
+            const left = (WIDTH - width) / 2;
+            const top = TOP * HEIGHT / 1080;
+
+            $('#page3_phone_video').css({
+                width: width + 'px',
+                height: height + 'px',
+                left: left + 'px',
+                top: top + 'px',
+            })
+        }
+
+        {
+            const IMAGE_WIDTH = [0, 1567, 2683, 2243, 1553, 1983];
+            const IMAGE_HEIGHT = [0, 310, 310, 310, 297, 300];
+            const TOP = [0, 1005, 1414, 2321, 3397, 4312];
+
+            for (var i = 1; i < 6; i++) {
+                const top = TOP[i] * HEIGHT / 1080;
+                $('#page3_background' + i).css({
+                    height: IMAGE_HEIGHT[i] * HEIGHT / 1080 + 'px',
+                    width: Math.max(IMAGE_WIDTH[i], 1920) * WIDTH / 1920 + 'px',
+                    top: top + 'px',
+                })
+            }
+        }
+
+        {
+            const IMAGE_WIDTH = [0, 256, 298, 317, 298];
+            const IMAGE_HEIGHT = [0, 195, 260, 260, 195];
+            const TOP = [0, 1374, 1793, 2736, 3010];
+            const LEFT = [0, 284, 1380, 223, 1380];
+
+            const ARROW_SIZE = 21;
+            const ARROW_LEFT = [0, 575, 1324, 575, 1324];
+            const ARROW_TOP = [0, 1397, 1815, 2757, 3032];
+
+            for (var i = 1; i < 5; i++) {
+                const top = TOP[i] * HEIGHT / 1080;
+                const left = LEFT[i] * WIDTH / 1920;
+                const arrow_top = ARROW_TOP[i] * HEIGHT / 1080;
+                const arrow_left = ARROW_LEFT[i] * WIDTH / 1920;
+
+                $('#page3_detail' + i).css({
+                    height: IMAGE_HEIGHT[i] * HEIGHT / 1080 + 'px',
+                    width: IMAGE_WIDTH[i] * WIDTH / 1920 + 'px',
+                    top: top + 'px',
+                    left: left + 'px',
+                })
+
+                $('#page3_detail' + i + '_arrow').css({
+                    height: ARROW_SIZE * HEIGHT / 1080 + 'px',
+                    width: ARROW_SIZE * WIDTH / 1920 + 'px',
+                    top: arrow_top + 'px',
+                    left: arrow_left + 'px',
+                })
+            }
+        }
+
+        {
+            const IMAGE_WIDTH = 1920;
+            const IMAGE_HEIGHT = 240;
+            const TOP = [0, 5072, 5340, 5608];
+
+            for (var i = 1; i < 4; i++) {
+                const top = TOP[i] * HEIGHT / 1080;
+                const url = 'url(\'../src/p1_p3_bottom_background' + i + '.png\''
+                $('#page3_bottom_background' + i).css({
+                    height: IMAGE_HEIGHT * HEIGHT / 1080 + 'px',
+                    width: IMAGE_WIDTH * WIDTH / 1920 + 'px',
+                    position: 'absolute',
+                    top: top + 'px',
+                    zIndex: 4,
+                    backgroundImage: url,
+                    backgroundSize: 'cover',
+                    backgroundRepeat: 'repeat-x',
+                    backgroundPositionY: 'center',
+                })
+            }
+        }
+
     }
 }

@@ -669,163 +669,66 @@ html {
     /* height: 6046px */
     width: 100%;
     height: 600%;
-    background-color: black;
+    /* background-color: black; */
     position: relative;
+    background-image: linear-gradient(to bottom, #000000, #000000, rgba(0, 0, 0, 0));
 }
 
 #page3_title {
-    width: 12%;
-    height: 1%;
-
     background-image: url(../src/p1_p3_title.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
 
-    position: relative;
+    position: absolute;
     left: 44%;
     top: 3%;
 }
 
 #page3_title_sub {
-    width: 42%;
-    height: 3.75%;
-
     background-image: url(../src/p1_p3_title_sub.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
 
-    position: relative;
-    left: 29%;
-    top: 4.6%;
-}
-
-#page3_PHONE_BOX {
-    width: 37%;
-    /* height : 4345px */
-    height: 72%;
-
-    position: relative;
-    left: 31.5%;
-    top: 10%;
+    position: absolute;
 }
 
 #page3_phone {
-    width: 100%;
-    height: 34%;
 
     background-image: url(../src/p1_p3_phone.png);
+    background-size: contain;
     background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: center;
+    background-position: center center;
 
-    z-index: 2;
+    z-index: 3;
     position: absolute;
 }
 
 #page3_phone_video {
-    width: 92%;
-    height: 97.65%;
-
-    background-color: black;
-
-    z-index: 3;
+    border-radius: 50px 50px 0px 0px / 50px 50px 0px 0px;
+    z-index: 2;
     position: absolute;
-    left: 4%;
-    top: 3%;
 }
 
 #page3_video {
     width: 100%;
+    margin: auto;
+    display: block;
 }
 
-#page3_background1 {
-    width: 86%;
-    height: 5.5%;
-
-    background-image: url(../src/p1_p3_background1.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: center;
-
-    z-index: 1;
-    position: absolute;
-    left: 0%;
-    top: 22%;
-}
-
-#page3_background2 {
-    width: 92%;
-    height: 5.5%;
-
-    background-image: url(../src/p1_p3_background2.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: center;
-
-    z-index: 1;
-    position: absolute;
-    right: 0%;
-    top: 29.2%;
-}
-
-#page3_background3 {
-    width: 100%;
-    height: 5.5%;
-
-    background-image: url(../src/p1_p3_background3.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: center;
-
-    z-index: 1;
-    position: absolute;
-    left: 0%;
-    top: 44.5%;
-}
-
-#page3_background4 {
-    width: 78%;
-    height: 5.5%;
-
-    background-image: url(../src/p1_p3_background4.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: center;
-
-    z-index: 1;
-    position: absolute;
-    right: 0%;
-    top: 63%;
-}
-
+#page3_background1,
+#page3_background2,
+#page3_background3,
+#page3_background4,
 #page3_background5 {
-    width: 100%;
-    height: 5.5%;
-
-    background-image: url(../src/p1_p3_background5.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: center;
-
     z-index: 1;
     position: absolute;
-    right: 0%;
-    top: 78.8%;
 }
 
 #page3_detail1 {
-    width: 13%;
-    height: 3%;
-
     background-image: url(../src/p1_p3_detail1.png);
     background-size: contain;
     background-repeat: no-repeat;
@@ -834,13 +737,9 @@ html {
 
     z-index: 2;
     position: absolute;
-    left: 15%;
-    top: 28.3%;
 }
 
 #page3_detail1_arrow {
-    width: 1.09%;
-    height: 0.4%;
 
     background-image: url(../src/p1_p3_arrow_right.png);
     background-size: contain;
@@ -850,13 +749,9 @@ html {
 
     z-index: 2;
     position: absolute;
-    left: 29.4%;
-    top: 28.6%;
 }
 
 #page3_detail2 {
-    width: 13%;
-    height: 3.2%;
 
     background-image: url(../src/p1_p3_detail2.png);
     background-size: contain;
@@ -866,14 +761,9 @@ html {
 
     z-index: 2;
     position: absolute;
-    right: 15%;
-    top: 35.2%;
 }
 
 #page3_detail2_arrow {
-    width: 1.09%;
-    height: 0.4%;
-
     background-image: url(../src/p1_p3_arrow_left.png);
     background-size: contain;
     background-repeat: no-repeat;
@@ -882,14 +772,9 @@ html {
 
     z-index: 2;
     position: absolute;
-    right: 29.4%;
-    top: 35.3%;
 }
 
 #page3_detail3 {
-    width: 13%;
-    height: 3.2%;
-
     background-image: url(../src/p1_p3_detail3.png);
     background-size: contain;
     background-repeat: no-repeat;
@@ -898,13 +783,9 @@ html {
 
     z-index: 2;
     position: absolute;
-    left: 15%;
-    top: 50.1%;
 }
 
 #page3_detail3_arrow {
-    width: 1.09%;
-    height: 0.4%;
 
     background-image: url(../src/p1_p3_arrow_right.png);
     background-size: contain;
@@ -914,13 +795,9 @@ html {
 
     z-index: 2;
     position: absolute;
-    left: 29.4%;
-    top: 50.3%;
 }
 
 #page3_detail4 {
-    width: 13%;
-    height: 2.4%;
 
     background-image: url(../src/p1_p3_detail4.png);
     background-size: contain;
@@ -930,13 +807,9 @@ html {
 
     z-index: 2;
     position: absolute;
-    right: 15%;
-    top: 54.6%;
 }
 
 #page3_detail4_arrow {
-    width: 1.09%;
-    height: 0.4%;
 
     background-image: url(../src/p1_p3_arrow_left.png);
     background-size: contain;
@@ -946,54 +819,4 @@ html {
 
     z-index: 2;
     position: absolute;
-    right: 29.4%;
-    top: 54.7%;
-}
-
-/* PAGE #4 */
-#part1_page4 {
-    /* height: 974px */
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    position: relative;
-}
-
-#page4_bottom_background1 {
-    width: 100%;
-    height: 25%;
-
-    background-image: url('../src/p1_p4_bottom_background1.png');
-    background-size: cover;
-    background-repeat: repeat-x;
-
-    background-position-y: center;
-    position: absolute;
-    top: -50%;
-}
-
-#page4_bottom_background2 {
-    width: 100%;
-    height: 25%;
-
-    background-image: url('../src/p1_p4_bottom_background2.png');
-    background-size: cover;
-    background-repeat: repeat-x;
-
-    background-position-y: center;
-    position: absolute;
-    top: -24%;
-}
-
-#page4_bottom_background3 {
-    width: 100%;
-    height: 25%;
-
-    background-image: url('../src/p1_p4_bottom_background3.png');
-    background-size: cover;
-    background-repeat: repeat-x;
-
-    background-position-y: center;
-    position: absolute;
-    top: 3%;
 }
