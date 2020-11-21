@@ -1,0 +1,34 @@
+#part2_page1 {
+    background-color: black;
+    position: relative;
+}
+
+#page1_redline1,
+#page1_redline2 {
+    position: absolute;
+    background-color: #ff4e4e;
+    opacity: 0.2;
+}
+
+#page1_livequest1,
+#page1_livequest2 {
+    position: absolute;
+    background-image: url(../src/p2_p1_livequest.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+
+#page1_title1,
+#page1_title2 {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+
+#page1_phone {
+    position: fixed;
+    background-image: url('../src/p2_p1_phone.png');
+    background-size: contain;
+}

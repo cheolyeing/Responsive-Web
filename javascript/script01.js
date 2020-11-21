@@ -32,14 +32,16 @@ function init() {
         page1_init();
         setInterval(() => {
             interval();
-            setSizeInit();
         }, 100);
     })
 }
 
 function interval() {
+    setSizeInit_PART1();
+    setSizeInit_PART2();
     page2_effect();
     bottom_background_effect();
+    phone_zoom_effect(getScrollY());
 }
 
 function page1_init() {
@@ -114,6 +116,8 @@ function page2_effect() {
     phone_effect(scrollY);
     MZ_generation_effect(scrollY);
     invite_effect(scrollY);
+    mid_background_effect(scrollY);
+    phone_focus_effect(scrollY);
 }
 
 function meme_effect(scrollY) {
@@ -127,7 +131,7 @@ function meme_effect(scrollY) {
     const FINISH = 190;
     const F_RANGE = 10;
 
-    const TOP = 2 - (scrollY - FINISH) + "%";
+    const TOP = 7 - (scrollY - FINISH) + "%";
     const F_OPACITY = 1 - Math.min((scrollY - FINISH) / F_RANGE, 1)
 
     if (scrollY < START) {
@@ -150,7 +154,7 @@ function meme_effect(scrollY) {
                 "background-image": "url('../src/p1_p2_meme.png')",
                 'display': 'block',
                 opacity: OPACITY,
-                top: '2%',
+                top: '7%',
             });
         } else {
             $("#page2_meme").css({
@@ -158,7 +162,7 @@ function meme_effect(scrollY) {
                 "background-image": "linear-gradient(to right, transparent, #f3f8ff), url('../src/p1_p2_meme.png')",
                 'display': 'block',
                 opacity: OPACITY,
-                top: '2%',
+                top: '7%',
             });
             $("#page2_meme_sub").css({
                 "display": "none",
@@ -175,13 +179,13 @@ function meme_sub_Effeect(scrollY) {
     const GOAL_TOP = 63;
 
     const HEIGHT = Math.min(((scrollY - START) / RANGE) * ((scrollY - START) / RANGE) * GOAL_HEIGHT, GOAL_HEIGHT) + "%";
-    const TOP = 87 - Math.min(((scrollY - START) / RANGE) * ((scrollY - START) / RANGE) * GOAL_TOP, GOAL_TOP) + "%";
+    const TOP = 92 - Math.min(((scrollY - START) / RANGE) * ((scrollY - START) / RANGE) * GOAL_TOP, GOAL_TOP) + "%";
     const OPACITY = (scrollY - START) / RANGE;
 
     const FINISH = 195;
     const F_RANGE = 10;
 
-    const F_TOP = 21 - (scrollY - FINISH) + "%";
+    const F_TOP = 26 - (scrollY - FINISH) + "%";
     const F_OPACITY = 1 - Math.min((scrollY - FINISH) / F_RANGE, 1)
 
     if (scrollY < START) {
@@ -209,15 +213,15 @@ function phone_effect(scrollY) {
     {
         const START = 140;
         const RANGE = 20;
-        const GOAL_TOP = 30;
+        const GOAL_TOP = 35;
 
-        const TOP = 70 - Math.min(((scrollY - START) / RANGE) * ((scrollY - START) / RANGE) * GOAL_TOP, GOAL_TOP) + "%";
+        const TOP = 75 - Math.min(((scrollY - START) / RANGE) * ((scrollY - START) / RANGE) * GOAL_TOP, GOAL_TOP) + "%";
         const OPACITY = (scrollY - START) / RANGE;
 
         const FINISH = 200;
         const F_RANGE = 10;
 
-        const F_TOP = 21 - (scrollY - FINISH) + "%";
+        const F_TOP = 26 - (scrollY - FINISH) + "%";
         const F_OPACITY = 1 - Math.min((scrollY - FINISH) / F_RANGE, 1)
 
         if (scrollY < START) {
@@ -364,7 +368,7 @@ function MZ_generation_effect(scrollY) {
         const F_OPACITY = 1 - (scrollY - FINISH) / 10;
 
         for (var i = 1; i < 4; i++) {
-            const TOP = 50 - Math.min((scrollY - START[i]), RANGE) + "%";
+            const TOP = 40 - Math.min((scrollY - START[i]), RANGE) + "%";
             const OPACITY = (scrollY - START[i]) / RANGE;
 
             if (scrollY < START[i]) {
@@ -392,8 +396,9 @@ function MZ_generation_effect(scrollY) {
 function invite_effect(scrollY) {
     const START = 390;
     const RANGE = 40;
-    const FINISH = 600;
+    const FINISH = 440;
 
+    const F_OPACITY = 1 - (scrollY - FINISH) / RANGE;
     const OPACITY = (scrollY - START) / RANGE;
 
     if (scrollY < START) {
@@ -403,7 +408,7 @@ function invite_effect(scrollY) {
     } else {
         if (scrollY >= FINISH) {
             $('#page2_INVITE_BOX').css({
-                display: 'none',
+                opacity: F_OPACITY,
             })
         } else {
             $('#page2_INVITE_BOX').css({
@@ -415,28 +420,65 @@ function invite_effect(scrollY) {
     }
 }
 
+function phone_focus_effect(scrollY) {
+
+}
+
+function mid_background_effect(scrollY) {
+    const DIRECTION = [0, 1, -1, 1, -1, 1];
+    const RANGE = [80, 80, 80, 80, 80, 80];
+
+    for (var i = 1; i < 6; i++) {
+        var pos = DIRECTION[i] * ((scrollY % RANGE[i]) * 2 - RANGE[i]) / RANGE[i] * window.innerWidth + 'px';
+        console.log(i, pos)
+        $('#page3_background' + i).css({
+            backgroundPositionX: pos,
+        })
+    }
+}
+
 function bottom_background_effect() {
-    var date = new Date();
-    var h = date.getHours();
-    var m = date.getMinutes();
-    var s = date.getSeconds();
-    var ms = date.getMilliseconds();
+    const DIRECTION = [0, 1, -1, 1];
+    const RANGE = [400, 400, 400, 400];
 
-    const SPEED_DIVIDER = 5;
+    for (var i = 1; i < 4; i++) {
+        var pos = DIRECTION[i] * ((scrollY % RANGE[i]) * 2 - RANGE[i]) / RANGE[i] * window.innerWidth + 'px';
+        console.log(i, pos)
+        $('#page3_bottom_background' + i).css({
+            backgroundPositionX: pos,
+        })
+    }
+    // var date = new Date();
+    // var h = date.getHours();
+    // var m = date.getMinutes();
+    // var s = date.getSeconds();
+    // var ms = date.getMilliseconds();
 
-    var pos_to_right = ((ms + 1000 * (s + 60 * m + 3600 * h)) / SPEED_DIVIDER);
-    var pos_to_left = -((ms + 1000 * (s + 60 * m + 3600 * h)) / SPEED_DIVIDER);
+    // const SPEED_DIVIDER = 5;
 
-    $("#page3_bottom_background1").css({
-        "background-position-x": pos_to_left + "px",
-    })
+    // var pos_to_right = ((ms + 1000 * (s + 60 * m + 3600 * h)) / SPEED_DIVIDER);
+    // var pos_to_left = -((ms + 1000 * (s + 60 * m + 3600 * h)) / SPEED_DIVIDER);
 
-    $("#page3_bottom_background2").css({
-        "background-position-x": pos_to_right + "px",
-    })
+    // $("#page3_bottom_background1").css({
+    //     "background-position-x": pos_to_left + "px",
+    // })
 
-    $("#page3_bottom_background3").css({
-        "background-position-x": pos_to_left + "px",
+    // $("#page3_bottom_background2").css({
+    //     "background-position-x": pos_to_right + "px",
+    // })
+
+    // $("#page3_bottom_background3").css({
+    //     "background-position-x": pos_to_left + "px",
+    // })
+}
+
+function phone_zoom_effect(scrollY) {
+
+    var MAX_SIZE = 896;
+    var MIN_SIZE = 433;
+
+    $('#page1_phone').css({
+
     })
 }
 
@@ -447,7 +489,7 @@ function getScrollY() {
     return (scrollY / winHeight) * 100;
 }
 
-function setSizeInit() {
+function setSizeInit_PART1() {
 
     { // for page2_meme
         const IMAGE_WIDTH = 690;
@@ -509,7 +551,7 @@ function setSizeInit() {
         var width = document.getElementById("page2_question1").offsetWidth;
 
         { // question1
-            const IMAGE_HEIGHT = 178;
+            const IMAGE_HEIGHT = 180;
             const IMAGE_WIDTH = 624;
             $('#page2_question1').css({
                 height: width * IMAGE_HEIGHT / IMAGE_WIDTH + 'px',
@@ -517,31 +559,31 @@ function setSizeInit() {
         }
 
         { // question2
-            const IMAGE_WIDTH = 617;
-            const IMAGE_HEIGHT = 144;
+            const IMAGE_WIDTH = 624;
+            const IMAGE_HEIGHT = 180;
             $("#page2_question1").css({
                 height: width * IMAGE_HEIGHT / IMAGE_WIDTH + "px",
             })
         }
 
         { // peoples
-            const IMAGE_WIDTH = 421 * WIDTH / 1920;
-            const IMAGE_HEIGHT = 488 * WIDTH / 1920;
+            const IMAGE_WIDTH = 561 * WIDTH / 1920;
+            const IMAGE_HEIGHT = 558 * WIDTH / 1080;
 
             $('#page2_people1').css({
-                width: IMAGE_WIDTH,
+                width: IMAGE_WIDTH + 'px',
                 height: IMAGE_HEIGHT,
                 left: (WIDTH / 2 - 1.5 * IMAGE_WIDTH) * 2 / 3 + 'px',
             })
 
             $('#page2_people2').css({
-                width: IMAGE_WIDTH,
+                width: IMAGE_WIDTH + 'px',
                 height: IMAGE_HEIGHT,
                 left: (WIDTH - IMAGE_WIDTH) / 2 + 'px',
             })
 
             $('#page2_people3').css({
-                width: IMAGE_WIDTH,
+                width: IMAGE_WIDTH + 'px',
                 height: IMAGE_HEIGHT,
                 right: (WIDTH / 2 - 1.5 * IMAGE_WIDTH) * 2 / 3 + 'px',
             })
@@ -645,7 +687,7 @@ function setSizeInit() {
 
         { // phone_video
             const IMAGE_WIDTH = 599;
-            const IMAGE_HEIGHT = 2550 * 599 / 357;
+            const IMAGE_HEIGHT = 2550 * 599 / 374;
             const TOP = 673;
 
             const width = IMAGE_WIDTH * WIDTH / 1920;
@@ -669,10 +711,15 @@ function setSizeInit() {
 
             for (var i = 1; i < 6; i++) {
                 const top = TOP[i] * HEIGHT / 1080;
+                const url = 'url(\'../src/p1_p3_background' + i + '.png\')';
                 $('#page3_background' + i).css({
                     height: IMAGE_HEIGHT[i] * HEIGHT / 1080 + 'px',
                     width: Math.max(IMAGE_WIDTH[i], 1920) * WIDTH / 1920 + 'px',
                     top: top + 'px',
+                    backgroundImage: url,
+                    backgroundSize: 'contain',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPositionY: 'center',
                 })
             }
         }
@@ -715,7 +762,7 @@ function setSizeInit() {
             const TOP = [0, 5072, 5340, 5608];
 
             for (var i = 1; i < 4; i++) {
-                const top = TOP[i] * HEIGHT / 1080;
+                const top = (TOP[i] - (TOP[1] - 4824)) * HEIGHT / 1080;
                 const url = 'url(\'../src/p1_p3_bottom_background' + i + '.png\''
                 $('#page3_bottom_background' + i).css({
                     height: IMAGE_HEIGHT * HEIGHT / 1080 + 'px',
@@ -730,6 +777,91 @@ function setSizeInit() {
                 })
             }
         }
+    }
+}
 
+function setSizeInit_PART2() {
+    const WIDTH = window.innerWidth;
+    const HEIGHT = window.innerHeight;
+
+    const STANDARD_WIDTH = 1920;
+    const STANDARD_HEIGHT = 1080;
+
+    function getWidth(width) {
+        return width * WIDTH / STANDARD_WIDTH;
+    }
+
+    function getHeight(height) {
+        return height * HEIGHT / STANDARD_HEIGHT;
+    }
+
+    function getTop(top) {
+        return top * HEIGHT / STANDARD_HEIGHT;
+    }
+
+    function getLeft(left) {
+        return left * WIDTH / STANDARD_WIDTH;
+    }
+
+    function getPixel(num) {
+        return num + 'px';
+    }
+
+    { // page1
+        { // BOX
+            const width = 1920;
+            const height = 2628;
+            $('#part2_page1').css({
+                width: getPixel(getWidth(width)),
+                height: getPixel(getHeight(height)),
+            })
+        }
+
+        { // red line
+            const width = 156;
+            const height = 1080;
+            const top = [0, 0, 1308];
+
+            for (var i = 1; i < 3; i++) {
+                $('#page1_redline' + i).css({
+                    width: getPixel(getWidth(width)),
+                    height: getPixel(getHeight(height)),
+                    top: getPixel(getTop(top[i])),
+                })
+            }
+        }
+
+        {
+            const width = 221;
+            const height = 47;
+            const top = [0, 239, 1424];
+            const left = 125;
+
+            for (var i = 1; i < 3; i++) {
+                $('#page1_livequest' + i).css({
+                    width: getPixel(getWidth(width)),
+                    height: getPixel(getHeight(height)),
+                    top: getPixel(getTop(top[i])),
+                    left: getPixel(getLeft(left)),
+                })
+            }
+        }
+
+        {
+            const width = 631;
+            const height = 237;
+            const top = [0, 291, 1476];
+            const left = 120;
+
+            for (var i = 1; i < 3; i++) {
+                $('#page1_title' + i).css({
+                    backgroundImage: 'url(\'../src/p2_p1_title' + i + '.png\')',
+                    width: getPixel(getWidth(width)),
+                    height: getPixel(getHeight(height)),
+                    top: getPixel(getTop(top[i])),
+                    left: getPixel(getLeft(left)),
+                })
+            }
+        }
     }
 }
