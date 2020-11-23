@@ -113,9 +113,25 @@
 
 #page2_image_box {
     display: none;
+
+    animation-name: grow;
+    animation-duration: 2s;
+
     position: absolute;
-    background-color: yellow;
-    left: 0;
+}
+
+@keyframes grow {
+    from {
+        transform: scale(0);
+    }
+
+    70% {
+        transform: scale(1.2);
+    }
+
+    to {
+        transform: scale(1);
+    }
 }
 
 .images {
@@ -157,4 +173,10 @@
 
 #reaction_detail3 {
     background-image: url('../src/p2_p2_reaction_detail3.png');
+}
+
+#page2_moving_box {
+    position: absolute;
+    background-color: yellow;
+    background-color: red;
 }

@@ -7,7 +7,7 @@ window.onload = function () {
 function clickButton() {
     $('html, body').animate({
         scrollTop: window.innerHeight * 18.3,
-    }, 400);
+    }, 1000);
 
     $('#page2_image_box').css({
         display: 'block',
@@ -827,7 +827,7 @@ function setSizeInit_PART2() {
 
         {
             const width = 1920;
-            const height = 4000;
+            const height = 5000;
             $('#part2_page2').css({
                 width: getWidth(width, false),
                 height: getHeight(height, false),
@@ -1146,11 +1146,20 @@ function part2_page2_effect(scrollY) {
         $('#page2_image_box').css({
             top: getTop(2737, false),
         })
+
+        $('#page2_moving_box').css({
+            top: getTop(2737 + 1080, false),
+        })
     }
 }
 
 function part2_page2_init() {
     $('#page2_image_box').css({
+        width: getWidth(1920, false),
+        height: getHeight(1080, false),
+    })
+
+    $('#page2_moving_box').css({
         width: getWidth(1920, false),
         height: getHeight(1080, false),
     })
