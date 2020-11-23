@@ -27,7 +27,6 @@
     width: 33%;
     height: 22%;
     left: 6.5%;
-    background-color: red;
     position: absolute;
     background-repeat: no-repeat;
     background-position: center center;
@@ -47,13 +46,115 @@
     position: fixed;
     left: 49.8%;
     background-image: url('../src/p2_p1_phone.png');
-    background-color: red;
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center center;
 }
 
 #part2_page2 {
     background-color: #f3f8ff;
     position: relative;
+}
+
+#page1_card0,
+#page1_card1,
+#page1_card2,
+#page1_card3,
+#page1_card4,
+#page1_card5 {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+
+#page1_card0 {
+    background-image: url('../src/p2_p1_card0.png');
+}
+
+#page1_card1 {
+    background-image: url('../src/p2_p1_card1.png');
+}
+
+#page1_card2 {
+    background-image: url('../src/p2_p1_card2.png');
+}
+
+#page1_card3 {
+    background-image: url('../src/p2_p1_card3.png');
+}
+
+#page1_card4 {
+    background-image: url('../src/p2_p1_card4.png');
+}
+
+#page1_card5 {
+    background-image: url('../src/p2_p1_card5.png');
+}
+
+#reaction_title,
+#reaction_subtitle,
+#reaction_phone {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#reaction_title {
+    background-image: url('../src/p2_p2_title1.png');
+}
+
+#reaction_subtitle {
+    background-image: url('../src/p2_p2_title1_sub.png');
+}
+
+#reaction_phone {
+    background-image: url('../src/p2_p2_phone1.png')
+}
+
+#page2_image_box {
+    display: none;
+    position: absolute;
+    background-color: yellow;
+    left: 0;
+}
+
+.images {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center, center;
+}
+
+#image_reaction {
+    z-index: 2;
+}
+
+#button {
+    position: absolute;
+    background-image: url('../src/p2_p2_button.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center, center;
+    cursor: pointer;
+}
+
+#image_star3,
+#image_gummybear {
+    z-index: 3;
+}
+
+#reaction_detail1,
+#reaction_detail2,
+#reaction_detail3 {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center, center;
+}
+
+#reaction_detail2 {
+    background-image: url('../src/p2_p2_reaction_detail2.png');
+}
+
+#reaction_detail3 {
+    background-image: url('../src/p2_p2_reaction_detail3.png');
 }

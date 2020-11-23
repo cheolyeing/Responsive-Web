@@ -1,5 +1,19 @@
 init();
 
+window.onload = function () {
+    document.getElementById('button').addEventListener('click', clickButton);
+}
+
+function clickButton() {
+    $('html, body').animate({
+        scrollTop: window.innerHeight * 18.3,
+    }, 400);
+
+    $('#page2_image_box').css({
+        display: 'block',
+    })
+}
+
 //새로고침 감지
 if (window.performance.navigation.type == 1) {
 
@@ -30,6 +44,9 @@ function importJQuery() {
 function init() {
     importJQuery().then(() => {
         page1_init();
+        page2_init();
+        part2_init();
+
         setInterval(() => {
             interval();
         }, 100);
@@ -41,8 +58,7 @@ function interval() {
     setSizeInit_PART2();
     page2_effect();
     bottom_background_effect();
-    phone_zoom_effect(getScrollY());
-    part2_page1_init();
+    part2_init();
 }
 
 function page1_init() {
@@ -73,7 +89,6 @@ function page1_toNext() {
     $('html, body').css({
         'overflow': 'hidden',
     });
-
     document.addEventListener("click", click);
 
     function click() {
@@ -100,6 +115,7 @@ function page1_toNext() {
 
 function page2_init() {
     page2_toNext();
+
 }
 
 function page2_toNext() {
@@ -473,17 +489,6 @@ function bottom_background_effect() {
     // })
 }
 
-function phone_zoom_effect(scrollY) {
-
-    var MAX_SIZE = 896;
-    var MIN_SIZE = 433;
-
-    $('#page1_phone').css({
-
-    })
-}
-
-
 function getScrollY() {
     var winHeight = window.innerHeight;
     var scrollY = window.scrollY;
@@ -785,6 +790,8 @@ function setSizeInit_PART2() {
     const WIDTH = window.innerWidth;
     const HEIGHT = window.innerHeight;
 
+    const scrollY = getScrollY();
+
     const STANDARD_WIDTH = 1920;
     const STANDARD_HEIGHT = 1080;
 
@@ -811,7 +818,7 @@ function setSizeInit_PART2() {
     { // page1
         { // BOX
             const width = 1920;
-            const height = 3100;
+            const height = 5000;
             $('#part2_page1').css({
                 width: getWidth(width, false),
                 height: getHeight(height, false),
@@ -820,7 +827,7 @@ function setSizeInit_PART2() {
 
         {
             const width = 1920;
-            const height = 2628;
+            const height = 4000;
             $('#part2_page2').css({
                 width: getWidth(width, false),
                 height: getHeight(height, false),
@@ -829,9 +836,11 @@ function setSizeInit_PART2() {
     }
 }
 
-function part2_page1_init() {
+function part2_init() {
     const scrollY = getScrollY();
     part2_page1_effect(scrollY);
+    part2_page2_effect(scrollY);
+    part2_page2_init();
 }
 
 function part2_page1_effect(scrollY) {
@@ -855,7 +864,7 @@ function part2_page1_effect(scrollY) {
     const PHONE_GOAL_LEFT = 61.8;
 
     const phone_width = PHONE_WIDTH - Math.min(1, (scrollY - FINISH) / 100) * (PHONE_WIDTH - PHONE_GOAL_WIDTH);
-    const phone_height = PHONE_HEIGHT - Math.min(1, (scrollY - FINISH) / 100) * (PHONE_HEIGHT - PHONE_GOAL_HEIGHT);
+    const phone_height = phone_width * window.innerWidth * 5552 / 2688 + 'px';
     const phone_top = GOAL_TOP - Math.min(1, (scrollY - FINISH) / 100) * (GOAL_TOP - PHONE_GOAL_TOP);
     const phone_left = GOAL_LEFT - Math.min(1, (scrollY - FINISH) / 100) * (GOAL_LEFT - PHONE_GOAL_LEFT);
 
@@ -878,15 +887,19 @@ function part2_page1_effect(scrollY) {
             $("#page1_title1").css({
                 top: F_TOP + 4.8 + "%",
             })
+
             $('#page1_phone').css({
                 width: phone_width + '%',
-                height: phone_height + '%',
+                height: phone_height,
                 top: phone_top + "%",
                 left: phone_left + "%",
                 position: 'fixed',
+                backgroundImage: 'url(\'../src/p2_p1_phone.png\')',
+                backgroundSize: 'contain',
                 display: "block",
                 opacity: 1,
             })
+
         } else if (scrollY >= START) {
             $("#page1_livequest1").css({
                 position: 'fixed',
@@ -907,6 +920,7 @@ function part2_page1_effect(scrollY) {
                 height: 96.33 + '%',
                 position: 'fixed',
                 display: "block",
+                backgroundSize: 'cover',
                 top: TOP + "%",
                 opacity: OPACITY,
             })
@@ -946,16 +960,17 @@ function part2_page1_effect(scrollY) {
         })
     }
 
-    const APPEAR = [1240, 1270, 1260, 1280, 1250, 1280]
-    const DISAPPEAR = 1400;
+    const APPEAR = [1240, 1330, 1300, 1360, 1390, 1270]
+    const DISAPPEAR = 1600;
     const width = [351, 345, 261, 280, 313, 351];
     const height = [94, 195, 187, 160, 198, 208];
     const left = [793, 43, 363, 550, 814, 1548];
     const top = [311, 637, 820, 623, 799, 530];
+    const range = 30;
 
     for (var i = 0; i < 6; i++) {
 
-        const OPACITY = (scrollY - APPEAR[i]) / 10;
+        const OPACITY = (scrollY - APPEAR[i]) / range;
         if (scrollY < APPEAR[i]) {
             $('#page1_card' + i).css({
                 display: 'none',
@@ -968,7 +983,6 @@ function part2_page1_effect(scrollY) {
                     opacity: 1,
                 })
             } else {
-                console.log("APPEAR")
                 $('#page1_card' + i).css({
                     display: 'block',
                     position: 'fixed',
@@ -976,11 +990,185 @@ function part2_page1_effect(scrollY) {
                     height: getHeight(height[i], true),
                     left: getLeft(left[i], true),
                     top: getTop(top[i], true),
-                    backgroundColor: 'yellow',
                     opacity: OPACITY,
                 })
             }
         }
+    }
+}
+
+function part2_page2_effect(scrollY) {
+    { // REACTION
+        const width = 193;
+        const height = 47;
+        const left = 861;
+        const top = 64;
+        const OPACITY = Math.max((1585 - scrollY) / 20, 0);
+        const gap = Math.min(Math.max(0, scrollY - 1576) * 10, 90);
+
+        $('#reaction_title').css({
+            width: getWidth(width, false),
+            height: getHeight(height, false),
+            left: getLeft(left, false),
+            top: getTop(top + gap, false),
+            opacity: OPACITY,
+        })
+    }
+
+    { // 재밌는 밈에 리액션을 보내볼까요?
+        const width = 1265;
+        const height = 142;
+        const left = 326;
+        const top = 102;
+        const OPACITY = Math.max((1585 - scrollY) / 20, 0);
+        const gap = Math.min(Math.max(0, scrollY - 1576) * 10, 90);
+
+        $('#reaction_subtitle').css({
+            width: getWidth(width, false),
+            height: getHeight(height, false),
+            left: getLeft(left, false),
+            top: getTop(top + gap, false),
+            opacity: OPACITY,
+            zIndex: 1,
+        })
+    }
+
+    { // 핸드폰 목업
+        const START = 1597;
+        const FINISH = 1730;
+        const width = 433;
+        const height = 894;
+        const left = 741;
+        const position = ['fixed', 'absolute'];
+        const top = [93, 308, 1750];
+        if (scrollY >= FINISH) {
+            $('#reaction_phone').css({
+                position: position[1],
+                width: getWidth(width, false),
+                height: getHeight(height, false),
+                left: getLeft(left, false),
+                top: getTop(top[2], false),
+                zIndex: 2,
+            })
+        } else {
+            $('#reaction_phone').css({
+                position: scrollY >= START ? position[0] : position[1],
+                width: getWidth(width, false),
+                height: getHeight(height, false),
+                left: getLeft(left, false),
+                top: getTop(scrollY >= START ? top[0] : top[1], false),
+                zIndex: 2,
+            })
+        }
+    }
+
+    { // 버튼
+        const START = 1597;
+        const width = 60;
+        const height = 60;
+        const left = 1100;
+        const position = ['fixed', 'absolute'];
+        const top = [890, 1105, 2547];
+        if (scrollY >= 1730) {
+            $('#button').css({
+                position: position[1],
+                width: getWidth(width, false),
+                height: getHeight(height, false),
+                left: getLeft(left, false),
+                top: getTop(top[2], false),
+                zIndex: 3,
+            })
+        } else {
+            $('#button').css({
+                position: scrollY >= START ? position[0] : position[1],
+                width: getWidth(width, false),
+                height: getHeight(height, false),
+                left: getLeft(left, false),
+                top: getTop(scrollY >= START ? top[0] : top[1], false),
+                zIndex: 3,
+            })
+        }
+    }
+
+    { // REACTION_DETAIL
+        const FINISH = 1730;
+        const APPEAR = [0, 1610, 1640, 1700];
+        const DISAPPEAR = 1670;
+        const width = [0, 324, 288, 377];
+        const height = [0, 133, 98, 94];
+        const left = [0, 374, 1217, 1217];
+        const top = [0, 782, 878, 836];
+        const position = ['fixed', 'absolute'];
+        const GAP = 1658;
+
+        var opacity1 = (scrollY - APPEAR[1]) / 30;
+        $('#reaction_detail1').css({
+            display: scrollY >= APPEAR[1] ? 'block' : 'none',
+            width: getWidth(width[1], false),
+            height: getHeight(height[1], false),
+
+            position: scrollY >= FINISH ? position[1] : position[0],
+            left: getLeft(left[1], false),
+            top: getTop(scrollY >= FINISH ? top[1] + GAP : top[1], false),
+            opacity: opacity1,
+
+            backgroundColor: 'red',
+        })
+
+        var opacity2_1 = (scrollY - APPEAR[2]) / 30;
+        var opacity2_2 = 1 - (scrollY - DISAPPEAR) / 30;
+
+        $('#reaction_detail2').css({
+            display: scrollY >= APPEAR[2] ? 'block' : 'none',
+            width: getWidth(width[2], false),
+            height: getHeight(height[2], false),
+
+            position: 'fixed',
+            left: getLeft(left[2], false),
+            top: getTop(top[2], false),
+            opacity: scrollY >= DISAPPEAR ? opacity2_2 : opacity2_1,
+        })
+
+        var opacity3 = (scrollY - APPEAR[3]) / 30;
+        $('#reaction_detail3').css({
+            display: scrollY >= APPEAR[3] ? 'block' : 'none',
+            width: getWidth(width[3], false),
+            height: getHeight(height[3], false),
+
+            position: scrollY >= FINISH ? position[1] : position[0],
+            left: getLeft(left[3], false),
+            top: getTop(scrollY >= FINISH ? top[3] + GAP : top[3], false),
+            opacity: opacity3,
+        })
+    }
+
+    {
+        $('#page2_image_box').css({
+            top: getTop(2737, false),
+        })
+    }
+}
+
+function part2_page2_init() {
+    $('#page2_image_box').css({
+        width: getWidth(1920, false),
+        height: getHeight(1080, false),
+    })
+
+    const ID = ['reaction', 'finger', 'spring', 'star1', 'star2', 'bomb', 'rainbow', 'cool', 'smile', 'sad', 'wow', 'star3', 'gummybear', ];
+    const WIDTH = [975, 423, 146, 46, 100, 121, 336, 108, 173, 68, 184, 77, 226];
+    const HEIGHT = [156, 643, 159, 45, 98, 197, 180, 82, 174, 68, 180, 81, 246];
+    const LEFT = [472, 743, 433, 632, 616, 680, 1035, 1277, 1378, 474, 618, 1089, 1183];
+    const TOP = [447, 208, 340, 351, 404, 224, 266, 204, 321, 592, 612, 575, 573];
+
+    for (var i = 0; i < 13; i++) {
+        $('#image_' + ID[i]).css({
+            backgroundImage: 'url(\'../src/p2_p2_images_' + ID[i] + '.png\')',
+            width: getWidth(WIDTH[i], false),
+            height: getHeight(HEIGHT[i], false),
+            left: getLeft(LEFT[i], false),
+            top: getTop(TOP[i], false),
+        })
     }
 }
 
