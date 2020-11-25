@@ -92,7 +92,9 @@
 
 #reaction_title,
 #reaction_subtitle,
-#reaction_phone {
+#reaction_phone,
+#moving_phone,
+#memeplay_phone {
     position: absolute;
     background-size: contain;
     background-repeat: no-repeat;
@@ -107,7 +109,9 @@
     background-image: url('../src/p2_p2_title1_sub.png');
 }
 
-#reaction_phone {
+#reaction_phone,
+#moving_phone,
+#memeplay_phone {
     background-image: url('../src/p2_p2_phone1.png')
 }
 
@@ -145,7 +149,7 @@
     z-index: 2;
 }
 
-#button {
+#reaction_button {
     position: absolute;
     background-image: url('../src/p2_p2_button.png');
     background-size: contain;
@@ -161,10 +165,17 @@
 
 #reaction_detail1,
 #reaction_detail2,
-#reaction_detail3 {
+#reaction_detail3,
+#memeplay_detail1,
+#memeplay_detail2,
+#memeplay_detail3 {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center, center;
+}
+
+#reaction_detail1 {
+    background-image: url('../src/p2_p2_reaction_detail1.png');
 }
 
 #reaction_detail2 {
@@ -177,6 +188,24 @@
 
 #page2_moving_box {
     position: absolute;
-    background-color: yellow;
+}
+
+#memeplay_title,
+#memeplay_subtitle,
+#memeplay_phone,
+#moving_phone {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#memeplay_title {
+    background-image: url('../src/p2_p2_title2.png');
     background-color: red;
+    z-index: 5;
+}
+
+#memeplay_subtitle {
+    background-image: url('../src/p2_p2_title2_sub.png');
 }

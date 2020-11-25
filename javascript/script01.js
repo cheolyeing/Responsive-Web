@@ -1,10 +1,13 @@
 init();
 
 window.onload = function () {
-    document.getElementById('button').addEventListener('click', clickButton);
+    document.getElementById('reaction_button').addEventListener('click', reactionButton);
 }
 
-function clickButton() {
+function reactionButton() {
+    $('#page2_image_box').css({
+        display: 'none',
+    })
     $('html, body').animate({
         scrollTop: window.innerHeight * 18.3,
     }, 1000);
@@ -827,7 +830,7 @@ function setSizeInit_PART2() {
 
         {
             const width = 1920;
-            const height = 5000;
+            const height = 8000;
             $('#part2_page2').css({
                 width: getWidth(width, false),
                 height: getHeight(height, false),
@@ -840,7 +843,7 @@ function part2_init() {
     const scrollY = getScrollY();
     part2_page1_effect(scrollY);
     part2_page2_effect(scrollY);
-    part2_page2_init();
+    part2_page2_init(scrollY);
 }
 
 function part2_page1_effect(scrollY) {
@@ -1003,7 +1006,7 @@ function part2_page2_effect(scrollY) {
         const height = 47;
         const left = 861;
         const top = 64;
-        const OPACITY = Math.max((1585 - scrollY) / 20, 0);
+        const OPACITY = 1 - Math.max((scrollY - 1576) / 20, 0);
         const gap = Math.min(Math.max(0, scrollY - 1576) * 10, 90);
 
         $('#reaction_title').css({
@@ -1020,7 +1023,7 @@ function part2_page2_effect(scrollY) {
         const height = 142;
         const left = 326;
         const top = 102;
-        const OPACITY = Math.max((1585 - scrollY) / 20, 0);
+        const OPACITY = 1 - Math.max((scrollY - 1576) / 20, 0);
         const gap = Math.min(Math.max(0, scrollY - 1576) * 10, 90);
 
         $('#reaction_subtitle').css({
@@ -1062,7 +1065,7 @@ function part2_page2_effect(scrollY) {
         }
     }
 
-    { // 버튼
+    { // REACTION 버튼
         const START = 1597;
         const width = 60;
         const height = 60;
@@ -1070,7 +1073,7 @@ function part2_page2_effect(scrollY) {
         const position = ['fixed', 'absolute'];
         const top = [890, 1105, 2547];
         if (scrollY >= 1730) {
-            $('#button').css({
+            $('#reaction_button').css({
                 position: position[1],
                 width: getWidth(width, false),
                 height: getHeight(height, false),
@@ -1079,7 +1082,7 @@ function part2_page2_effect(scrollY) {
                 zIndex: 3,
             })
         } else {
-            $('#button').css({
+            $('#reaction_button').css({
                 position: scrollY >= START ? position[0] : position[1],
                 width: getWidth(width, false),
                 height: getHeight(height, false),
@@ -1111,8 +1114,6 @@ function part2_page2_effect(scrollY) {
             left: getLeft(left[1], false),
             top: getTop(scrollY >= FINISH ? top[1] + GAP : top[1], false),
             opacity: opacity1,
-
-            backgroundColor: 'red',
         })
 
         var opacity2_1 = (scrollY - APPEAR[2]) / 30;
@@ -1151,9 +1152,93 @@ function part2_page2_effect(scrollY) {
             top: getTop(2737 + 1080, false),
         })
     }
+
+    { // MOVING_BOX 핸드폰 목업
+        const START = 1950;
+        const FINISH = 2300;
+        const width = 433;
+        const height = 894;
+        const left = 741;
+        const position = ['fixed', 'absolute'];
+        const top = 308;
+        $('#moving_phone').css({
+            position: 'absolute',
+            width: getWidth(width, false),
+            height: getHeight(height, false),
+            left: getLeft(left, false),
+            top: getTop(top, false),
+        })
+    }
+    // 1576 -> 2071
+    // 2071-1576 = 495
+
+    { // MEMEPLAY
+        const width = 220;
+        const height = 47;
+        const left = 861;
+        const top = 1080 * 5;
+        const OPACITY = 1 - Math.max((scrollY - 2071) / 20, 0);
+        const gap = Math.min(Math.max(0, scrollY - 2071) * 10, 90);
+
+        $('#memeplay_title').css({
+            width: getWidth(width, false),
+            height: getHeight(height, false),
+            left: getLeft(left, false),
+            top: getTop(top + gap, false),
+            opacity: OPACITY,
+        })
+    }
+
+    { // 이제 직접 밈을 만들어봐요!
+        const width = 1005;
+        const height = 142;
+        const left = 458;
+        const top = 1080 * 5 + 38;
+        const OPACITY = 1 - Math.max((scrollY - 2071) / 20, 0);
+        const gap = Math.min(Math.max(0, scrollY - 2071) * 10, 90);
+
+        $('#memeplay_subtitle').css({
+            width: getWidth(width, false),
+            height: getHeight(height, false),
+            left: getLeft(left, false),
+            top: getTop(top + gap, false),
+            opacity: OPACITY,
+            zIndex: 1,
+        })
+    }
+
+    { // MEMEPLAY 핸드폰 목업
+        const START = 1597 + 495;
+        const FINISH = 1730 + 495;
+        const width = 433;
+        const height = 1080 * 5 + 244;
+        const left = 741;
+        const position = ['fixed', 'absolute'];
+        const top = [93 + 5336, 308 + 5336, 1750 + 5336];
+        if (scrollY >= FINISH) {
+            $('#memeplay_phone').css({
+                position: position[1],
+                width: getWidth(width, false),
+                height: getHeight(height, false),
+                left: getLeft(left, false),
+                top: getTop(top[2], false),
+                zIndex: 2,
+            })
+        } else {
+            $('#memeplay_phone').css({
+                position: scrollY >= START ? position[0] : position[1],
+                width: getWidth(width, false),
+                height: getHeight(height, false),
+                left: getLeft(left, false),
+                top: getTop(scrollY >= START ? top[0] : top[1], false),
+                zIndex: 2,
+            })
+        }
+    }
 }
 
-function part2_page2_init() {
+function part2_page2_init(scrollY) {
+
     $('#page2_image_box').css({
         width: getWidth(1920, false),
         height: getHeight(1080, false),
@@ -1169,15 +1254,46 @@ function part2_page2_init() {
     const HEIGHT = [156, 643, 159, 45, 98, 197, 180, 82, 174, 68, 180, 81, 246];
     const LEFT = [472, 743, 433, 632, 616, 680, 1035, 1277, 1378, 474, 618, 1089, 1183];
     const TOP = [447, 208, 340, 351, 404, 224, 266, 204, 321, 592, 612, 575, 573];
+    const ZINDEX = [3, 2, 2, 1, 1, 1, 2, 2, 2, 2, 4, 4];
+
+    const MOVING_START = 1830;
+    const MOVING_FINISH = 1950;
+    const MOVING_WIDTH = [0, 0, 83, 66, 66, 78, 92, 88, 59, 66, 64, 0, 89];
+    const MOVING_HEIGHT = [0, 0, 90, 62, 69, 66, 74, 69, 59, 65, 63, 0, 96];
+    const MOVING_LEFT = [0, 0, 192, 589, 1666, 362, 1404, 1273, 1732, 148, 485, 0, 1359];
+    const MOVING_TOP = [0, 0, 333, 462, 709, 128, 488, 167, 300, 664, 794, 0, 833];
+
+    console.log(MOVING_WIDTH.length, MOVING_HEIGHT.length, MOVING_LEFT.length, MOVING_TOP.length)
 
     for (var i = 0; i < 13; i++) {
-        $('#image_' + ID[i]).css({
-            backgroundImage: 'url(\'../src/p2_p2_images_' + ID[i] + '.png\')',
-            width: getWidth(WIDTH[i], false),
-            height: getHeight(HEIGHT[i], false),
-            left: getLeft(LEFT[i], false),
-            top: getTop(TOP[i], false),
-        })
+        if (scrollY >= MOVING_FINISH && movingIcon(i)) {
+            $('#image_' + ID[i]).css({
+                position: 'absolute',
+                width: getWidth(MOVING_WIDTH[i], false),
+                height: getWidth(MOVING_HEIGHT[i], false),
+                left: getWidth(MOVING_LEFT[i], false),
+                top: getWidth(MOVING_TOP[i] + 1.20 * 1080, false),
+            })
+        } else {
+            $('#image_' + ID[i]).css({
+                position: movingIcon(i) ? 'fixed' : 'absolute',
+                backgroundImage: 'url(\'../src/p2_p2_images_' + ID[i] + '.png\')',
+                width: getWidth(movingIcon(i) ? movingValue(WIDTH[i], MOVING_WIDTH[i]) : WIDTH[i], false),
+                height: getHeight(movingIcon(i) ? movingValue(HEIGHT[i], MOVING_HEIGHT[i]) : HEIGHT[i], false),
+                left: getLeft(movingIcon(i) ? movingValue(LEFT[i], MOVING_LEFT[i]) : LEFT[i], false),
+                top: getTop(movingIcon(i) ? movingValue(TOP[i], MOVING_TOP[i]) : TOP[i], false),
+                zIndex: ZINDEX[i],
+                opacity: movingIcon(i) ? 1 - Math.min((scrollY - MOVING_START) / 100, 0.6) : 1,
+            })
+        }
+    }
+
+    function movingValue(a, b) {
+        return a + (b - a) * Math.min(scrollY - MOVING_START, 120) / 120;
+    }
+
+    function movingIcon(n) {
+        return scrollY >= MOVING_START && n != 0 && n != 1 && n != 11;
     }
 }
 
