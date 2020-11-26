@@ -836,6 +836,24 @@ function setSizeInit_PART2() {
                 height: getHeight(height, false),
             })
         }
+
+        {
+            const width = 1920;
+            const height = 3000;
+            $('#part2_page3').css({
+                width: getWidth(width, false),
+                height: getHeight(height, false)
+            })
+        }
+
+        {
+            const width = 1920;
+            const height = 5355;
+            $('#part2_page4').css({
+                width: getWidth(width, false),
+                height: getHeight(height, false)
+            })
+        }
     }
 }
 
@@ -843,6 +861,8 @@ function part2_init() {
     const scrollY = getScrollY();
     part2_page1_effect(scrollY);
     part2_page2_effect(scrollY);
+    part2_page3_effect(scrollY);
+    part2_page4_effect(scrollY);
     part2_page2_init(scrollY);
 }
 
@@ -1211,10 +1231,10 @@ function part2_page2_effect(scrollY) {
         const START = 1597 + 495;
         const FINISH = 1730 + 495;
         const width = 433;
-        const height = 1080 * 5 + 244;
+        const height = 894;
         const left = 741;
         const position = ['fixed', 'absolute'];
-        const top = [93 + 5336, 308 + 5336, 1750 + 5336];
+        const top = [93, 308 + 5336, 1750 + 5336];
         if (scrollY >= FINISH) {
             $('#memeplay_phone').css({
                 position: position[1],
@@ -1233,6 +1253,159 @@ function part2_page2_effect(scrollY) {
                 top: getTop(scrollY >= START ? top[0] : top[1], false),
                 zIndex: 2,
             })
+        }
+    }
+
+    { // MEMEPLAY_DETAIL
+        const FINISH = 3000;
+        const APPEAR = [0, 1610, 1640, 1700];
+        const DISAPPEAR = 1670;
+        const width = [0, 394, 270, 299];
+        const height = [0, 90, 92, 190];
+        const left = [0, 1219, 430, 1216];
+        const top = [0, 782, 878, 836];
+        const position = ['fixed', 'absolute'];
+        const GAP = 1658;
+
+        var opacity1 = (scrollY - APPEAR[1]) / 30;
+        $('#memeplay_detail1').css({
+            // display: scrollY >= APPEAR[1] ? 'block' : 'none',
+            width: getWidth(width[1], false),
+            height: getHeight(height[1], false),
+
+            position: scrollY >= FINISH ? position[1] : position[0],
+            left: getLeft(left[1], false),
+            top: getTop(scrollY >= FINISH ? top[1] + GAP : top[1], false),
+            opacity: opacity1,
+        })
+
+        var opacity2_1 = (scrollY - APPEAR[2]) / 30;
+        var opacity2_2 = 1 - (scrollY - DISAPPEAR) / 30;
+
+        $('#memeplay_detail2').css({
+            display: scrollY >= APPEAR[2] ? 'block' : 'none',
+            width: getWidth(width[2], false),
+            height: getHeight(height[2], false),
+
+            position: 'fixed',
+            left: getLeft(left[2], false),
+            top: getTop(top[2], false),
+            opacity: scrollY >= DISAPPEAR ? opacity2_2 : opacity2_1,
+        })
+
+        var opacity3 = (scrollY - APPEAR[3]) / 30;
+        $('#memeplay_detail3').css({
+            display: scrollY >= APPEAR[3] ? 'block' : 'none',
+            width: getWidth(width[3], false),
+            height: getHeight(height[3], false),
+
+            position: scrollY >= FINISH ? position[1] : position[0],
+            left: getLeft(left[3], false),
+            top: getTop(scrollY >= FINISH ? top[3] + GAP : top[3], false),
+            opacity: opacity3,
+        })
+    }
+}
+
+function part2_page3_effect(scrollY) {
+    {
+        const length = 470;
+        const left = [0, 230, 725, 1220, 230, 725, 1220, 230, 725, 1220];
+        const top = [0, 235.5, 235.5, 235.5, 733, 733, 733, 1231.3, 1231.3, 1231.3];
+        for (var i = 1; i < 10; i++) {
+            $('#p2_p3_friday' + i).css({
+                backgroundImage: 'url(\'../src/p2_p3_friday' + i + '.png\')',
+                width: getWidth(length, false),
+                height: getHeight(length, false),
+                left: getLeft(left[i], false),
+                top: getTop(top[i], false),
+            })
+        }
+    }
+}
+
+function part2_page4_effect(scrollY) {
+    { // PAGE4_DETAIL & PART4_LOGO
+        const width = [1037, 518];
+        const height = [416, 199];
+        const left = [442, 701];
+        const top = [332, 440];
+        const START = [2595, 2695];
+        const FINISH = [2645, 2745];
+        const RANGE = 30;
+        const OPACITY = [scrollY < START[0] ? 0 : scrollY < FINISH[0] ? (scrollY - START[0]) / RANGE : 1 - (scrollY - FINISH[0]) / RANGE, scrollY < START[1] ? 0 : scrollY < FINISH[1] ? (scrollY - START[1]) / RANGE : 1];
+        const ID = ['detail', 'logo'];
+
+
+        if (scrollY >= FINISH[1]) {
+            $('#p2_p4_logo').css({
+                position: 'absolute',
+                top: getTop(2080, false),
+            })
+        } else {
+            for (var i = 0; i < 2; i++) {
+                $('#p2_p4_' + ID[i]).css({
+                    position: 'fixed',
+                    width: getWidth(width[i], false),
+                    height: getHeight(height[i], false),
+                    left: getLeft(left[i], false),
+                    top: getTop(top[i], false),
+                    opacity: OPACITY[i],
+                })
+            }
+        }
+    }
+
+    { // PAGE4_ 3 PEOPLE
+        const GAP = 2765;
+        const ID = ['LJY', 'BJH', 'CMH'];
+        const width = [521, 566, 513];
+        const height = [486, 524, 427];
+        const left = [190, 628, 1225];
+        const top = [489, 72, 396];
+        const APPEAR = [2851, 2901, 2951];
+        const RANGE = 40;
+
+        for (var i = 0; i < 3; i++) {
+            const OPACITY = (scrollY - APPEAR[i]) / RANGE;
+            console.log(i, OPACITY)
+            $('#' + ID[i]).css({
+                position: 'fixed',
+                width: getWidth(width[i], false),
+                height: getHeight(height[i], false),
+                left: getLeft(left[i], false),
+                top: getTop(top[i], false),
+                zIndex: 2,
+                opacity: OPACITY,
+            })
+        }
+    }
+
+    { // PAGE4 IMAGES
+        const START = 2851;
+        const GAP = 2765;
+        const ID = ['star', 'sad', 'wow', 'smile', 'greencool', 'pinkcool', 'thankyou'];
+        const width = [53, 51, 54, 51, 68, 70, 896];
+        const height = [50, 51, 53, 50, 53.2, 63, 425];
+        const left = [420, 107, 1069, 1541, 1276, 1747, 711];
+        const top = [156, 418, 827, 946, 76, 287, 327];
+
+        for (var i = 0; i < 7; i++) {
+            if (scrollY >= START) {
+                $('#p2_p4_' + ID[i]).css({
+                    position: 'fixed',
+                    top: getTop(top[i], false),
+                })
+            } else {
+                $('#p2_p4_' + ID[i]).css({
+                    position: 'absolute',
+                    width: getWidth(width[i], false),
+                    height: getHeight(height[i], false),
+                    left: getLeft(left[i], false),
+                    top: getTop(top[i] + GAP, false),
+                    backgroundImage: 'url(\'../src/p2_p4_' + ID[i] + '.png\')',
+                })
+            }
         }
     }
 }
@@ -1262,8 +1435,6 @@ function part2_page2_init(scrollY) {
     const MOVING_HEIGHT = [0, 0, 90, 62, 69, 66, 74, 69, 59, 65, 63, 0, 96];
     const MOVING_LEFT = [0, 0, 192, 589, 1666, 362, 1404, 1273, 1732, 148, 485, 0, 1359];
     const MOVING_TOP = [0, 0, 333, 462, 709, 128, 488, 167, 300, 664, 794, 0, 833];
-
-    console.log(MOVING_WIDTH.length, MOVING_HEIGHT.length, MOVING_LEFT.length, MOVING_TOP.length)
 
     for (var i = 0; i < 13; i++) {
         if (scrollY >= MOVING_FINISH && movingIcon(i)) {

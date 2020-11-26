@@ -202,10 +202,115 @@
 
 #memeplay_title {
     background-image: url('../src/p2_p2_title2.png');
-    background-color: red;
     z-index: 5;
 }
 
 #memeplay_subtitle {
     background-image: url('../src/p2_p2_title2_sub.png');
+}
+
+#memeplay_detail1 {
+    /* background-image: ; */
+    background-color: red;
+}
+
+#memeplay_detail2 {
+    /* background-image: ; */
+    background-color: red;
+}
+
+#memeplay_detail3 {
+    /* background-image: ; */
+    background-color: red;
+}
+
+#part2_page3 {
+    background-color: black;
+    position: relative;
+}
+
+.friday {
+    transition: all .2s ease-in-out;
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+}
+
+.friday:hover {
+    transform: scale(1.1);
+}
+
+
+
+#part2_page4 {
+    background-color: #f3f8ff;
+    position: relative;
+}
+
+#p2_p4_detail,
+#p2_p4_logo,
+#p2_p4_star,
+#p2_p4_sad,
+#p2_p4_wow,
+#p2_p4_smile,
+#p2_p4_greencool,
+#p2_p4_pinkcool,
+#p2_p4_thankyou,
+#LJY,
+#BJH,
+#CMH {
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+}
+
+#LJY {
+    background-image: url('../src/p2_p4_LJY.png');
+}
+
+#BJH {
+    background-image: url('../src/p2_p4_BJH.png');
+}
+
+#CMH {
+    background-image: url('../src/p2_p4_CMH.png');
+}
+
+#p2_p4_detail {
+    background-image: url('../src/p2_p4_detail.png');
+}
+
+#p2_p4_logo {
+    background-image: url('../src/p2_p4_logo.png');
+}
+
+#p2_p4_star {
+    background-image: url('../src/p2_p4_star.png');
+}
+
+#p2_p4_sad {
+    background-image: url('../src/p2_p4_sad.png');
+}
+
+#p2_p4_wow {
+    background-image: url('../src/p2_p4_wow.png');
+}
+
+#p2_p4_smile {
+    background-image: url('../src/p2_p4_smile.png');
+}
+
+#p2_p4_greencool {
+    background-image: url('../src/p2_p4_greencool.png');
+}
+
+#p2_p4_pinkcool {
+    background-image: url('../src/p2_p4_pinkcool.png');
+}
+
+#p2_p4_thankyou {
+    background-image: url('../src/p2_p4_thankyou.png');
 }
