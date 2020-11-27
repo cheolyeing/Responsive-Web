@@ -242,6 +242,22 @@
     transform: scale(1.1);
 }
 
+#searching_title,
+#searching_detail,
+#searching_bar,
+#searching_result1,
+#searching_result2,
+#searching_result3,
+#searching_result4,
+#searching_result5,
+#searching_result6,
+#searching_click {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center, center;
+}
+
 
 
 #part2_page4 {
