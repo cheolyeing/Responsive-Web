@@ -94,7 +94,8 @@
 #reaction_subtitle,
 #reaction_phone,
 #moving_phone,
-#memeplay_phone {
+#memeplay_phone,
+#agree_phone {
     position: absolute;
     background-size: contain;
     background-repeat: no-repeat;
@@ -109,10 +110,31 @@
     background-image: url('../src/p2_p2_title1_sub.png');
 }
 
-#reaction_phone,
-#moving_phone,
-#memeplay_phone {
-    background-image: url('../src/p2_p2_phone1.png')
+#reaction_phone {}
+
+#moving_phone {
+    background-image: url('../src/p2_p2_moving_phone.png');
+    border-radius: 50px 50px 0 0 / 50px 50px 0 0;
+}
+
+#memeplay_phone,
+#agree_phone {
+    background-image: url('../src/p2_p2_memeplay_phone.png')
+}
+
+#memeplay_phone_inside,
+#agree_phone_inside {
+    border-radius: 50px 50px 50px 50px/ 50px 50px 50px 50px;
+}
+
+#memeplay_button,
+#toss_button {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center, center;
+    cursor: pointer;
+    z-index: 3;
 }
 
 #page2_image_box {
@@ -168,10 +190,17 @@
 #reaction_detail3,
 #memeplay_detail1,
 #memeplay_detail2,
-#memeplay_detail3 {
+#memeplay_detail3,
+#memeplay_popup1,
+#memeplay_popup2 {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center, center;
+}
+
+#memeplay_detail2,
+#memeplay_detail3 {
+    display: none;
 }
 
 #reaction_detail1 {
@@ -193,11 +222,21 @@
 #memeplay_title,
 #memeplay_subtitle,
 #memeplay_phone,
+#memeplay_phone_inside,
 #moving_phone {
     position: absolute;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
+}
+
+#moving_phone_video,
+#memeplay_phone_video {
+    border-radius: 50px 50px 50px 50px/ 50px 50px 50px 50px;
+    position: absolute;
+    background-size: contain;
+    overflow: hidden;
+    display: block;
 }
 
 #memeplay_title {
@@ -222,6 +261,22 @@
 #memeplay_detail3 {
     /* background-image: ; */
     background-color: red;
+}
+
+#agree_phone,
+#agree_angry1,
+#agree_smile,
+#agree_coolgreen,
+#agree_star1,
+#agree_star2,
+#agree_coolpink,
+#agree_wow,
+#agree_angry2,
+#agree_detail {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 #part2_page3 {
