@@ -333,7 +333,120 @@
     background-position: center, center;
 }
 
+#middle1,
+#middle2,
+#middle3,
+#middle4,
+#middle5,
+#middle6 {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center, center;
+}
 
+#chatting_title,
+#chatting_sub,
+#chatting_phone1,
+#chatting_phone2,
+#chatting_detail,
+#chatting_phone_inside1,
+#chatting_phone_inside2 {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center, center;
+}
+
+#chatting_title {
+    background-image: url('../src/p2_p3_chatting_title.png');
+}
+
+#chatting_sub {
+    background-image: url('../src/p2_p3_chatting_sub.png');
+}
+
+#chatting_detail {
+    background-image: url('../src/p2_p3_chatting_detail.png');
+}
+
+#chatting_phone1,
+#chatting_phone2,
+#mypage_phone,
+#interlock_phone {
+    background-image: url('../src/p2_p3_phone.png');
+}
+
+#chatting_phone_inside1 {
+    background-image: url('../src/p2_p3_chatting_phone_inside1.png');
+    border-radius: 50px 50px 50px 50px / 50px 50px 50px 50px;
+}
+
+#chatting_phone_inside2 {
+    background-image: url('../src/p2_p3_chatting_phone_inside2.png');
+    border-radius: 50px 50px 50px 50px / 50px 50px 50px 50px;
+}
+
+#mypage_title,
+#mypage_sub,
+#mypage_phone,
+#mypage_phone_inside,
+#mypage_detail1,
+#mypage_detail2 {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center, center;
+}
+
+#mypage_title {
+    background-image: url('../src/p2_p3_mypage_title.png');
+}
+
+#mypage_sub {
+    background-image: url('../src/p2_p3_mypage_sub.png');
+}
+
+#mypage_phone_inside {
+    background-image: url('../src/p2_p3_mypage_phone_inside.png');
+    border-radius: 50px 50px 50px 50px / 50px 50px 50px 50px;
+}
+
+#mypage_detail1 {
+    background-image: url('../src/p2_p3_mypage_detail1.png');
+}
+
+#mypage_detail2 {
+    background-image: url('../src/p2_p3_mypage_detail2.png');
+}
+
+#interlock_title,
+#interlock_sub,
+#interlock_phone,
+#interlock_phone_inside,
+#interlock_detail {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center, center;
+}
+
+#interlock_title {
+    background-image: url('../src/p2_p3_interlock_title.png');
+}
+
+#interlock_sub {
+    background-image: url('../src/p2_p3_interlock_sub.png');
+}
+
+#interlock_phone_inside {
+    background-image: url('../src/p2_p3_interlock_phone_inside.png');
+    border-radius: 50px 50px 50px 50px / 50px 50px 50px 50px;
+}
+
+#interlock_detail {
+    background-image: url('../src/p2_p3_interlock_detail.png');
+}
 
 #part2_page4 {
     background-color: #f3f8ff;

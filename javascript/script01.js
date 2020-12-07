@@ -860,7 +860,7 @@ function setSizeInit_PART2() {
 
         {
             const width = 1920;
-            const height = 6000;
+            const height = 8500;
             $('#part2_page3').css({
                 width: getWidth(width, false),
                 height: getHeight(height, false)
@@ -1628,10 +1628,192 @@ function part2_page3_effect(scrollY) {
             })
         }
     }
+
+    { // MIDDLE BOX
+        const ID = ['1', '2', '3', '4', '5', '6'];
+        const width = 270;
+        const height = 271.8;
+        const left = [103, 392, 681, 970, 1259, 1548];
+        const top = [614.7, 563, 614.7, 667, 605, 563];
+        const gap = 2993;
+
+        for (var i = 0; i < 6; i++) {
+            $('#middle' + ID[i]).css({
+                position: 'absolute',
+                backgroundImage: 'url(\'../src/p2_p3_middle' + ID[i] + '.png\')',
+                width: getWidth(width, false),
+                height: getHeight(height, false),
+                left: getLeft(left[i], false),
+                top: getTop(top[i] + gap, false),
+            })
+        }
+    }
+
+    { // CHATTING BOX
+        const gap = 4429;
+
+        { // title
+            const whlt = [192, 47, 126, 117];
+            $('#chatting_title').css({
+                width: getWidth(whlt[0], false),
+                height: getWidth(whlt[1], false),
+                left: getWidth(whlt[2], false),
+                top: getWidth(whlt[3] + gap, false),
+            })
+        } { // sub
+            const whlt = [511, 237, 120, 171];
+            $('#chatting_sub').css({
+                width: getWidth(whlt[0], false),
+                height: getWidth(whlt[1], false),
+                left: getWidth(whlt[2], false),
+                top: getWidth(whlt[3] + gap, false),
+            })
+        } { // phone1
+            const whlt = [433, 894, 902, 120];
+            $('#chatting_phone1').css({
+                width: getWidth(whlt[0], false),
+                height: getWidth(whlt[1], false),
+                left: getWidth(whlt[2], false),
+                top: getWidth(whlt[3] + gap, false),
+            })
+        } { // phone2
+            const whlt = [433, 894, 1364, 120];
+            $('#chatting_phone2').css({
+                width: getWidth(whlt[0], false),
+                height: getWidth(whlt[1], false),
+                left: getWidth(whlt[2], false),
+                top: getWidth(whlt[3] + gap, false),
+            })
+        } { // detail
+            const whlt = [384, 100, 475, 786];
+            $('#chatting_detail').css({
+                width: getWidth(whlt[0], false),
+                height: getWidth(whlt[1], false),
+                left: getWidth(whlt[2], false),
+                top: getWidth(whlt[3] + gap, false),
+            })
+        } { // phone_inside1
+            const whlt = [397.6, 861, 920, 136];
+            $('#chatting_phone_inside1').css({
+                width: getWidth(whlt[0], false),
+                height: getWidth(whlt[1], false),
+                left: getWidth(whlt[2], false),
+                top: getWidth(whlt[3] + gap, false),
+            })
+        } { // phone_inside2
+            const whlt = [398.9, 860.8, 1382, 136];
+            $('#chatting_phone_inside2').css({
+                width: getWidth(whlt[0], false),
+                height: getWidth(whlt[1], false),
+                left: getWidth(whlt[2], false),
+                top: getWidth(whlt[3] + gap, false),
+            })
+        }
+    }
+
+    { // MYPAGE_BOX
+        const gap = 5509;
+
+        { // title
+            const whlt = [169, 47, 875, 288];
+            $('#mypage_title').css({
+                width: getWidth(whlt[0], false),
+                height: getWidth(whlt[1], false),
+                left: getWidth(whlt[2], false),
+                top: getWidth(whlt[3] + gap, false),
+            })
+        } { // sub
+            const whlt = [698, 237, 611, 340];
+            $('#mypage_sub').css({
+                width: getWidth(whlt[0], false),
+                height: getWidth(whlt[1], false),
+                left: getWidth(whlt[2], false),
+                top: getWidth(whlt[3] + gap, false),
+            })
+        } { // phone
+            const whlt = [433, 894, 743, 642];
+            $('#mypage_phone').css({
+                width: getWidth(whlt[0], false),
+                height: getWidth(whlt[1], false),
+                left: getWidth(whlt[2], false),
+                top: getWidth(whlt[3] + gap, false),
+            })
+        } { // phone_inside
+            const whlt = [397, 866, 759, 656];
+            $('#mypage_phone_inside').css({
+                width: getWidth(whlt[0], false),
+                height: getWidth(whlt[1], false),
+                left: getWidth(whlt[2], false),
+                top: getWidth(whlt[3] + gap, false),
+            })
+        } { // detail1
+            const whlt = [331, 100, 369, 976];
+            $('#mypage_detail1').css({
+                width: getWidth(whlt[0], false),
+                height: getWidth(whlt[1], false),
+                left: getWidth(whlt[2], false),
+                top: getWidth(whlt[3] + gap, false),
+            })
+        } { // detail2
+            const whlt = [351, 82, 1219, 781];
+            $('#mypage_detail2').css({
+                width: getWidth(whlt[0], false),
+                height: getWidth(whlt[1], false),
+                left: getWidth(whlt[2], false),
+                top: getWidth(whlt[3] + gap, false),
+            })
+        }
+    }
+
+    { // INTERLOCK BOX
+        const gap = 7224;
+
+        { // title
+            const whlt = [213, 47, 1587, 253];
+            $('#interlock_title').css({
+                width: getWidth(whlt[0], false),
+                height: getWidth(whlt[1], false),
+                left: getWidth(whlt[2], false),
+                top: getWidth(whlt[3] + gap, false),
+            })
+        } { // sub
+            const whlt = [782, 237, 1018, 303];
+            $('#interlock_sub').css({
+                width: getWidth(whlt[0], false),
+                height: getWidth(whlt[1], false),
+                left: getWidth(whlt[2], false),
+                top: getWidth(whlt[3] + gap, false),
+            })
+        } { // phone
+            const whlt = [433, 894, 211, 93];
+            $('#interlock_phone').css({
+                width: getWidth(whlt[0], false),
+                height: getWidth(whlt[1], false),
+                left: getWidth(whlt[2], false),
+                top: getWidth(whlt[3] + gap, false),
+            })
+        } { // phone inside
+            const whlt = [396, 858, 229, 111];
+            $('#interlock_phone_inside').css({
+                width: getWidth(whlt[0], false),
+                height: getWidth(whlt[1], false),
+                left: getWidth(whlt[2], false),
+                top: getWidth(whlt[3] + gap, false),
+            })
+        } { // detail
+            const whlt = [388, 87, 687, 811];
+            $('#interlock_detail').css({
+                width: getWidth(whlt[0], false),
+                height: getWidth(whlt[1], false),
+                left: getWidth(whlt[2], false),
+                top: getWidth(whlt[3] + gap, false),
+            })
+        }
+    }
 }
 
 function part2_page4_effect(scrollY) {
-    const from = 277;
+    const from = 695;
 
     { // PAGE4_DETAIL & PART4_LOGO
         const width = [1037, 518];
@@ -1671,7 +1853,7 @@ function part2_page4_effect(scrollY) {
         const height = [486, 524, 427];
         const left = [190, 628, 1225];
         const top = [489, 72, 396];
-        const APPEAR = [2851 + from, 2901 + from, 2951 + from];
+        const APPEAR = [2851 + from, 2901 - 50 + from, 2951 - 100 + from];
         const RANGE = 40;
 
         for (var i = 0; i < 3; i++) {
