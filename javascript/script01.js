@@ -1244,7 +1244,7 @@ function part2_page2_effect(scrollY) {
         $('#memeplay_phone_video').css({
             position: 'absolute',
             width: getWidth(width, false),
-            height: getHeight(height, false),
+            height: getHeight(height + 8, false),
             left: getLeft(left, false),
             top: getTop(top, false),
             zIndex: 2,
@@ -1317,7 +1317,7 @@ function part2_page2_effect(scrollY) {
             display: scrollY >= 2250 ? 'none' : 'block',
             position: scrollY >= START ? position[0] : position[1],
             width: getWidth(width, false),
-            height: getHeight(height, false),
+            height: getHeight(height + 8, false),
             left: getLeft(left, false),
             top: getTop(scrollY >= START ? top[0] : top[1], false),
             zIndex: scrollY >= 2250 ? 1 : memeplay ? 1 : 2,
@@ -1441,7 +1441,7 @@ function part2_page2_effect(scrollY) {
         const width = [0, 282, 270, 337, 405, 426];
         const height = [0, 90, 92, 196, 405, 461];
         const left = [0, 1219, 430, 1219, 198, 1292];
-        const top = [0, 848, 148, 141, 301, 423];
+        const top = [0, 848, 148 + 73, 141 + 73, 301, 423];
         const position = ['fixed', 'absolute'];
         const GAP = 7000 + 810;
         const OPACITY = scrollY >= FINISH ? 1 - (scrollY - FINISH) / 35 : 1;
@@ -1453,7 +1453,6 @@ function part2_page2_effect(scrollY) {
             display: scrollY >= 2250 || memeplay ? 'none' : 'block',
             width: getWidth(width[1], false),
             height: getHeight(height[1], false),
-            backgroundColor: 'blue',
 
             position: position[0],
             left: getLeft(left[1], false),
@@ -1468,7 +1467,6 @@ function part2_page2_effect(scrollY) {
             display: popup ? 'none' : !memeplay ? 'none' : scrollY <= 2090 ? 'none' : 'block',
             width: getWidth(width[2], false),
             height: getHeight(height[2], false),
-            backgroundColor: 'blue',
 
             position: position[0],
             left: getLeft(left[2], false),
@@ -1480,7 +1478,6 @@ function part2_page2_effect(scrollY) {
             display: popup ? 'none' : !memeplay ? 'none' : scrollY <= 2090 ? 'none' : 'block',
             width: getWidth(width[3], false),
             height: getHeight(height[3], false),
-            backgroundColor: 'blue',
 
             position: position[0],
             left: getLeft(left[3], false),
@@ -1492,7 +1489,6 @@ function part2_page2_effect(scrollY) {
             display: popup ? scrollY <= 2090 ? 'none' : 'block' : 'none',
             width: getWidth(width[4], false),
             height: getHeight(height[4], false),
-            backgroundColor: 'black',
 
             position: scrollY >= FINISH ? position[1] : position[0],
             left: getLeft(left[4], false),
@@ -1504,13 +1500,69 @@ function part2_page2_effect(scrollY) {
             display: popup ? scrollY <= 2090 ? 'none' : 'block' : 'none',
             width: getWidth(width[5], false),
             height: getHeight(height[5], false),
-            backgroundColor: 'black',
 
             position: scrollY >= FINISH ? position[1] : position[0],
             left: getLeft(left[5], false),
             top: getTop(scrollY >= FINISH ? top[5] + GAP : top[5], false),
             opacity: opacity_popup,
         })
+    }
+
+    { // BOTTOM
+        const START = 2300;
+        const FINISH = 2400;
+        const length = 470;
+        const left = [230, 725, 1220];
+        const top = [467, 305, 154];
+        const gap = 7710;
+        const small = 144;
+        const smallLeft = 887;
+
+        if (scrollY >= START) {
+            var TOP = 203 + Math.min(1, (scrollY - START) / 100) * 102;
+            var LEN = 144 + Math.min(1, (scrollY - START) / 100) * 326;
+            var LEFT = (1920 - LEN) / 2;
+            var DIST1 = Math.min(1, (scrollY - START) / 100) * 143;
+            var DIST3 = Math.min(1, (scrollY - START) / 100) * 154;
+
+            $('#bottom1').css({
+                display: 'block',
+                position: 'fixed',
+                width: getWidth(LEN, false),
+                height: getHeight(LEN, false),
+                left: getLeft(230, false),
+                bottom: getTop(DIST1, false),
+            })
+
+            $('#bottom2').css({
+                display: 'block',
+                position: 'fixed',
+                width: getWidth(LEN, false),
+                height: getHeight(LEN, false),
+                left: getLeft(LEFT, false),
+                top: getTop(TOP, false),
+            })
+
+            $('#bottom3').css({
+                display: 'block',
+                position: 'fixed',
+                width: getWidth(LEN, false),
+                height: getHeight(LEN, false),
+                right: getLeft(230, false),
+                top: getTop(DIST3, false),
+            })
+        } else {
+            $('#bottom1').css({
+                display: 'none',
+            })
+            $('#bottom2').css({
+                display: 'none',
+            })
+            $('#bottom3').css({
+                display: 'none',
+            })
+        }
+
     }
 
     { // AGREE BOX
@@ -1527,7 +1579,6 @@ function part2_page2_effect(scrollY) {
 
             var OPACITY1 = (scrollY - START) / 35;
             var OPACITY2 = 1 - (scrollY - FINISH) / 35;
-            console.log(OPACITY1, OPACITY2)
             $('#agree_' + ID[i]).css({
                 position: 'fixed',
                 backgroundImage: 'url(\'../src/p2_p2_agree_' + ID[i] + '.png\')',

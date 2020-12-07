@@ -95,11 +95,26 @@
 #reaction_phone,
 #moving_phone,
 #memeplay_phone,
-#agree_phone {
+#agree_phone,
+#bottom1,
+#bottom2,
+#bottom3 {
     position: absolute;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
+}
+
+#bottom1 {
+    background-image: url('../src/p2_p2_bottom1.png');
+}
+
+#bottom2 {
+    background-image: url('../src/p2_p2_bottom2.png');
+}
+
+#bottom3 {
+    background-image: url('../src/p2_p2_bottom3.png');
 }
 
 #reaction_title {
@@ -198,6 +213,14 @@
     background-position: center, center;
 }
 
+#memeplay_popup1 {
+    background-image: url('../src/p2_p2_memeplay_popup1.png');
+}
+
+#memeplay_popup2 {
+    background-image: url('../src/p2_p2_memeplay_popup2.png');
+}
+
 #memeplay_detail2,
 #memeplay_detail3 {
     display: none;
@@ -232,7 +255,7 @@
 
 #moving_phone_video,
 #memeplay_phone_video {
-    border-radius: 50px 50px 50px 50px/ 50px 50px 50px 50px;
+    border-radius: 50px 50px 50px 50px/ 50px 50px 75px 75px;
     position: absolute;
     background-size: contain;
     overflow: hidden;
@@ -249,18 +272,15 @@
 }
 
 #memeplay_detail1 {
-    /* background-image: ; */
-    background-color: red;
+    background-image: url('../src/p2_p2_memeplay_detail1.png');
 }
 
 #memeplay_detail2 {
-    /* background-image: ; */
-    background-color: red;
+    background-image: url('../src/p2_p2_memeplay_detail2.png');
 }
 
 #memeplay_detail3 {
-    /* background-image: ; */
-    background-color: red;
+    background-image: url('../src/p2_p2_memeplay_detail3.png');
 }
 
 #agree_phone,
