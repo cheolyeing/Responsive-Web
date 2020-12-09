@@ -1,28 +1,78 @@
 var memeplay = false;
 var popup = false;
+var popupStart = false;
+var reaction = false;
+var show_pop = [false, false, false, false, false];
+var fitted = false;
 
 window.onload = function () {
     alert("LOADING FINISH")
     init();
-    document.getElementById('reaction_button').addEventListener('click', reactionButton);
-    document.getElementById('memeplay_button').addEventListener('click', memeplayButton);
-    document.getElementById('toss_button').addEventListener('click', tossButton);
+    // document.getElementById('reaction_button').addEventListener('click', reactionButton);
+    // document.getElementById('memeplay_button').addEventListener('click', memeplayButton);
+    // document.getElementById('toss_button').addEventListener('click', tossButton);
 }
 
-function tossButton() {
-    $('#memeplay_detail2').fadeOut('slow');
-    $('#memeplay_detail3').fadeOut('slow');
+// function tossButton() {
+//     popup = true;
+//     $('#memeplay_popup1').fadeIn('slow');
+//     $('#memeplay_popup2').fadeIn('slow');
+// }
 
-    popup = true;
-    $('#memeplay_popup1').fadeIn('slow');
-    $('#memeplay_popup2').fadeIn('slow');
+// function memeplayButton() {
+//     memeplay = true;
+//     $('#memeplay_detail1').fadeOut('slow');
+//     $('#memeplay_detail2').fadeIn('slow');
+//     $('#memeplay_detail3').fadeIn('slow');
+// }
+
+function tileFit() {
+    fitted = true;
+
 }
 
-function memeplayButton() {
-    memeplay = true;
-    $('#memeplay_detail1').fadeOut('slow');
-    $('#memeplay_detail2').fadeIn('slow');
-    $('#memeplay_detail3').fadeIn('slow');
+function popupButton() {
+    $('html, body').animate({
+        scrollTop: window.innerHeight * 22,
+    });
+    $('body').css({
+        overflowY: 'hidden',
+    })
+
+    setTimeout(() => {
+        $('body').css({
+            overflowY: 'auto',
+        })
+    }, 4000);
+
+    popupStart = true;
+    show_pop[1] = true;
+    $('#memeplay_detail2').css({
+        display: 'block'
+    })
+
+    setTimeout(() => {
+        show_pop[2] = true;
+        $('#memeplay_detail3').css({
+            display: 'block'
+        })
+    }, 1000)
+
+    setTimeout(() => {
+        show_pop[3] = true;
+        $('#memeplay_popup1').css({
+            display: 'block'
+        })
+    }, 2000)
+
+    setTimeout(() => {
+        show_pop[4] = true;
+        $('#memeplay_popup2').css({
+            display: 'block'
+        })
+        popup = true;
+    }, 3000)
+
 }
 
 function reactionButton() {
@@ -256,7 +306,7 @@ function phone_effect(scrollY) {
         const RANGE = 20;
         const GOAL_TOP = 35;
 
-        const TOP = 75 - Math.min(((scrollY - START) / RANGE) * ((scrollY - START) / RANGE) * GOAL_TOP, GOAL_TOP) + "%";
+        const TOP = 68 - Math.min(((scrollY - START) / RANGE) * ((scrollY - START) / RANGE) * GOAL_TOP, GOAL_TOP) + "%";
         const OPACITY = (scrollY - START) / RANGE;
 
         const FINISH = 200;
@@ -851,7 +901,7 @@ function setSizeInit_PART2() {
 
         {
             const width = 1920;
-            const height = 10000;
+            const height = 9000;
             $('#part2_page2').css({
                 width: getWidth(width, false),
                 height: getHeight(height, false),
@@ -909,11 +959,34 @@ function part2_page1_effect(scrollY) {
 
     const phone_width = PHONE_WIDTH - Math.min(1, (scrollY - FINISH) / 100) * (PHONE_WIDTH - PHONE_GOAL_WIDTH);
     const phone_height = phone_width * window.innerWidth * 5552 / 2688 + 'px';
-    const phone_top = GOAL_TOP - Math.min(1, (scrollY - FINISH) / 100) * (GOAL_TOP - PHONE_GOAL_TOP);
+    const phone_top = GOAL_TOP - Math.max(0, Math.min(1, (scrollY - FINISH) / 100)) * (GOAL_TOP - PHONE_GOAL_TOP);
     const phone_left = GOAL_LEFT - Math.min(1, (scrollY - FINISH) / 100) * (GOAL_LEFT - PHONE_GOAL_LEFT);
+    const left_gap = 35.5 - 22.5 * Math.min(1, (scrollY - FINISH) / 50);
+    const left_video = 1920 * phone_left / 100 + left_gap;
+    const width_gap = 71 - 48 * Math.min(1, (scrollY - FINISH) / 50);
+    const width_video = 1920 * phone_width / 100 - width_gap;
+
+    const top_gap = 29 - 13 * Math.min(1, (scrollY - FINISH) / 50);
+    const height_video = width_video * 3074 / 1412 - top_gap * 2;
+    const top_video = 1080 * phone_top / 100 + top_gap;
 
     const F_TOP = 22 - (scrollY - FINISH);
-    if (scrollY < START) {
+    if (scrollY >= 1240) {
+        $('#livequest_phone_video1').css({
+            display: 'none',
+        })
+        $('#livequest_phone_video2').css({
+            display: 'block',
+        })
+    } else {
+        $('#livequest_phone_video2').css({
+            display: 'none',
+        })
+        $('#livequest_phone_video1').css({
+            display: 'block',
+        })
+    }
+    if (scrollY < START) { // x < 1070
         $("#page1_livequest1").css({
             display: "none",
         })
@@ -923,8 +996,11 @@ function part2_page1_effect(scrollY) {
         $('#page1_phone').css({
             display: "none",
         })
+        $('#livequest_phone_video').css({
+            display: "none",
+        })
     } else {
-        if (scrollY >= FINISH) {
+        if (scrollY >= FINISH) { // x > 1120
             $("#page1_livequest1").css({
                 top: F_TOP + "%",
             })
@@ -943,8 +1019,38 @@ function part2_page1_effect(scrollY) {
                 display: "block",
                 opacity: 1,
             })
+            $('#livequest_phone_video').css({
+                width: getWidth(width_video, false),
+                height: getHeight(height_video, false),
+                top: getTop(top_video, false),
+                left: getLeft(left_video, false),
+                position: 'fixed',
+                backgroundSize: 'contain',
+                display: "block",
+                opacity: 1,
+            })
+            $('#livequest_phone_video1').css({
+                width: getWidth(width_video, false),
+                height: getHeight(height_video, false),
+                top: getTop(top_video, false),
+                left: getLeft(left_video, false),
+                position: 'fixed',
+                backgroundSize: 'contain',
+                display: scrollY >= 1240 ? "none" : "block",
+                opacity: 1,
+            })
+            $('#livequest_phone_video2').css({
+                width: getWidth(width_video, false),
+                height: getHeight(height_video, false),
+                top: getTop(top_video, false),
+                left: getLeft(left_video, false),
+                position: 'fixed',
+                backgroundSize: 'contain',
+                display: scrollY >= 1240 ? "block" : "none",
+                opacity: 1,
+            })
 
-        } else if (scrollY >= START) {
+        } else if (scrollY >= START) { // 1070<x<1120
             $("#page1_livequest1").css({
                 position: 'fixed',
                 display: "block",
@@ -965,8 +1071,36 @@ function part2_page1_effect(scrollY) {
                 position: 'fixed',
                 display: "block",
                 backgroundSize: 'cover',
+                left: getLeft(956, false),
                 top: TOP + "%",
                 opacity: OPACITY,
+            })
+            $('#livequest_phone_video').css({
+                display: "block",
+                width: getWidth(825, false),
+                height: getHeight(1796, false),
+                position: 'fixed',
+                display: "block",
+                backgroundSize: 'contain',
+                left: getLeft(991.5, false),
+                top: TOP + 2.68 + "%",
+                opacity: OPACITY,
+            })
+            $('#livequest_phone_video1').css({
+                position: 'fixed',
+                width: getWidth(825, false),
+                height: getHeight(1796, false),
+                left: getLeft(991.5, false),
+                top: TOP + 2.68 + "%",
+                display: "block",
+            })
+            $('#livequest_phone_video2').css({
+                position: 'fixed',
+                width: getWidth(825, false),
+                height: getHeight(1796, false),
+                left: getLeft(991.5, false),
+                top: TOP + 2.68 + "%",
+                display: "none",
             })
         }
     }
@@ -1139,12 +1273,31 @@ function part2_page2_effect(scrollY) {
         }
     }
 
+    { // REACTION_SCROLL
+        if (!reaction && scrollY >= 1740) {
+            reaction = true;
+            reactionButton();
+        }
+    }
+
+    { // POPUP_SCROLL
+        if (scrollY >= 2200 && !popup && !popupStart) {
+            popupButton();
+        }
+    }
+
+    { // TILE_SCROLL
+        if (scrollY >= 2450 && !fitted) {
+            tileFit();
+        }
+    }
+
     { // REACTION_DETAIL
         const FINISH = 1730;
         const APPEAR = [0, 1610, 1640, 1700];
         const DISAPPEAR = 1670;
-        const width = [0, 324, 288, 377];
-        const height = [0, 133, 98, 94];
+        const width = [0, 324, 288, 300];
+        const height = [0, 133, 98, 150];
         const left = [0, 374, 1217, 1217];
         const top = [0, 782, 878, 836];
         const position = ['fixed', 'absolute'];
@@ -1314,13 +1467,13 @@ function part2_page2_effect(scrollY) {
             opacity: OPACITY,
         })
         $('#memeplay_phone_video_box').css({
-            display: scrollY >= 2250 ? 'none' : 'block',
+            display: scrollY >= 2200 ? 'none' : 'block',
             position: scrollY >= START ? position[0] : position[1],
             width: getWidth(width, false),
             height: getHeight(height + 8, false),
             left: getLeft(left, false),
             top: getTop(scrollY >= START ? top[0] : top[1], false),
-            zIndex: scrollY >= 2250 ? 1 : memeplay ? 1 : 2,
+            zIndex: scrollY >= 2230 ? 1 : memeplay ? 1 : 2,
             opacity: OPACITY,
         })
         var image = scrollY >= 2250 ? 'agree' : 'memeplay';
@@ -1350,94 +1503,11 @@ function part2_page2_effect(scrollY) {
             top: getTop(scrollY >= START ? top[0] + tossTop : top[1] + tossTop, false),
             opacity: OPACITY,
         })
-        // if (scrollY >= FINISH) {
-        //     $('#memeplay_phone').css({
-        //         position: position[1],
-        //         width: getWidth(width, false),
-        //         height: getHeight(height, false),
-        //         left: getLeft(left, false),
-        //         top: getTop(top[2], false),
-        //         zIndex: 3,
-        //     })
-        //     $('#memeplay_phone_video_box').css({
-        //         position: position[1],
-        //         width: getWidth(width, false),
-        //         height: getHeight(height, false),
-        //         left: getLeft(left, false),
-        //         top: getTop(top[2], false),
-        //         zIndex: memeplay ? 1 : 2,
-        //     })
-        //     var image = popup ? scrollY >= 2250 ? 'agree' : 'memeplay' : 'memeplay';
-        //     $('#memeplay_phone_inside').css({
-        //         backgroundImage: 'url(\'../src/p2_p2_' + image + '_phone_inside' + '.png\')',
-        //         position: position[1],
-        //         width: getWidth(width - 31, false),
-        //         height: getHeight(height - 33, false),
-        //         left: getLeft(left + 15.5, false),
-        //         top: getTop(top[2] + 19, false),
-        //         zIndex: memeplay ? 2 : 1,
-        //     })
-        //     $('#memeplay_button').css({
-        //         position: position[1],
-        //         width: getWidth(35, false),
-        //         height: getHeight(35, false),
-        //         left: getLeft(memeLeft, false),
-        //         top: getTop(top[2] + memeTop, false),
-        //     })
-        //     $('#toss_button').css({
-        //         position: position[1],
-        //         width: getWidth(60, false),
-        //         height: getHeight(60, false),
-        //         left: getLeft(tossLeft, false),
-        //         top: getTop(top[2] + tossTop, false),
-        //     })
-        // } else {
-        //     $('#memeplay_phone').css({
-        //         position: scrollY >= START ? position[0] : position[1],
-        //         width: getWidth(width, false),
-        //         height: getHeight(height, false),
-        //         left: getLeft(left, false),
-        //         top: getTop(scrollY >= START ? top[0] : top[1], false),
-        //         zIndex: 3,
-        //     })
-        //     $('#memeplay_phone_video_box').css({
-        //         position: scrollY >= START ? position[0] : position[1],
-        //         width: getWidth(width, false),
-        //         height: getHeight(height, false),
-        //         left: getLeft(left, false),
-        //         top: getTop(scrollY >= START ? top[0] : top[1], false),
-        //         zIndex: memeplay ? 1 : 2,
-        //     })
-        //     var image = popup ? scrollY >= 2250 ? 'agree' : 'memeplay' : 'memeplay';
-        //     $('#memeplay_phone_inside').css({
-        //         backgroundImage: 'url(\'../src/p2_p2_' + image + '_phone_inside' + '.png\')',
-        //         position: scrollY >= START ? position[0] : position[1],
-        //         width: getWidth(width - 31, false),
-        //         height: getHeight(height - 33, false),
-        //         left: getLeft(left + 15.5, false),
-        //         top: getTop(scrollY >= START ? top[0] + 19 : top[1] + 19, false),
-        //         zIndex: memeplay ? 2 : 1,
-        //     })
-        //     $('#memeplay_button').css({
-        //         position: scrollY >= START ? position[0] : position[1],
-        //         width: getWidth(35, false),
-        //         height: getHeight(35, false),
-        //         left: getLeft(memeLeft, false),
-        //         top: getTop(scrollY >= START ? top[0] + memeTop : top[1] + memeTop, false),
-        //     })
-        //     $('#toss_button').css({
-        //         position: scrollY >= START ? position[0] : position[1],
-        //         width: getWidth(60, false),
-        //         height: getHeight(60, false),
-        //         left: getLeft(tossLeft, false),
-        //         top: getTop(scrollY >= START ? top[0] + tossTop : top[1] + tossTop, false),
-        //     })
-        // }
     }
 
     { // MEMEPLAY_DETAIL & POPUP
-        const FINISH = 2300;
-        const APPEAR = [0, 2150, 1640, 1700];
+        const FINISH = 2150;
+        const APPEAR = [0, 2100, 2200, 2200];
         const width = [0, 282, 270, 337, 405, 426];
         const height = [0, 90, 92, 196, 405, 461];
         const left = [0, 1219, 430, 1219, 198, 1292];
@@ -1447,10 +1517,12 @@ function part2_page2_effect(scrollY) {
         const OPACITY = scrollY >= FINISH ? 1 - (scrollY - FINISH) / 35 : 1;
 
         var opacity1 = (scrollY - APPEAR[1]) / 30;
-        var opacity_popup = 1 - (scrollY - 2225) / 25;
+        var opacity23 = (scrollY - APPEAR[2]) / 30;
+        // var opacity_popup = 1 - (scrollY - 2225) / 25;
+        var opacity_popup = (scrollY - 2300) / 30;
 
         $('#memeplay_detail1').css({
-            display: scrollY >= 2250 || memeplay ? 'none' : 'block',
+            display: scrollY >= 2200 || memeplay ? 'none' : 'block',
             width: getWidth(width[1], false),
             height: getHeight(height[1], false),
 
@@ -1459,58 +1531,55 @@ function part2_page2_effect(scrollY) {
             top: getTop(top[1], false),
             opacity: scrollY >= FINISH ? OPACITY : opacity1,
         })
-        if (scrollY >= 2250) $('#memeplay_detail1').css({
-            display: 'none'
-        })
 
         $('#memeplay_detail2').css({
-            display: popup ? 'none' : !memeplay ? 'none' : scrollY <= 2090 ? 'none' : 'block',
+            display: scrollY < 2200 || scrollY >= 2250 ? 'none' : show_pop[1] ? 'block' : 'none',
             width: getWidth(width[2], false),
             height: getHeight(height[2], false),
 
             position: position[0],
             left: getLeft(left[2], false),
             top: getTop(top[2], false),
-            opacity: scrollY >= FINISH ? OPACITY : 1,
+
         })
 
         $('#memeplay_detail3').css({
-            display: popup ? 'none' : !memeplay ? 'none' : scrollY <= 2090 ? 'none' : 'block',
+            display: scrollY < 2200 || scrollY >= 2250 ? 'none' : show_pop[2] ? 'block' : 'none',
             width: getWidth(width[3], false),
             height: getHeight(height[3], false),
 
             position: position[0],
             left: getLeft(left[3], false),
             top: getTop(top[3], false),
-            opacity: scrollY >= FINISH ? OPACITY : 1,
+
         })
 
         $('#memeplay_popup1').css({
-            display: popup ? scrollY <= 2090 ? 'none' : 'block' : 'none',
+            display: scrollY < 2200 || scrollY >= 2250 ? 'none' : show_pop[3] ? 'block' : 'none',
             width: getWidth(width[4], false),
             height: getHeight(height[4], false),
 
-            position: scrollY >= FINISH ? position[1] : position[0],
+            position: position[0],
             left: getLeft(left[4], false),
-            top: getTop(scrollY >= FINISH ? top[4] + GAP : top[4], false),
-            opacity: opacity_popup,
+            top: getTop(top[4], false),
+
         })
 
         $('#memeplay_popup2').css({
-            display: popup ? scrollY <= 2090 ? 'none' : 'block' : 'none',
+            display: scrollY < 2200 || scrollY >= 2250 ? 'none' : show_pop[4] ? 'block' : 'none',
             width: getWidth(width[5], false),
             height: getHeight(height[5], false),
 
-            position: scrollY >= FINISH ? position[1] : position[0],
+            position: position[0],
             left: getLeft(left[5], false),
-            top: getTop(scrollY >= FINISH ? top[5] + GAP : top[5], false),
-            opacity: opacity_popup,
+            top: getTop(top[5], false),
+
         })
     }
 
     { // BOTTOM
         const START = 2300;
-        const FINISH = 2400;
+        const FINISH = 2450;
         const length = 470;
         const left = [230, 725, 1220];
         const top = [467, 305, 154];
@@ -1519,38 +1588,39 @@ function part2_page2_effect(scrollY) {
         const smallLeft = 887;
 
         if (scrollY >= START) {
-            var TOP = 203 + Math.min(1, (scrollY - START) / 100) * 102;
-            var LEN = 144 + Math.min(1, (scrollY - START) / 100) * 326;
+            var TOP = 203 + Math.min(1, (scrollY - START) / 150) * 102;
+            var LEN = 144 + Math.min(1, (scrollY - START) / 150) * 326;
             var LEFT = (1920 - LEN) / 2;
             var DIST1 = Math.min(1, (scrollY - START) / 100) * 143;
             var DIST3 = Math.min(1, (scrollY - START) / 100) * 154;
 
-            $('#bottom1').css({
-                display: 'block',
-                position: 'fixed',
-                width: getWidth(LEN, false),
-                height: getHeight(LEN, false),
-                left: getLeft(230, false),
-                bottom: getTop(DIST1, false),
-            })
+            // $('#bottom1').css({
+            //     display: 'block',
+            //     position: 'fixed',
+            //     width: getWidth(LEN, false),
+            //     height: getHeight(LEN, false),
+            //     left: getLeft(230, false),
+            //     bottom: getTop(DIST1, false),
+            // })
 
             $('#bottom2').css({
                 display: 'block',
-                position: 'fixed',
+                position: scrollY >= 2450 ? 'absolute' : 'fixed',
                 width: getWidth(LEN, false),
                 height: getHeight(LEN, false),
                 left: getLeft(LEFT, false),
                 top: getTop(TOP, false),
+                zIndex: 1,
             })
 
-            $('#bottom3').css({
-                display: 'block',
-                position: 'fixed',
-                width: getWidth(LEN, false),
-                height: getHeight(LEN, false),
-                right: getLeft(230, false),
-                top: getTop(DIST3, false),
-            })
+            // $('#bottom3').css({
+            //     display: 'block',
+            //     position: 'fixed',
+            //     width: getWidth(LEN, false),
+            //     height: getHeight(LEN, false),
+            //     right: getLeft(230, false),
+            //     top: getTop(DIST3, false),
+            // })
         } else {
             $('#bottom1').css({
                 display: 'none',
@@ -1598,8 +1668,18 @@ function part2_page3_effect(scrollY) {
         const left = [0, 230, 725, 1220, 230, 725, 1220, 230, 725, 1220];
         const top = [0, 235.5, 235.5, 235.5, 733, 733, 733, 1231.3, 1231.3, 1231.3];
 
+        $('#p2_p3_friday5').css({
+            display: scrollY >= 2450 ? 'block' : 'none',
+            backgroundImage: 'url(\'../src/p2_p3_friday' + 5 + '.png\')',
+            width: getWidth(length, false),
+            height: getHeight(length, false),
+            left: getLeft(left[5], false),
+            top: getTop(top[5], false),
+        })
         for (var i = 1; i < 10; i++) {
+            if (i == 5) continue;
             $('#p2_p3_friday' + i).css({
+                display: fitted ? 'block' : 'none',
                 backgroundImage: 'url(\'../src/p2_p3_friday' + i + '.png\')',
                 width: getWidth(length, false),
                 height: getHeight(length, false),

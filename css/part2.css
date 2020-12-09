@@ -98,7 +98,8 @@
 #agree_phone,
 #bottom1,
 #bottom2,
-#bottom3 {
+#bottom3,
+#livequest_phone_video {
     position: absolute;
     background-size: contain;
     background-repeat: no-repeat;
@@ -213,6 +214,24 @@
     background-position: center, center;
 }
 
+#memeplay_detail2,
+#memeplay_detail3,
+#memeplay_popup1,
+#memeplay_popup2 {
+    animation-name: fadeIn;
+    animation-duration: 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 #memeplay_popup1 {
     background-image: url('../src/p2_p2_memeplay_popup1.png');
 }
@@ -254,12 +273,18 @@
 }
 
 #moving_phone_video,
-#memeplay_phone_video {
+#memeplay_phone_video,
+#livequest_phone_video1,
+#livequest_phone_video2 {
     border-radius: 50px 50px 50px 50px/ 50px 50px 75px 75px;
     position: absolute;
     background-size: contain;
     overflow: hidden;
     display: block;
+}
+
+#livequest_phone_video1 {
+    border-radius: 50px 50px 50px 50px/ 50px 50px 75px 75px;
 }
 
 #memeplay_title {
@@ -311,6 +336,46 @@
     background-repeat: no-repeat;
     background-position: center center;
     cursor: pointer;
+}
+
+#p2_p3_friday1 {
+    animation-name: fadeIn;
+    animation-duration: 5s;
+}
+
+#p2_p3_friday2 {
+    animation-name: fadeIn;
+    animation-duration: 15s;
+}
+
+#p2_p3_friday3 {
+    animation-name: fadeIn;
+    animation-duration: 5s;
+}
+
+#p2_p3_friday4 {
+    animation-name: fadeIn;
+    animation-duration: 15s;
+}
+
+#p2_p3_friday6 {
+    animation-name: fadeIn;
+    animation-duration: 10s;
+}
+
+#p2_p3_friday7 {
+    animation-name: fadeIn;
+    animation-duration: 5s;
+}
+
+#p2_p3_friday8 {
+    animation-name: fadeIn;
+    animation-duration: 15s;
+}
+
+#p2_p3_friday9 {
+    animation-name: fadeIn;
+    animation-duration: 10s;
 }
 
 .friday:hover {
