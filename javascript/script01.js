@@ -971,21 +971,21 @@ function part2_page1_effect(scrollY) {
     const top_video = 1080 * phone_top / 100 + top_gap;
 
     const F_TOP = 22 - (scrollY - FINISH);
-    if (scrollY >= 1240) {
-        $('#livequest_phone_video1').css({
-            display: 'none',
-        })
-        $('#livequest_phone_video2').css({
-            display: 'block',
-        })
-    } else {
-        $('#livequest_phone_video2').css({
-            display: 'none',
-        })
-        $('#livequest_phone_video1').css({
-            display: 'block',
-        })
-    }
+    // if (scrollY >= 1240) {
+    //     $('#livequest_phone_video1').css({
+    //         display: 'none',
+    //     })
+    //     $('#livequest_phone_video2').css({
+    //         display: 'block',
+    //     })
+    // } else {
+    //     $('#livequest_phone_video2').css({
+    //         display: 'none',
+    //     })
+    //     $('#livequest_phone_video1').css({
+    //         display: 'block',
+    //     })
+    // }
     if (scrollY < START) { // x < 1070
         $("#page1_livequest1").css({
             display: "none",
