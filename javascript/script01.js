@@ -4,6 +4,8 @@ var popupStart = false;
 var reaction = false;
 var show_pop = [false, false, false, false, false];
 var fitted = false;
+var p2_p1_card = false;
+var show_card = [false, false, false, false, false, false];
 
 window.onload = function () {
     alert("LOADING FINISH")
@@ -25,6 +27,52 @@ window.onload = function () {
 //     $('#memeplay_detail2').fadeIn('slow');
 //     $('#memeplay_detail3').fadeIn('slow');
 // }
+
+function cardAppear() {
+    //52134
+    p2_p1_card = true;
+    var time = 1000;
+
+    show_card[0] = true;
+    $('#page1_card0').css({
+        display: 'block',
+    })
+
+    setTimeout(() => {
+        show_card[5] = true;
+        $('#page1_card5').css({
+            display: 'block'
+        })
+    }, 500)
+
+    setTimeout(() => {
+        show_card[2] = true;
+        $('#page1_card2').css({
+            display: 'block'
+        })
+    }, 1000)
+
+    setTimeout(() => {
+        show_card[1] = true;
+        $('#page1_card1').css({
+            display: 'block'
+        })
+    }, 1500)
+
+    setTimeout(() => {
+        show_card[3] = true;
+        $('#page1_card3').css({
+            display: 'block'
+        })
+    }, 2000)
+
+    setTimeout(() => {
+        show_card[4] = true;
+        $('#page1_card4').css({
+            display: 'block'
+        })
+    }, 2500)
+}
 
 function tileFit() {
     fitted = true;
@@ -1176,31 +1224,36 @@ function part2_page1_effect(scrollY) {
     const range = 30;
 
     for (var i = 0; i < 6; i++) {
-
-        const OPACITY = (scrollY - APPEAR[i]) / range;
-        if (scrollY < APPEAR[i]) {
-            $('#page1_card' + i).css({
-                display: 'none',
-            })
-        } else {
-            if (scrollY >= DISAPPEAR) {
-                $('#page1_card' + i).css({
-                    display: 'block',
-                    position: 'fixed',
-                    opacity: 1,
-                })
-            } else {
-                $('#page1_card' + i).css({
-                    display: 'block',
-                    position: 'fixed',
-                    width: getWidth(width[i], true),
-                    height: getHeight(height[i], true),
-                    left: getLeft(left[i], true),
-                    top: getTop(top[i], true),
-                    opacity: OPACITY,
-                })
-            }
-        }
+        $('#page1_card' + i).css({
+            display: scrollY < 1240 ? 'none' : show_card[i] ? 'block' : 'none',
+            position: 'fixed',
+            width: getWidth(width[i], true),
+            height: getHeight(height[i], true),
+            left: getLeft(left[i], true),
+            top: getTop(top[i], true),
+        })
+        // const OPACITY = (scrollY - APPEAR[i]) / range;
+        // if (scrollY < APPEAR[i]) {
+        //     $('#page1_card' + i).css({
+        //         display: 'none',
+        //     })
+        // } else {
+        //     if (scrollY >= DISAPPEAR) {
+        //         $('#page1_card' + i).css({
+        //             display: 'block',
+        //             position: 'fixed',
+        //         })
+        //     } else {
+        //         $('#page1_card' + i).css({
+        //             display: 'block',
+        //             position: 'fixed',
+        //             width: getWidth(width[i], true),
+        //             height: getHeight(height[i], true),
+        //             left: getLeft(left[i], true),
+        //             top: getTop(top[i], true),
+        //         })
+        //     }
+        // }
     }
 }
 
@@ -1290,6 +1343,13 @@ function part2_page2_effect(scrollY) {
     { // TILE_SCROLL
         if (scrollY >= 2450 && !fitted) {
             tileFit();
+        }
+    }
+
+    { // CARD_SCROLL
+        if (scrollY >= 1240 && !p2_p1_card) {
+            console.log("START")
+            cardAppear();
         }
     }
 
