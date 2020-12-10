@@ -3,6 +3,11 @@ html {
     margin: 0;
     padding: 0;
     height: 100%;
+    cursor: url('cursor.cur') 0 0, auto;
+}
+
+div {
+    cursor: url('cursor.cur') 0 0, auto;
 }
 
 /* PAGE #1 */

@@ -7,31 +7,21 @@ var fitted = false;
 var p2_p1_card = false;
 var show_card = [false, false, false, false, false, false];
 
+document.onreadystatechange = () => {
+    if (document.readyState === 'complete') {
+        console.log("READY")
+    }
+};
+
 window.onload = function () {
     alert("LOADING FINISH")
+    console.log("ON LOAD")
     init();
-    // document.getElementById('reaction_button').addEventListener('click', reactionButton);
-    // document.getElementById('memeplay_button').addEventListener('click', memeplayButton);
-    // document.getElementById('toss_button').addEventListener('click', tossButton);
 }
-
-// function tossButton() {
-//     popup = true;
-//     $('#memeplay_popup1').fadeIn('slow');
-//     $('#memeplay_popup2').fadeIn('slow');
-// }
-
-// function memeplayButton() {
-//     memeplay = true;
-//     $('#memeplay_detail1').fadeOut('slow');
-//     $('#memeplay_detail2').fadeIn('slow');
-//     $('#memeplay_detail3').fadeIn('slow');
-// }
 
 function cardAppear() {
     //52134
     p2_p1_card = true;
-    var time = 1000;
 
     show_card[0] = true;
     $('#page1_card0').css({
@@ -139,17 +129,17 @@ function reactionButton() {
 //새로고침 감지
 if (window.performance.navigation.type == 1) {
 
-    $('html, body').animate({
-        scrollTop: 0,
-    }, 400);
-    init();
-    $("#page2_meme").css({
-        'display': 'none',
-    });
+    // $('html, body').animate({
+    //     scrollTop: 0,
+    // }, 400);
+    // init();
+    // $("#page2_meme").css({
+    //     'display': 'none',
+    // });
 
-    $("#page2_meme_sub").css({
-        'display': 'none',
-    });
+    // $("#page2_meme_sub").css({
+    //     'display': 'none',
+    // });
 }
 
 function importJQuery() {
