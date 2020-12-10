@@ -1920,7 +1920,7 @@ function part2_page3_effect(scrollY) {
             })
         } { // phone_inside
             const whlt = [397, 866, 759, 656];
-            $('#mypage_phone_inside').css({
+            $('#mypage_phone_video').css({
                 width: getWidth(whlt[0], false),
                 height: getWidth(whlt[1], false),
                 left: getWidth(whlt[2], false),
