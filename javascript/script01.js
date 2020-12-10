@@ -530,7 +530,7 @@ function mid_background_effect(scrollY) {
 
 function bottom_background_effect() {
     const DIRECTION = [0, 1, -1, 1];
-    const RANGE = [400, 400, 400, 400];
+    const RANGE = [200, 800, 800, 800];
 
     for (var i = 1; i < 4; i++) {
         var pos = DIRECTION[i] * ((scrollY % RANGE[i]) * 2 - RANGE[i]) / RANGE[i] * window.innerWidth + 'px';
@@ -910,7 +910,7 @@ function setSizeInit_PART2() {
 
         {
             const width = 1920;
-            const height = 8500;
+            const height = 9000;
             $('#part2_page3').css({
                 width: getWidth(width, false),
                 height: getHeight(height, false)
@@ -1036,8 +1036,8 @@ function part2_page1_effect(scrollY) {
                 left: getLeft(left_video, false),
                 position: 'fixed',
                 backgroundSize: 'contain',
-                display: scrollY >= 1240 ? "none" : "block",
-                opacity: 1,
+                display: 'block',
+                opacity: scrollY >= 1240 ? 0 : 1,
             })
             $('#livequest_phone_video2').css({
                 width: getWidth(width_video, false),
@@ -1046,8 +1046,8 @@ function part2_page1_effect(scrollY) {
                 left: getLeft(left_video, false),
                 position: 'fixed',
                 backgroundSize: 'contain',
-                display: scrollY >= 1240 ? "block" : "none",
-                opacity: 1,
+                display: 'block',
+                opacity: scrollY >= 1240 ? 1 : 0,
             })
 
         } else if (scrollY >= START) { // 1070<x<1120
@@ -1243,34 +1243,6 @@ function part2_page2_effect(scrollY) {
             height: getHeight(height, false),
             zIndex: 1,
         })
-    }
-
-    { // REACTION 버튼
-        const START = 1597;
-        const width = 35;
-        const height = 35;
-        const left = 1105;
-        const position = ['fixed', 'absolute'];
-        const top = [892, 1107, 2549];
-        if (scrollY >= 1730) {
-            $('#reaction_button').css({
-                position: position[1],
-                width: getWidth(width, false),
-                height: getHeight(height, false),
-                left: getLeft(left, false),
-                top: getTop(top[2], false),
-                zIndex: 3,
-            })
-        } else {
-            $('#reaction_button').css({
-                position: scrollY >= START ? position[0] : position[1],
-                width: getWidth(width, false),
-                height: getHeight(height, false),
-                left: getLeft(left, false),
-                top: getTop(scrollY >= START ? top[0] : top[1], false),
-                zIndex: 3,
-            })
-        }
     }
 
     { // REACTION_SCROLL
@@ -1645,6 +1617,29 @@ function part2_page2_effect(scrollY) {
         const top = [145, 347, 567, 903, 265, 177, 567, 846];
         const GAP = 8143 - 1080 + 810 - 100;
 
+        {
+            const width = 360;
+            const height = 132;
+            const left = 340;
+            const top = 560;
+            const OPACITY = 1 - (scrollY - FINISH) / 35;
+            if (scrollY >= START) {
+                $('#agree_detail').css({
+                    display: 'block',
+                    position: 'fixed',
+                    width: getWidth(width, false),
+                    height: getHeight(height, false),
+                    left: getLeft(left, false),
+                    top: getTop(top, false),
+                    opacity: scrollY >= FINISH ? OPACITY : 1,
+                })
+            } else {
+                $('#agree_detail').css({
+                    display: 'none',
+                })
+            }
+        }
+
         for (var i = 0; i < 8; i++) {
 
             var OPACITY1 = (scrollY - START) / 35;
@@ -1665,16 +1660,26 @@ function part2_page2_effect(scrollY) {
 function part2_page3_effect(scrollY) {
     { // TILE BOX
         const length = 470;
-        const left = [0, 230, 725, 1220, 230, 725, 1220, 230, 725, 1220];
-        const top = [0, 235.5, 235.5, 235.5, 733, 733, 733, 1231.3, 1231.3, 1231.3];
+        const GAP = 15;
+        const TOP_GAP = 235.5;
+        const WIDTH = window.innerWidth;
+        const HEIGHT = window.innerHeight;
+        const LEFT = WIDTH / 2 - length * 1.5 - GAP;
+        const CENTER = WIDTH / 2 - length / 2;
+        const RIGHT = WIDTH / 2 + length / 2 + GAP;
+        const TOP = TOP_GAP;
+        const MID = TOP_GAP + length + GAP;
+        const BOTTOM = TOP_GAP + 2 * length + 2 * GAP;
+        const left = [0, LEFT, CENTER, RIGHT, LEFT, CENTER, RIGHT, LEFT, CENTER, RIGHT];
+        const top = [0, TOP, TOP, TOP, MID, MID, MID, BOTTOM, BOTTOM, BOTTOM];
 
         $('#p2_p3_friday5').css({
             display: scrollY >= 2450 ? 'block' : 'none',
             backgroundImage: 'url(\'../src/p2_p3_friday' + 5 + '.png\')',
             width: getWidth(length, false),
             height: getHeight(length, false),
-            left: getLeft(left[5], false),
-            top: getTop(top[5], false),
+            left: left[5] + 'px',
+            top: top[5] + 'px',
         })
         for (var i = 1; i < 10; i++) {
             if (i == 5) continue;
@@ -1683,24 +1688,30 @@ function part2_page3_effect(scrollY) {
                 backgroundImage: 'url(\'../src/p2_p3_friday' + i + '.png\')',
                 width: getWidth(length, false),
                 height: getHeight(length, false),
-                left: getLeft(left[i], false),
-                top: getTop(top[i], false),
+                left: left[i] + 'px',
+                top: top[i] + 'px',
             })
         }
     }
 
     { // SEARCHING BOX
-        const ID = ["title", "detail", "bar", "result1", "result2", "result3", "result4", "result5", "result6", "click"];
-        const width = [335, 800, 1185, 360.6, 439.7, 196.1, 303.7, 249.9, 439.7, 482];
-        const height = [47, 237, 157, 132.9, 132.9, 132.9, 132.9, 132.9, 132.9, 56];
-        const left = [794, 561, 367, 417, 821.9, 1305.9, 417, 765, 1059.1, 719];
-        const top = [51, 101, 382, 594, 594, 594, 771.1, 771.1, 771.1, 974];
+        const ID = ["title", "detail", "bar", "result"];
+        const width = [335, 800, 1185, 1090];
+        const height = [47, 237, 157, 318];
+        const left = [794, 561, 367, 415];
+        const top = [51, 101, 382, 594];
         const gap = 1963;
 
+        $('#searching_video').css({
+            width: getWidth(width[2], false),
+            height: getHeight(height[2], false),
+            left: getLeft(left[2], false),
+            top: getTop(top[2] + gap, false),
+        })
 
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < 4; i++) {
             $('#searching_' + ID[i]).css({
-                backgroundImage: 'url(\'../src/p2_p3_searching_' + ID[i] + '.png\')',
+                backgroundImage: i != 2 ? 'url(\'../src/p2_p3_searching_' + ID[i] + '.png\')' : 'none',
                 width: getWidth(width[i], false),
                 height: getHeight(height[i], false),
                 left: getLeft(left[i], false),
@@ -1929,8 +1940,8 @@ function part2_page4_effect(scrollY) {
     { // PAGE4_ 3 PEOPLE
         const GAP = 2765;
         const ID = ['LJY', 'BJH', 'CMH'];
-        const width = [521, 566, 513];
-        const height = [486, 524, 427];
+        const width = [521, 566, 566];
+        const height = [486, 524, 524];
         const left = [190, 628, 1225];
         const top = [489, 72, 396];
         const APPEAR = [2851 + from, 2901 - 50 + from, 2951 - 100 + from];

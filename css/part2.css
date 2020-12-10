@@ -340,42 +340,42 @@
 
 #p2_p3_friday1 {
     animation-name: fadeIn;
-    animation-duration: 5s;
+    animation-duration: 2s;
 }
 
 #p2_p3_friday2 {
     animation-name: fadeIn;
-    animation-duration: 15s;
+    animation-duration: 7s;
 }
 
 #p2_p3_friday3 {
     animation-name: fadeIn;
-    animation-duration: 5s;
+    animation-duration: 2s;
 }
 
 #p2_p3_friday4 {
     animation-name: fadeIn;
-    animation-duration: 15s;
+    animation-duration: 7s;
 }
 
 #p2_p3_friday6 {
     animation-name: fadeIn;
-    animation-duration: 10s;
+    animation-duration: 5s;
 }
 
 #p2_p3_friday7 {
     animation-name: fadeIn;
-    animation-duration: 5s;
+    animation-duration: 2s;
 }
 
 #p2_p3_friday8 {
     animation-name: fadeIn;
-    animation-duration: 15s;
+    animation-duration: 7s;
 }
 
 #p2_p3_friday9 {
     animation-name: fadeIn;
-    animation-duration: 10s;
+    animation-duration: 5s;
 }
 
 .friday:hover {
@@ -385,12 +385,7 @@
 #searching_title,
 #searching_detail,
 #searching_bar,
-#searching_result1,
-#searching_result2,
-#searching_result3,
-#searching_result4,
-#searching_result5,
-#searching_result6,
+#searching_result,
 #searching_click {
     position: absolute;
     background-size: contain;
@@ -410,6 +405,7 @@
     background-position: center, center;
 }
 
+#agree_detail,
 #chatting_title,
 #chatting_sub,
 #chatting_phone1,
@@ -421,6 +417,10 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center, center;
+}
+
+#agree_detail {
+    background-image: url('../src/p2_p2_agree_detail.png');
 }
 
 #chatting_title {
