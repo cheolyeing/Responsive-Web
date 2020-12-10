@@ -275,8 +275,9 @@
 #moving_phone_video,
 #memeplay_phone_video,
 #livequest_phone_video1,
-#livequest_phone_video2 {
-    border-radius: 50px 50px 50px 50px/ 50px 50px 75px 75px;
+#livequest_phone_video2,
+#interlock_phone_video {
+    border-radius: 50px 50px 50px 50px/ 50px 50px 50px 50px;
     position: absolute;
     background-size: contain;
     overflow: hidden;
@@ -284,7 +285,7 @@
 }
 
 #livequest_phone_video1 {
-    border-radius: 50px 50px 50px 50px/ 50px 50px 75px 75px;
+    border-radius: 50px 50px 50px 50px/ 50px 50px 50px 50px;
 }
 
 #memeplay_title {
@@ -488,8 +489,8 @@
 #interlock_title,
 #interlock_sub,
 #interlock_phone,
-#interlock_phone_inside,
-#interlock_detail {
+#interlock_detail,
+#interlock_phone_video_box {
     position: absolute;
     background-size: contain;
     background-repeat: no-repeat;
@@ -504,17 +505,17 @@
     background-image: url('../src/p2_p3_interlock_sub.png');
 }
 
-#interlock_phone_inside {
-    background-image: url('../src/p2_p3_interlock_phone_inside.png');
-    border-radius: 50px 50px 50px 50px / 50px 50px 50px 50px;
-}
-
 #interlock_detail {
     background-image: url('../src/p2_p3_interlock_detail.png');
 }
 
 #part2_page4 {
     background-color: #f3f8ff;
+    position: relative;
+}
+
+#footer {
+    background-color: black;
     position: relative;
 }
 
@@ -529,7 +530,9 @@
 #p2_p4_thankyou,
 #LJY,
 #BJH,
-#CMH {
+#CMH,
+#footer_top,
+#footer_bot {
     background-position: center center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -582,4 +585,12 @@
 
 #p2_p4_thankyou {
     background-image: url('../src/p2_p4_thankyou.png');
+}
+
+#footer_top {
+    background-image: url('../src/footer_top.png');
+}
+
+#footer_bot {
+    background-image: url('../src/footer_bot.png');
 }

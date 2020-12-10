@@ -925,6 +925,35 @@ function setSizeInit_PART2() {
                 height: getHeight(height, false)
             })
         }
+
+        {
+            const width = 1920;
+            const height = 446;
+            $('#footer').css({
+                width: getWidth(width, false),
+                height: getHeight(height, false)
+            })
+        }
+
+        {
+            const width = 1920;
+            const height = 258;
+            $('#footer_top').css({
+                width: getWidth(width, false),
+                height: getHeight(height, false)
+            })
+        }
+
+        {
+            const width = 1920;
+            const height = 188;
+            const top = 258;
+            $('#footer_bot').css({
+                width: getWidth(width, false),
+                height: getHeight(height, false),
+                top: getTop(top, false),
+            })
+        }
     }
 }
 
@@ -1885,7 +1914,7 @@ function part2_page3_effect(scrollY) {
             })
         } { // phone inside
             const whlt = [396, 858, 229, 111];
-            $('#interlock_phone_inside').css({
+            $('#interlock_phone_video').css({
                 width: getWidth(whlt[0], false),
                 height: getWidth(whlt[1], false),
                 left: getWidth(whlt[2], false),
