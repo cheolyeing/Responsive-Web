@@ -176,7 +176,7 @@ function page1_toNext() {
 
         setTimeout(() => {
             $('body').css({
-                overflowX: 'hidden',
+                // overflowX: 'hidden',
                 overflowY: 'auto',
             })
         }, 500);
