@@ -13,18 +13,7 @@ var mypage = false;
 var interlock = false;
 var chatting = false;
 
-document.onreadystatechange = () => {
-    if (document.readyState === 'complete') {
-        console.log("READY")
-    }
-};
-
 detectDevice()
-window.onload = function () {
-    alert("LOADING FINISH")
-    console.log("ON LOAD")
-    init();
-}
 
 function detectDevice() {
     var filter = "win16|win32|win64|mac|macintel";
@@ -33,9 +22,22 @@ function detectDevice() {
         if (filter.indexOf(navigator.platform.toLowerCase()) < 0) {
             //mobile
             alert('Mobile Mode');
+            location.href = "www.naver.com";
         } else {
             //pc
             alert('PC Mode');
+            location.href = "www.daum.net";
+            document.onreadystatechange = () => {
+                if (document.readyState === 'complete') {
+                    console.log("READY")
+                }
+            };
+
+            window.onload = function () {
+                alert("LOADING FINISH")
+                console.log("ON LOAD")
+                init();
+            }
         }
     }
 }
