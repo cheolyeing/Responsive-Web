@@ -8,6 +8,10 @@ var p2_p1_card = false;
 var show_card = [false, false, false, false, false, false];
 var friday = false;
 var show_friday = [false, false, false, false, false, false];
+var wait = [false, false];
+var mypage = false;
+var interlock = false;
+var chatting = false;
 
 document.onreadystatechange = () => {
     if (document.readyState === 'complete') {
@@ -15,11 +19,67 @@ document.onreadystatechange = () => {
     }
 };
 
+detectDevice()
 window.onload = function () {
     alert("LOADING FINISH")
     console.log("ON LOAD")
-
     init();
+}
+
+function detectDevice() {
+    var filter = "win16|win32|win64|mac|macintel";
+
+    if (navigator.platform) {
+        if (filter.indexOf(navigator.platform.toLowerCase()) < 0) {
+            //mobile
+            alert('Mobile Mode');
+        } else {
+            //pc
+            alert('PC Mode');
+        }
+    }
+}
+
+function imageWait() {
+    return new Promise(function (resolve, reject) {
+        $('#page2_meme').css({
+            backgroundImage: 'url(../src/p1_p2_meme.png)'
+        })
+        resolve();
+    })
+}
+
+function chattingDetailAppear() {
+    chatting = true;
+    setTimeout(() => {
+        $('#chatting_detail').css({
+            display: 'block',
+        })
+    }, 1000)
+}
+
+function interlockDetailAppear() {
+    interlock = true;
+    setTimeout(() => {
+        $('#interlock_detail').css({
+            display: 'block',
+        })
+    }, 1000)
+}
+
+function mypageDetailAppear() {
+    mypage = true;
+    setTimeout(() => {
+        $('#mypage_detail1').css({
+            display: 'block',
+        })
+    }, 1000)
+
+    setTimeout(() => {
+        $('#mypage_detail2').css({
+            display: 'block',
+        })
+    }, 2000)
 }
 
 function fridayAppear() {
@@ -845,7 +905,7 @@ function setSizeInit_PART1() {
 
         { // phone_video
             const IMAGE_WIDTH = 599;
-            const IMAGE_HEIGHT = 4411;
+            const IMAGE_HEIGHT = 2550 * 599 / 374;
             const TOP = 673;
 
             const width = IMAGE_WIDTH * WIDTH / 1920;
@@ -863,7 +923,7 @@ function setSizeInit_PART1() {
 
             $('#page3_gradient').css({
                 width: width + 'px',
-                height: height + 'px',
+                height: height * 1.1 + 'px',
                 left: left + 'px',
                 top: top + 'px',
             })
@@ -1395,6 +1455,24 @@ function part2_page2_effect(scrollY) {
     { // FRIDAY MIDDLE SCROLL
         if (scrollY >= 2650 && !friday) {
             fridayAppear();
+        }
+    }
+
+    { // MYPAGE_SCROLL
+        if (scrollY >= 2930 && !mypage) {
+            mypageDetailAppear();
+        }
+    }
+
+    { // INTERLOCK_SCROLL
+        if (scrollY >= 3070 && !interlock) {
+            interlockDetailAppear();
+        }
+    }
+
+    { // CHATTING_SCROLL
+        if (scrollY >= 2810 && !chatting) {
+            chattingDetailAppear();
         }
     }
 

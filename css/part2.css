@@ -443,6 +443,7 @@
 
 #chatting_detail {
     background-image: url('../src/p2_p3_chatting_detail.png');
+    display: none;
 }
 
 #chatting_phone1,
@@ -471,6 +472,13 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center, center;
+}
+
+#mypage_detail1,
+#mypage_detail2 {
+    display: none;
+    animation-name: fadeIn;
+    animation-duration: 1s;
 }
 
 #mypage_title {
@@ -506,6 +514,7 @@
 
 #interlock_detail {
     background-image: url('../src/p2_p3_interlock_detail.png');
+    display: none;
 }
 
 #part2_page4 {
