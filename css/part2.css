@@ -61,6 +61,7 @@
 #page1_card3,
 #page1_card4,
 #page1_card5 {
+    position: absolute;
     display: none;
     animation-name: fadeIn;
     animation-duration: 1s;
@@ -404,10 +405,13 @@
 #middle4,
 #middle5,
 #middle6 {
+    display: none;
     position: absolute;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center, center;
+    animation-name: fadeIn;
+    animation-duration: 1s;
 }
 
 #agree_detail,
@@ -498,7 +502,7 @@
     position: absolute;
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center, center;
+    background-position-x: center;
 }
 
 #interlock_title {

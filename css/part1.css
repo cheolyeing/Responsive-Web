@@ -3,11 +3,12 @@ html {
     margin: 0;
     padding: 0;
     height: 100%;
-    cursor: url('cursor.cur') 0 0, auto;
+    cursor: url('ncursor.png') 0 0, auto;
+    overflow-x: hidden;
 }
 
 div {
-    cursor: url('cursor.cur') 0 0, auto;
+    cursor: url('ncursor.png') 0 0, auto;
 }
 
 /* PAGE #1 */

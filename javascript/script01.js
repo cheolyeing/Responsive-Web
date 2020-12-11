@@ -6,6 +6,8 @@ var show_pop = [false, false, false, false, false];
 var fitted = false;
 var p2_p1_card = false;
 var show_card = [false, false, false, false, false, false];
+var friday = false;
+var show_friday = [false, false, false, false, false, false];
 
 document.onreadystatechange = () => {
     if (document.readyState === 'complete') {
@@ -16,7 +18,52 @@ document.onreadystatechange = () => {
 window.onload = function () {
     alert("LOADING FINISH")
     console.log("ON LOAD")
+
     init();
+}
+
+function fridayAppear() {
+    friday = true;
+
+    show_friday[0] = true;
+    $('#middle1').css({
+        display: 'block',
+    })
+
+    setTimeout(() => {
+        show_friday[1] = true;
+        $('#middle2').css({
+            display: 'block',
+        })
+    }, 100)
+
+    setTimeout(() => {
+        show_friday[2] = true;
+        $('#middle3').css({
+            display: 'block',
+        })
+    }, 200)
+
+    setTimeout(() => {
+        show_friday[3] = true;
+        $('#middle4').css({
+            display: 'block',
+        })
+    }, 300)
+
+    setTimeout(() => {
+        show_friday[4] = true;
+        $('#middle5').css({
+            display: 'block',
+        })
+    }, 400)
+
+    setTimeout(() => {
+        show_friday[5] = true;
+        $('#middle6').css({
+            display: 'block',
+        })
+    }, 500)
 }
 
 function cardAppear() {
@@ -66,7 +113,6 @@ function cardAppear() {
 
 function tileFit() {
     fitted = true;
-
 }
 
 function popupButton() {
@@ -177,24 +223,18 @@ function page1_init() {
     $('#part1_page1').css({
         'display': 'block'
     })
-    page1_following();
+
+    $('#main_video').css({
+        width: getWidth(1920, false),
+        height: getHeight(1080, false),
+    })
+
     page1_toNext();
 }
 
 function page1_effect() {
-    page1_following();
-    page1_toNext();
-}
 
-function page1_following() {
-    document.addEventListener("mousemove", function (e) {
-        var x = e.clientX
-        var y = e.clientY
-        $("#following").css({
-            "left": x + "px",
-            "top": y + "px",
-        })
-    })
+    page1_toNext();
 }
 
 function page1_toNext() {
@@ -214,7 +254,7 @@ function page1_toNext() {
 
         setTimeout(() => {
             $('body').css({
-                // overflowX: 'hidden',
+                overflowX: 'hidden',
                 overflowY: 'auto',
             })
         }, 500);
@@ -943,6 +983,7 @@ function setSizeInit_PART2() {
             $('#part2_page2').css({
                 width: getWidth(width, false),
                 height: getHeight(height, false),
+                zIndex: 2,
             })
         }
 
@@ -1085,6 +1126,7 @@ function part2_page1_effect(scrollY) {
                 backgroundSize: 'contain',
                 display: "block",
                 opacity: 1,
+                zIndex: show_card[5] && scrollY <= 1580 ? 1 : 0,
             })
             $('#livequest_phone_video').css({
                 width: getWidth(width_video, false),
@@ -1095,6 +1137,7 @@ function part2_page1_effect(scrollY) {
                 backgroundSize: 'contain',
                 display: "block",
                 opacity: 1,
+                zIndex: show_card[5] && scrollY <= 1580 ? 1 : 0,
             })
             $('#livequest_phone_video1').css({
                 width: getWidth(width_video, false),
@@ -1338,8 +1381,13 @@ function part2_page2_effect(scrollY) {
 
     { // CARD_SCROLL
         if (scrollY >= 1240 && !p2_p1_card) {
-            console.log("START")
             cardAppear();
+        }
+    }
+
+    { // FRIDAY MIDDLE SCROLL
+        if (scrollY >= 2650 && !friday) {
+            fridayAppear();
         }
     }
 
@@ -1738,11 +1786,12 @@ function part2_page2_effect(scrollY) {
 
 function part2_page3_effect(scrollY) {
     { // TILE BOX
-        const length = 470;
-        const GAP = 15;
-        const TOP_GAP = 235.5;
+
         const WIDTH = window.innerWidth;
         const HEIGHT = window.innerHeight;
+        const length = 470 * WIDTH / 1920;
+        const GAP = 15;
+        const TOP_GAP = 235.5;
         const LEFT = WIDTH / 2 - length * 1.5 - GAP;
         const CENTER = WIDTH / 2 - length / 2;
         const RIGHT = WIDTH / 2 + length / 2 + GAP;
@@ -1755,8 +1804,8 @@ function part2_page3_effect(scrollY) {
         $('#p2_p3_friday5').css({
             display: scrollY >= 2450 ? 'block' : 'none',
             backgroundImage: 'url(\'../src/p2_p3_friday' + 5 + '.png\')',
-            width: getWidth(length, false),
-            height: getHeight(length, false),
+            width: length + 'px',
+            height: length + 'px',
             left: left[5] + 'px',
             top: top[5] + 'px',
         })
@@ -1765,8 +1814,8 @@ function part2_page3_effect(scrollY) {
             $('#p2_p3_friday' + i).css({
                 display: fitted ? 'block' : 'none',
                 backgroundImage: 'url(\'../src/p2_p3_friday' + i + '.png\')',
-                width: getWidth(length, false),
-                height: getHeight(length, false),
+                width: length + 'px',
+                height: length + 'px',
                 left: left[i] + 'px',
                 top: top[i] + 'px',
             })
