@@ -10,19 +10,29 @@
     opacity: 0.2;
 }
 
-#page1_livequest1,
-#page1_livequest2 {
-    width: 11.5%;
-    height: 4.35%;
+#page1_livequest1 {
+    width: 32.23%;
+    height: 28.79%;
     left: 6.5%;
     position: absolute;
-    background-image: url(../src/p2_p1_livequest.png);
+    background-image: url(../src/livequest1_title.png);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
 }
 
-#page1_title1,
+#page1_livequest2 {
+    width: 32.23%;
+    height: 27.22%;
+    left: 6.5%;
+    position: absolute;
+    background-image: url(../src/livequest2_title.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+
+/* #page1_title1,
 #page1_title2 {
     width: 33%;
     height: 22%;
@@ -31,7 +41,7 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
-}
+} */
 
 #page1_title1 {
     background-image: url(../src/p2_p1_title1.png);
@@ -123,7 +133,7 @@
 }
 
 #reaction_title {
-    background-image: url('../src/p2_p2_title1.png');
+    background-image: url('../src/reaction_title.png');
 }
 
 #reaction_subtitle {
@@ -266,7 +276,6 @@
 }
 
 #memeplay_title,
-#memeplay_subtitle,
 #memeplay_phone,
 #memeplay_phone_inside,
 #moving_phone {
@@ -294,12 +303,8 @@
 }
 
 #memeplay_title {
-    background-image: url('../src/p2_p2_title2.png');
+    background-image: url('../src/memeplay_title.png');
     z-index: 5;
-}
-
-#memeplay_subtitle {
-    background-image: url('../src/p2_p2_title2_sub.png');
 }
 
 #memeplay_detail1 {
@@ -416,7 +421,7 @@
 
 #agree_detail,
 #chatting_title,
-#chatting_sub,
+/* #chatting_sub, */
 #chatting_phone1,
 #chatting_phone2,
 #chatting_detail,
@@ -433,11 +438,7 @@
 }
 
 #chatting_title {
-    background-image: url('../src/p2_p3_chatting_title.png');
-}
-
-#chatting_sub {
-    background-image: url('../src/p2_p3_chatting_sub.png');
+    background-image: url('../src/chatting_title.png');
 }
 
 #chatting_detail {
@@ -462,7 +463,6 @@
 }
 
 #mypage_title,
-#mypage_sub,
 #mypage_phone,
 #mypage_phone_inside,
 #mypage_detail1,
@@ -474,11 +474,7 @@
 }
 
 #mypage_title {
-    background-image: url('../src/p2_p3_mypage_title.png');
-}
-
-#mypage_sub {
-    background-image: url('../src/p2_p3_mypage_sub.png');
+    background-image: url('../src/mypage_title.png');
 }
 
 #mypage_phone_inside {
@@ -495,7 +491,6 @@
 }
 
 #interlock_title,
-#interlock_sub,
 #interlock_phone,
 #interlock_detail,
 #interlock_phone_video_box {
@@ -506,11 +501,7 @@
 }
 
 #interlock_title {
-    background-image: url('../src/p2_p3_interlock_title.png');
-}
-
-#interlock_sub {
-    background-image: url('../src/p2_p3_interlock_sub.png');
+    background-image: url('../src/interlock_title.png');
 }
 
 #interlock_detail {

@@ -787,8 +787,8 @@ function setSizeInit_PART1() {
         const HEIGHT = window.innerHeight;
 
         { // title
-            const IMAGE_WIDTH = 202
-            const IMAGE_HEIGHT = 28
+            const IMAGE_WIDTH = 2235 / 3
+            const IMAGE_HEIGHT = 978 / 3
             const TOP = 207;
 
             const width = IMAGE_WIDTH * WIDTH / 1920;
@@ -805,24 +805,24 @@ function setSizeInit_PART1() {
             })
         }
 
-        { // title_sub
-            const IMAGE_WIDTH = 727
-            const IMAGE_HEIGHT = 212
-            const TOP = 283;
+        // { // title_sub
+        //     const IMAGE_WIDTH = 727
+        //     const IMAGE_HEIGHT = 212
+        //     const TOP = 283;
 
-            const width = IMAGE_WIDTH * WIDTH / 1920;
-            const height = width * IMAGE_HEIGHT / IMAGE_WIDTH;
+        //     const width = IMAGE_WIDTH * WIDTH / 1920;
+        //     const height = width * IMAGE_HEIGHT / IMAGE_WIDTH;
 
-            const left = (WIDTH - width) / 2;
-            const top = TOP * HEIGHT / 1080;
+        //     const left = (WIDTH - width) / 2;
+        //     const top = TOP * HEIGHT / 1080;
 
-            $('#page3_title_sub').css({
-                width: width + 'px',
-                height: height + 'px',
-                left: left + 'px',
-                top: top + 'px',
-            })
-        }
+        //     $('#page3_title_sub').css({
+        //         width: width + 'px',
+        //         height: height + 'px',
+        //         left: left + 'px',
+        //         top: top + 'px',
+        //     })
+        // }
 
         { // phone
             const IMAGE_WIDTH = 655
@@ -845,7 +845,7 @@ function setSizeInit_PART1() {
 
         { // phone_video
             const IMAGE_WIDTH = 599;
-            const IMAGE_HEIGHT = 2550 * 599 / 374;
+            const IMAGE_HEIGHT = 4411;
             const TOP = 673;
 
             const width = IMAGE_WIDTH * WIDTH / 1920;
@@ -855,6 +855,13 @@ function setSizeInit_PART1() {
             const top = TOP * HEIGHT / 1080;
 
             $('#page3_phone_video').css({
+                width: width + 'px',
+                height: height + 'px',
+                left: left + 'px',
+                top: top + 'px',
+            })
+
+            $('#page3_gradient').css({
                 width: width + 'px',
                 height: height + 'px',
                 left: left + 'px',
@@ -883,8 +890,8 @@ function setSizeInit_PART1() {
         }
 
         {
-            const IMAGE_WIDTH = [0, 256, 298, 317, 298];
-            const IMAGE_HEIGHT = [0, 195, 260, 260, 195];
+            const IMAGE_WIDTH = [0, 912 / 3, 1032 / 3, 1116 / 3, 1041 / 3];
+            const IMAGE_HEIGHT = [0, 504 / 3, 693 / 3, 702 / 3, 486 / 3];
             const TOP = [0, 1374, 1793, 2736, 3010];
             const LEFT = [0, 284, 1380, 223, 1380];
 
@@ -905,12 +912,12 @@ function setSizeInit_PART1() {
                     left: left + 'px',
                 })
 
-                $('#page3_detail' + i + '_arrow').css({
-                    height: ARROW_SIZE * HEIGHT / 1080 + 'px',
-                    width: ARROW_SIZE * WIDTH / 1920 + 'px',
-                    top: arrow_top + 'px',
-                    left: arrow_left + 'px',
-                })
+                // $('#page3_detail' + i + '_arrow').css({
+                //     height: ARROW_SIZE * HEIGHT / 1080 + 'px',
+                //     width: ARROW_SIZE * WIDTH / 1920 + 'px',
+                //     top: arrow_top + 'px',
+                //     left: arrow_left + 'px',
+                // })
             }
         }
 
@@ -1098,9 +1105,9 @@ function part2_page1_effect(scrollY) {
         $("#page1_livequest1").css({
             display: "none",
         })
-        $("#page1_title1").css({
-            display: "none",
-        })
+        // $("#page1_title1").css({
+        //     display: "none",
+        // })
         $('#page1_phone').css({
             display: "none",
         })
@@ -1112,9 +1119,9 @@ function part2_page1_effect(scrollY) {
             $("#page1_livequest1").css({
                 top: F_TOP + "%",
             })
-            $("#page1_title1").css({
-                top: F_TOP + 4.8 + "%",
-            })
+            // $("#page1_title1").css({
+            //     top: F_TOP + 4.8 + "%",
+            // })
 
             $('#page1_phone').css({
                 width: phone_width + '%',
@@ -1168,12 +1175,12 @@ function part2_page1_effect(scrollY) {
                 opacity: OPACITY,
             })
 
-            $("#page1_title1").css({
-                position: 'fixed',
-                display: "block",
-                top: TOP + 4.8 + "%",
-                opacity: OPACITY,
-            })
+            // $("#page1_title1").css({
+            //     position: 'fixed',
+            //     display: "block",
+            //     top: TOP + 4.8 + "%",
+            //     opacity: OPACITY,
+            // })
 
             $('#page1_phone').css({
                 width: 46.66 + '%',
@@ -1221,26 +1228,26 @@ function part2_page1_effect(scrollY) {
         const top = 1500;
         $('#page1_livequest2').css({
             position: 'absolute',
-            width: 221 * window.innerWidth / 1920 + 'px',
-            height: 47 * window.innerHeight / 1080 + 'px',
+            width: 619 * window.innerWidth / 1920 + 'px',
+            height: 311 * window.innerHeight / 1080 + 'px',
             top: top * window.innerHeight / 1080 + 'px',
         })
 
         const width = 631;
         const height = 237;
 
-        $('#page1_title2').css({
-            position: 'absolute',
-            width: width * window.innerWidth / 1920 + 'px',
-            height: height * window.innerHeight / 1080 + 'px',
-            top: (top + 52) * window.innerHeight / 1080 + 'px',
-        })
+        // $('#page1_title2').css({
+        //     position: 'absolute',
+        //     width: width * window.innerWidth / 1920 + 'px',
+        //     height: height * window.innerHeight / 1080 + 'px',
+        //     top: (top + 52) * window.innerHeight / 1080 + 'px',
+        // })
     } else {
-        $('#page1_title2').css({
-            position: 'fixed',
-            top: '15.55%',
-            left: '6.5%',
-        })
+        // $('#page1_title2').css({
+        //     position: 'fixed',
+        //     top: '15.55%',
+        //     left: '6.5%',
+        // })
         $('#page1_livequest2').css({
             position: 'fixed',
             top: '10.74%',
@@ -1292,9 +1299,9 @@ function part2_page1_effect(scrollY) {
 
 function part2_page2_effect(scrollY) {
     { // REACTION
-        const width = 193;
-        const height = 47;
-        const left = 861;
+        const width = 1269; //193;
+        const height = 163; //47;
+        const left = 325.5;
         const top = 64;
         const OPACITY = 1 - Math.max((scrollY - 1576) / 20, 0);
         const gap = Math.min(Math.max(0, scrollY - 1576) * 10, 90);
@@ -1506,9 +1513,9 @@ function part2_page2_effect(scrollY) {
     // 2071-1576 = 495
 
     { // MEMEPLAY
-        const width = 220;
-        const height = 47;
-        const left = 861;
+        const width = 1005; //220;
+        const height = 163; //47;
+        const left = 457.5; //861;
         const top = 1080 * 5;
         const OPACITY = 1 - Math.max((scrollY - 2071) / 20, 0);
         const gap = Math.min(Math.max(0, scrollY - 2071) * 10, 90);
@@ -1522,23 +1529,23 @@ function part2_page2_effect(scrollY) {
         })
     }
 
-    { // 이제 직접 밈을 만들어봐요!
-        const width = 1005;
-        const height = 142;
-        const left = 458;
-        const top = 1080 * 5 + 38;
-        const OPACITY = 1 - Math.max((scrollY - 2071) / 20, 0);
-        const gap = Math.min(Math.max(0, scrollY - 2071) * 10, 90);
+    // { // 이제 직접 밈을 만들어봐요!
+    //     const width = 1005;
+    //     const height = 142;
+    //     const left = 458;
+    //     const top = 1080 * 5 + 38;
+    //     const OPACITY = 1 - Math.max((scrollY - 2071) / 20, 0);
+    //     const gap = Math.min(Math.max(0, scrollY - 2071) * 10, 90);
 
-        $('#memeplay_subtitle').css({
-            width: getWidth(width, false),
-            height: getHeight(height, false),
-            left: getLeft(left, false),
-            top: getTop(top + gap, false),
-            opacity: OPACITY,
-            zIndex: 1,
-        })
-    }
+    //     $('#memeplay_subtitle').css({
+    //         width: getWidth(width, false),
+    //         height: getHeight(height, false),
+    //         left: getLeft(left, false),
+    //         top: getTop(top + gap, false),
+    //         opacity: OPACITY,
+    //         zIndex: 1,
+    //     })
+    // }
 
     { // MEMEPLAY 핸드폰 목업
         const START = 1597 + 495;
@@ -1824,9 +1831,9 @@ function part2_page3_effect(scrollY) {
 
     { // SEARCHING BOX
         const ID = ["title", "detail", "bar", "result"];
-        const width = [335, 800, 1185, 1090];
-        const height = [47, 237, 157, 318];
-        const left = [794, 561, 367, 415];
+        const width = [821 /*335*/ , 800, 1185, 1090];
+        const height = [294 /*47*/ , 237, 157, 318];
+        const left = [549.5 /*794*/ , 561, 367, 415];
         const top = [51, 101, 382, 594];
         const gap = 1963;
 
@@ -1838,6 +1845,7 @@ function part2_page3_effect(scrollY) {
         })
 
         for (var i = 0; i < 4; i++) {
+            if (i == 1) continue;
             $('#searching_' + ID[i]).css({
                 backgroundImage: i != 2 ? 'url(\'../src/p2_p3_searching_' + ID[i] + '.png\')' : 'none',
                 width: getWidth(width[i], false),
@@ -1872,22 +1880,24 @@ function part2_page3_effect(scrollY) {
         const gap = 4429;
 
         { // title
-            const whlt = [192, 47, 126, 117];
+            const whlt = [511, 291, 126, 117];
             $('#chatting_title').css({
                 width: getWidth(whlt[0], false),
                 height: getWidth(whlt[1], false),
                 left: getWidth(whlt[2], false),
                 top: getWidth(whlt[3] + gap, false),
             })
-        } { // sub
-            const whlt = [511, 237, 120, 171];
-            $('#chatting_sub').css({
-                width: getWidth(whlt[0], false),
-                height: getWidth(whlt[1], false),
-                left: getWidth(whlt[2], false),
-                top: getWidth(whlt[3] + gap, false),
-            })
-        } { // phone1
+        }
+        // { // sub
+        //     const whlt = [511, 237, 120, 171];
+        //     $('#chatting_sub').css({
+        //         width: getWidth(whlt[0], false),
+        //         height: getWidth(whlt[1], false),
+        //         left: getWidth(whlt[2], false),
+        //         top: getWidth(whlt[3] + gap, false),
+        //     })
+        // }
+        { // phone1
             const whlt = [433, 894, 902, 120];
             $('#chatting_phone1').css({
                 width: getWidth(whlt[0], false),
@@ -1934,22 +1944,24 @@ function part2_page3_effect(scrollY) {
         const gap = 5509;
 
         { // title
-            const whlt = [169, 47, 875, 288];
+            const whlt = [698, 289, 611, 288];
             $('#mypage_title').css({
                 width: getWidth(whlt[0], false),
                 height: getWidth(whlt[1], false),
                 left: getWidth(whlt[2], false),
                 top: getWidth(whlt[3] + gap, false),
             })
-        } { // sub
-            const whlt = [698, 237, 611, 340];
-            $('#mypage_sub').css({
-                width: getWidth(whlt[0], false),
-                height: getWidth(whlt[1], false),
-                left: getWidth(whlt[2], false),
-                top: getWidth(whlt[3] + gap, false),
-            })
-        } { // phone
+        }
+        // { // sub
+        //     const whlt = [698, 237, 611, 340];
+        //     $('#mypage_sub').css({
+        //         width: getWidth(whlt[0], false),
+        //         height: getWidth(whlt[1], false),
+        //         left: getWidth(whlt[2], false),
+        //         top: getWidth(whlt[3] + gap, false),
+        //     })
+        // } 
+        { // phone
             const whlt = [433, 894, 743, 642];
             $('#mypage_phone').css({
                 width: getWidth(whlt[0], false),
@@ -1988,11 +2000,11 @@ function part2_page3_effect(scrollY) {
         const gap = 7224;
 
         { // title
-            const whlt = [213, 47, 1587, 253];
+            const whlt = [789, 287, 120, 253];
             $('#interlock_title').css({
                 width: getWidth(whlt[0], false),
                 height: getWidth(whlt[1], false),
-                left: getWidth(whlt[2], false),
+                right: getWidth(whlt[2], false),
                 top: getWidth(whlt[3] + gap, false),
             })
         } { // sub

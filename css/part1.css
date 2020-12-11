@@ -7,7 +7,8 @@ html {
     overflow-x: hidden;
 }
 
-div {
+div,
+img {
     cursor: url('ncursor.png') 0 0, auto;
 }
 
@@ -477,7 +478,7 @@ div {
 }
 
 #page3_title {
-    background-image: url(../src/p1_p3_title.png);
+    background-image: url(../src/mainfeed_title.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
@@ -509,6 +510,15 @@ div {
     position: absolute;
 }
 
+#page3_gradient {
+    position: absolute;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url("samuel-beckett-bridge.jpg") no-repeat fixed;
+
+    background-size: cover;
+    z-index: 4;
+    opacity: 0.8;
+}
+
 #page3_phone_video {
     border-radius: 50px 50px 0 0 / 50px 50px 0 0;
     background-color: black;
@@ -536,7 +546,7 @@ div {
 }
 
 #page3_detail1 {
-    background-image: url(../src/p1_p3_detail1.png);
+    background-image: url(../src/p1_p3_detail01.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
@@ -560,7 +570,7 @@ div {
 
 #page3_detail2 {
 
-    background-image: url(../src/p1_p3_detail2.png);
+    background-image: url(../src/p1_p3_detail02.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
@@ -582,7 +592,7 @@ div {
 }
 
 #page3_detail3 {
-    background-image: url(../src/p1_p3_detail3.png);
+    background-image: url(../src/p1_p3_detail03.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
@@ -606,7 +616,7 @@ div {
 
 #page3_detail4 {
 
-    background-image: url(../src/p1_p3_detail4.png);
+    background-image: url(../src/p1_p3_detail04.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
