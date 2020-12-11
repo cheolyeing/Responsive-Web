@@ -22,11 +22,10 @@ function detectDevice() {
         if (filter.indexOf(navigator.platform.toLowerCase()) < 0) {
             //mobile
             alert('Mobile Mode');
-            location.href = "www.naver.com";
+            location.href = "mobile.html";
         } else {
             //pc
             alert('PC Mode');
-            location.href = "www.daum.net";
             document.onreadystatechange = () => {
                 if (document.readyState === 'complete') {
                     console.log("READY")
