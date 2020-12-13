@@ -12,6 +12,7 @@ var wait = [false, false];
 var mypage = false;
 var interlock = false;
 var chatting = false;
+var videoFinished = false;
 
 detectDevice()
 
@@ -25,7 +26,6 @@ function detectDevice() {
             location.href = "mobile.html";
         } else {
             //pc
-            alert('PC Mode');
             document.onreadystatechange = () => {
                 if (document.readyState === 'complete') {
                     console.log("READY")
@@ -34,11 +34,60 @@ function detectDevice() {
 
             window.onload = function () {
                 alert("LOADING FINISH")
+
+                setTimeout(() => {
+                    videoFinished = true
+                    page1_init();
+                }, 1000)
                 console.log("ON LOAD")
                 init();
             }
         }
     }
+}
+
+function setLoading() {
+    const len = 64;
+
+    $('loading_face1').css({
+        width: getWidth(len, false),
+        height: getWidth(len, false),
+        left: getLeft(844, false),
+        top: getTop(458, false),
+    })
+
+    $('loading_face2').css({
+        width: getWidth(len, false),
+        height: getWidth(len, false),
+        left: getLeft(930, false),
+        top: getTop(458, false),
+    })
+
+    $('loading_face3').css({
+        width: getWidth(len, false),
+        height: getWidth(len, false),
+        right: getLeft(844, false),
+        top: getTop(458, false),
+    })
+
+    $('loading_detail').css({
+        width: getWidth(426, false),
+        height: getWidth(94, false),
+        left: getLeft(747, false),
+        top: getTop(565, false),
+    })
+}
+
+function loadingFinish() {
+    $('#loading').css({
+        display: 'none',
+    })
+}
+
+
+function linkButton() {
+    alert("CLICK")
+    location.href = "www.naver.com";
 }
 
 function imageWait() {
@@ -188,7 +237,7 @@ function popupButton() {
         $('body').css({
             overflowY: 'auto',
         })
-    }, 4000);
+    }, 2000);
 
     popupStart = true;
     show_pop[1] = true;
@@ -201,14 +250,14 @@ function popupButton() {
         $('#memeplay_detail3').css({
             display: 'block'
         })
-    }, 1000)
+    }, 500)
 
     setTimeout(() => {
         show_pop[3] = true;
         $('#memeplay_popup1').css({
             display: 'block'
         })
-    }, 2000)
+    }, 1000)
 
     setTimeout(() => {
         show_pop[4] = true;
@@ -216,7 +265,7 @@ function popupButton() {
             display: 'block'
         })
         popup = true;
-    }, 3000)
+    }, 1500)
 
 }
 
@@ -262,12 +311,18 @@ function importJQuery() {
 
 function init() {
     importJQuery().then(() => {
+        setLoading();
+        setTimeout(loadingFinish, 4000);
         page1_init();
         page2_init();
         part2_init();
 
         setInterval(() => {
             interval();
+            $('#main_video').css({
+                width: getWidth(1920, false),
+                height: getHeight(1080, false),
+            })
         }, 100);
     })
 }
@@ -285,23 +340,17 @@ function page1_init() {
         'display': 'block'
     })
 
-    $('#main_video').css({
-        width: getWidth(1920, false),
-        height: getHeight(1080, false),
-    })
-
-    page1_toNext();
-}
-
-function page1_effect() {
-
     page1_toNext();
 }
 
 function page1_toNext() {
+
     $('html, body').css({
         'overflow': 'hidden',
     });
+
+    if (!videoFinished) return;
+    document.getElementById('page2_people1').addEventListener('click', linkButton);
     document.addEventListener("click", click);
 
     function click() {
@@ -792,7 +841,7 @@ function setSizeInit_PART1() {
             $('#page2_people1').css({
                 width: IMAGE_WIDTH + 'px',
                 height: IMAGE_HEIGHT,
-                left: (WIDTH / 2 - 1.5 * IMAGE_WIDTH) * 2 / 3 + 'px',
+                left: (WIDTH / 2 - 1.5 * IMAGE_WIDTH) * 2 / 3 + 75 + 'px',
             })
 
             $('#page2_people2').css({
@@ -804,7 +853,7 @@ function setSizeInit_PART1() {
             $('#page2_people3').css({
                 width: IMAGE_WIDTH + 'px',
                 height: IMAGE_HEIGHT,
-                right: (WIDTH / 2 - 1.5 * IMAGE_WIDTH) * 2 / 3 + 'px',
+                right: (WIDTH / 2 - 1.5 * IMAGE_WIDTH) * 2 / 3 + 75 + 'px',
             })
         }
     }
@@ -924,9 +973,9 @@ function setSizeInit_PART1() {
 
             $('#page3_gradient').css({
                 width: width + 'px',
-                height: height * 1.1 + 'px',
+                height: height * 0.52 + 'px',
                 left: left + 'px',
-                top: top + 'px',
+                top: top + height * 0.58 + 'px',
             })
         }
 
@@ -959,18 +1008,21 @@ function setSizeInit_PART1() {
             const ARROW_SIZE = 21;
             const ARROW_LEFT = [0, 575, 1324, 575, 1324];
             const ARROW_TOP = [0, 1397, 1815, 2757, 3032];
+            const APPEAR = [0, 610, 655, 750, 770];
 
             for (var i = 1; i < 5; i++) {
                 const top = TOP[i] * HEIGHT / 1080;
                 const left = LEFT[i] * WIDTH / 1920;
                 const arrow_top = ARROW_TOP[i] * HEIGHT / 1080;
                 const arrow_left = ARROW_LEFT[i] * WIDTH / 1920;
+                const opacity = (getScrollY() - APPEAR[i]) / 30;
 
                 $('#page3_detail' + i).css({
                     height: IMAGE_HEIGHT[i] * HEIGHT / 1080 + 'px',
                     width: IMAGE_WIDTH[i] * WIDTH / 1920 + 'px',
                     top: top + 'px',
                     left: left + 'px',
+                    opacity: opacity,
                 })
 
                 // $('#page3_detail' + i + '_arrow').css({
@@ -1057,7 +1109,7 @@ function setSizeInit_PART2() {
 
         {
             const width = 1920;
-            const height = 9000;
+            const height = 8700; // 8100
             $('#part2_page3').css({
                 width: getWidth(width, false),
                 height: getHeight(height, false)
@@ -1066,7 +1118,7 @@ function setSizeInit_PART2() {
 
         {
             const width = 1920;
-            const height = 5355;
+            const height = 4300;
             $('#part2_page4').css({
                 width: getWidth(width, false),
                 height: getHeight(height, false)
@@ -1587,6 +1639,14 @@ function part2_page2_effect(scrollY) {
             top: getTop(top, false),
             zIndex: 2,
         })
+        $('#memeplay_phone_video2').css({
+            position: 'absolute',
+            width: getWidth(width, false),
+            height: getHeight(height + 8, false),
+            left: getLeft(left, false),
+            top: getTop(top, false),
+            zIndex: scrollY < 2200 ? 1 : 3,
+        })
     }
     // 1576 -> 2071
     // 2071-1576 = 495
@@ -1652,18 +1712,17 @@ function part2_page2_effect(scrollY) {
             opacity: OPACITY,
         })
         $('#memeplay_phone_video_box').css({
-            display: scrollY >= 2200 ? 'none' : 'block',
+            display: scrollY >= 2300 ? 'none' : 'block',
             position: scrollY >= START ? position[0] : position[1],
             width: getWidth(width, false),
             height: getHeight(height + 8, false),
             left: getLeft(left, false),
             top: getTop(scrollY >= START ? top[0] : top[1], false),
-            zIndex: scrollY >= 2230 ? 1 : memeplay ? 1 : 2,
+            zIndex: scrollY >= 2250 ? 1 : memeplay ? 1 : 2,
             opacity: OPACITY,
         })
-        var image = scrollY >= 2250 ? 'agree' : 'memeplay';
         $('#memeplay_phone_inside').css({
-            backgroundImage: 'url(\'../src/p2_p2_' + image + '_phone_inside' + '.png\')',
+            backgroundImage: 'url(\'../src/p2_p2_agree_phone_inside' + '.png\')',
             position: scrollY >= START ? position[0] : position[1],
             width: getWidth(width - 31, false),
             height: getHeight(height - 33, false),
@@ -1696,7 +1755,7 @@ function part2_page2_effect(scrollY) {
         const width = [0, 282, 270, 337, 405, 426];
         const height = [0, 90, 92, 196, 405, 461];
         const left = [0, 1219, 430, 1219, 198, 1292];
-        const top = [0, 848, 148 + 73, 141 + 73, 301, 423];
+        const top = [0, 848, 148 + 73, 141 + 53, 301 + 73, 423 + 73];
         const position = ['fixed', 'absolute'];
         const GAP = 7000 + 810;
         const OPACITY = scrollY >= FINISH ? 1 - (scrollY - FINISH) / 35 : 1;
@@ -1875,7 +1934,7 @@ function part2_page3_effect(scrollY) {
 
         const WIDTH = window.innerWidth;
         const HEIGHT = window.innerHeight;
-        const length = 470 * WIDTH / 1920;
+        const length = Math.min(470 * WIDTH / 1920, 470 * HEIGHT / 1080);
         const GAP = 15;
         const TOP_GAP = 235.5;
         const LEFT = WIDTH / 2 - length * 1.5 - GAP;
@@ -1935,11 +1994,13 @@ function part2_page3_effect(scrollY) {
         }
     }
 
+    const AFTER_MIDDLE_GAP = 324;
+
     { // MIDDLE BOX
         const ID = ['1', '2', '3', '4', '5', '6'];
         const width = 270;
         const height = 271.8;
-        const left = [103, 392, 681, 970, 1259, 1548];
+        const left = [103 + 15, 392 + 10, 681 + 5, 970 - 5, 1259 - 10, 1548 - 15];
         const top = [614.7, 563, 614.7, 667, 605, 563];
         const gap = 2993;
 
@@ -1950,7 +2011,7 @@ function part2_page3_effect(scrollY) {
                 width: getWidth(width, false),
                 height: getHeight(height, false),
                 left: getLeft(left[i], false),
-                top: getTop(top[i] + gap, false),
+                top: getTop(top[i] - AFTER_MIDDLE_GAP + gap, false),
             })
         }
     }
@@ -1964,7 +2025,7 @@ function part2_page3_effect(scrollY) {
                 width: getWidth(whlt[0], false),
                 height: getWidth(whlt[1], false),
                 left: getWidth(whlt[2], false),
-                top: getWidth(whlt[3] + gap, false),
+                top: getWidth(whlt[3] - AFTER_MIDDLE_GAP + gap, false),
             })
         }
         // { // sub
@@ -1982,7 +2043,7 @@ function part2_page3_effect(scrollY) {
                 width: getWidth(whlt[0], false),
                 height: getWidth(whlt[1], false),
                 left: getWidth(whlt[2], false),
-                top: getWidth(whlt[3] + gap, false),
+                top: getWidth(whlt[3] - AFTER_MIDDLE_GAP + gap, false),
             })
         } { // phone2
             const whlt = [433, 894, 1364, 120];
@@ -1990,7 +2051,7 @@ function part2_page3_effect(scrollY) {
                 width: getWidth(whlt[0], false),
                 height: getWidth(whlt[1], false),
                 left: getWidth(whlt[2], false),
-                top: getWidth(whlt[3] + gap, false),
+                top: getWidth(whlt[3] - AFTER_MIDDLE_GAP + gap, false),
             })
         } { // detail
             const whlt = [384, 100, 475, 786];
@@ -1998,7 +2059,7 @@ function part2_page3_effect(scrollY) {
                 width: getWidth(whlt[0], false),
                 height: getWidth(whlt[1], false),
                 left: getWidth(whlt[2], false),
-                top: getWidth(whlt[3] + gap, false),
+                top: getWidth(whlt[3] - AFTER_MIDDLE_GAP + gap, false),
             })
         } { // phone_inside1
             const whlt = [397.6, 861, 920, 136];
@@ -2006,7 +2067,7 @@ function part2_page3_effect(scrollY) {
                 width: getWidth(whlt[0], false),
                 height: getWidth(whlt[1], false),
                 left: getWidth(whlt[2], false),
-                top: getWidth(whlt[3] + gap, false),
+                top: getWidth(whlt[3] - AFTER_MIDDLE_GAP + gap, false),
             })
         } { // phone_inside2
             const whlt = [398.9, 860.8, 1382, 136];
@@ -2014,7 +2075,7 @@ function part2_page3_effect(scrollY) {
                 width: getWidth(whlt[0], false),
                 height: getWidth(whlt[1], false),
                 left: getWidth(whlt[2], false),
-                top: getWidth(whlt[3] + gap, false),
+                top: getWidth(whlt[3] - AFTER_MIDDLE_GAP + gap, false),
             })
         }
     }
@@ -2028,7 +2089,7 @@ function part2_page3_effect(scrollY) {
                 width: getWidth(whlt[0], false),
                 height: getWidth(whlt[1], false),
                 left: getWidth(whlt[2], false),
-                top: getWidth(whlt[3] + gap, false),
+                top: getWidth(whlt[3] - AFTER_MIDDLE_GAP + gap, false),
             })
         }
         // { // sub
@@ -2046,7 +2107,7 @@ function part2_page3_effect(scrollY) {
                 width: getWidth(whlt[0], false),
                 height: getWidth(whlt[1], false),
                 left: getWidth(whlt[2], false),
-                top: getWidth(whlt[3] + gap, false),
+                top: getWidth(whlt[3] - AFTER_MIDDLE_GAP + gap, false),
             })
         } { // phone_inside
             const whlt = [397, 866, 759, 656];
@@ -2054,7 +2115,7 @@ function part2_page3_effect(scrollY) {
                 width: getWidth(whlt[0], false),
                 height: getWidth(whlt[1], false),
                 left: getWidth(whlt[2], false),
-                top: getWidth(whlt[3] + gap, false),
+                top: getWidth(whlt[3] - AFTER_MIDDLE_GAP + gap, false),
             })
         } { // detail1
             const whlt = [331, 100, 369, 976];
@@ -2062,7 +2123,7 @@ function part2_page3_effect(scrollY) {
                 width: getWidth(whlt[0], false),
                 height: getWidth(whlt[1], false),
                 left: getWidth(whlt[2], false),
-                top: getWidth(whlt[3] + gap, false),
+                top: getWidth(whlt[3] - AFTER_MIDDLE_GAP + gap, false),
             })
         } { // detail2
             const whlt = [351, 82, 1219, 781];
@@ -2070,7 +2131,7 @@ function part2_page3_effect(scrollY) {
                 width: getWidth(whlt[0], false),
                 height: getWidth(whlt[1], false),
                 left: getWidth(whlt[2], false),
-                top: getWidth(whlt[3] + gap, false),
+                top: getWidth(whlt[3] - AFTER_MIDDLE_GAP + gap, false),
             })
         }
     }
@@ -2084,7 +2145,7 @@ function part2_page3_effect(scrollY) {
                 width: getWidth(whlt[0], false),
                 height: getWidth(whlt[1], false),
                 right: getWidth(whlt[2], false),
-                top: getWidth(whlt[3] + gap, false),
+                top: getWidth(whlt[3] + gap - AFTER_MIDDLE_GAP, false),
             })
         } { // sub
             const whlt = [782, 237, 1018, 303];
@@ -2092,7 +2153,7 @@ function part2_page3_effect(scrollY) {
                 width: getWidth(whlt[0], false),
                 height: getWidth(whlt[1], false),
                 left: getWidth(whlt[2], false),
-                top: getWidth(whlt[3] + gap, false),
+                top: getWidth(whlt[3] + gap - AFTER_MIDDLE_GAP, false),
             })
         } { // phone
             const whlt = [433, 894, 211, 93];
@@ -2100,7 +2161,7 @@ function part2_page3_effect(scrollY) {
                 width: getWidth(whlt[0], false),
                 height: getWidth(whlt[1], false),
                 left: getWidth(whlt[2], false),
-                top: getWidth(whlt[3] + gap, false),
+                top: getWidth(whlt[3] + gap - AFTER_MIDDLE_GAP, false),
             })
         } { // phone inside
             const whlt = [396, 858, 229, 111];
@@ -2108,7 +2169,7 @@ function part2_page3_effect(scrollY) {
                 width: getWidth(whlt[0], false),
                 height: getWidth(whlt[1], false),
                 left: getWidth(whlt[2], false),
-                top: getWidth(whlt[3] + gap, false),
+                top: getWidth(whlt[3] + gap - AFTER_MIDDLE_GAP, false),
             })
         } { // detail
             const whlt = [388, 87, 687, 811];
@@ -2116,14 +2177,14 @@ function part2_page3_effect(scrollY) {
                 width: getWidth(whlt[0], false),
                 height: getWidth(whlt[1], false),
                 left: getWidth(whlt[2], false),
-                top: getWidth(whlt[3] + gap, false),
+                top: getWidth(whlt[3] + gap - AFTER_MIDDLE_GAP, false),
             })
         }
     }
 }
 
 function part2_page4_effect(scrollY) {
-    const from = 695;
+    const from = 595;
 
     { // PAGE4_DETAIL & PART4_LOGO
         const width = [1037, 518];
@@ -2140,7 +2201,7 @@ function part2_page4_effect(scrollY) {
         if (scrollY >= FINISH[1]) {
             $('#p2_p4_logo').css({
                 position: 'absolute',
-                top: getTop(2080, false),
+                top: getTop(1750, false),
             })
         } else {
             for (var i = 0; i < 2; i++) {
@@ -2168,15 +2229,22 @@ function part2_page4_effect(scrollY) {
 
         for (var i = 0; i < 3; i++) {
             const OPACITY = (scrollY - APPEAR[i]) / RANGE;
-            $('#' + ID[i]).css({
-                position: 'fixed',
-                width: getWidth(width[i], false),
-                height: getHeight(height[i], false),
-                left: getLeft(left[i], false),
-                top: getTop(top[i], false),
-                zIndex: 2,
-                opacity: OPACITY,
-            })
+            if (scrollY >= 3500) {
+                $('#' + ID[i]).css({
+                    position: 'absolute',
+                    top: getTop(top[i] - 220 + 2765 + 583.2, false),
+                })
+            } else {
+                $('#' + ID[i]).css({
+                    position: 'fixed',
+                    width: getWidth(width[i], false),
+                    height: getHeight(height[i], false),
+                    left: getLeft(left[i], false),
+                    top: getTop(top[i], false),
+                    zIndex: 2,
+                    opacity: OPACITY,
+                })
+            }
         }
     }
 
@@ -2188,9 +2256,15 @@ function part2_page4_effect(scrollY) {
         const height = [50, 51, 53, 50, 53.2, 63, 425];
         const left = [420, 107, 1069, 1541, 1276, 1747, 711];
         const top = [156, 418, 827, 946, 76, 287, 327];
+        const foot_gap = 583.2;
 
         for (var i = 0; i < 7; i++) {
-            if (scrollY >= START) {
+            if (scrollY >= 3500) {
+                $('#p2_p4_' + ID[i]).css({
+                    position: 'absolute',
+                    top: getTop(top[i] + GAP + foot_gap - 220, false),
+                })
+            } else if (scrollY >= START + 28) {
                 $('#p2_p4_' + ID[i]).css({
                     position: 'fixed',
                     top: getTop(top[i], false),

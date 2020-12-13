@@ -555,18 +555,6 @@ div {
     position: absolute;
 }
 
-#page3_detail1_arrow {
-
-    background-image: url(../src/p1_p3_arrow_right.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: center;
-
-    z-index: 2;
-    position: absolute;
-}
-
 #page3_detail2 {
 
     background-image: url(../src/p1_p3_detail02.png);
@@ -579,31 +567,8 @@ div {
     position: absolute;
 }
 
-#page3_detail2_arrow {
-    background-image: url(../src/p1_p3_arrow_left.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: center;
-
-    z-index: 2;
-    position: absolute;
-}
-
 #page3_detail3 {
     background-image: url(../src/p1_p3_detail03.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: center;
-
-    z-index: 2;
-    position: absolute;
-}
-
-#page3_detail3_arrow {
-
-    background-image: url(../src/p1_p3_arrow_right.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
@@ -625,20 +590,53 @@ div {
     position: absolute;
 }
 
-#page3_detail4_arrow {
-
-    background-image: url(../src/p1_p3_arrow_left.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: center;
-
-    z-index: 2;
-    position: absolute;
-}
-
 #page3_bottom_background1,
 #page3_bottom_background2,
 #page3_bottom_background3 {
     position: absolute;
+}
+
+#loading {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 3;
+}
+
+#loading_face1,
+#loading_face2,
+#loading_face3,
+#loading_detail {
+    position: fixed;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: 42.4%;
+    width: 3.33%;
+    height: 5.92%;
+    z-index: 3;
+}
+
+#loading_face1 {
+    left: 44%;
+    background-image: url('../src/loading_face1.png');
+}
+
+#loading_face2 {
+    left: 48.335%;
+    background-image: url('../src/loading_face2.png');
+}
+
+#loading_face3 {
+    right: 44%;
+    background-image: url('../src/loading_face3.png');
+}
+
+#loading_detail {
+    width: 22.19%;
+    height: 8.7%;
+    left: 38.905%;
+    top: 52.31%;
+    background-image: url('../src/loading_detail.png');
 }
