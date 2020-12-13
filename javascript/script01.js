@@ -33,12 +33,10 @@ function detectDevice() {
             };
 
             window.onload = function () {
-                alert("LOADING FINISH")
-
                 setTimeout(() => {
                     videoFinished = true
                     page1_init();
-                }, 1000)
+                }, 36000)
                 console.log("ON LOAD")
                 init();
             }
