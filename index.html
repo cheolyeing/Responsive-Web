@@ -8,8 +8,14 @@
   </head>
   <body>
     <!-- PART1 -->
+    <div id="loading">
+      <div id="loading_face1"></div>
+      <div id="loading_face2"></div>
+      <div id="loading_face3"></div>
+      <div id="loading_detail"></div>
+    </div>
     <div id="part1_page1">
-      <video id="main_video" autoplay loop muted>
+      <video id="main_video" controls autoplay>
         <source src="../src/main_video.mp4" type="video/mp4" />
       </video>
     </div>
@@ -98,13 +104,9 @@
       </marquee> -->
       </div>
       <div id="page3_detail1"></div>
-      <div id="page3_detail1_arrow"></div>
       <div id="page3_detail2"></div>
-      <div id="page3_detail2_arrow"></div>
       <div id="page3_detail3"></div>
-      <div id="page3_detail3_arrow"></div>
       <div id="page3_detail4"></div>
-      <div id="page3_detail4_arrow"></div>
       <div id="page3_bottom_background1"></div>
       <div id="page3_bottom_background2"></div>
       <div id="page3_bottom_background3"></div>
@@ -185,6 +187,9 @@
         <div id="memeplay_phone_video_box">
           <video id="memeplay_phone_video" autoplay loop muted>
             <source src="../src/p2_p2_memeplay_video.mp4" type="video/mp4" />
+          </video>
+          <video id="memeplay_phone_video2" autoplay loop muted>
+            <source src="../src/p2_p2_memeplay_video2.mp4" type="video/mp4" />
           </video>
         </div>
         <div id="memeplay_phone_inside"></div>
@@ -291,7 +296,10 @@
       <div id="p2_p4_thankyou"></div>
     </div>
 
-    <div id="footer">
+    <div
+      id="footer"
+      onclick="location.href='http\://www.hivcdgw2020.com/themediumspace'"
+    >
       <div id="footer_top"></div>
       <div id="footer_bot"></div>
     </div>
