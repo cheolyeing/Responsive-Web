@@ -52,7 +52,7 @@ function detectDevice() {
                 setTimeout(() => {
                     videoFinished = true
                     page1_init();
-                }, 15000 - 15000)
+                }, 15000)
                 console.log("ON LOAD")
                 init();
             }
@@ -327,7 +327,7 @@ function init() {
     importJQuery().then(() => {
         loadingMotion();
         setLoading();
-        setTimeout(loadingFinish, 5000 - 5000);
+        setTimeout(loadingFinish, 5000);
         page1_init();
         page2_init();
         part2_init();

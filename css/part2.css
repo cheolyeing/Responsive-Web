@@ -140,8 +140,6 @@
     background-image: url('../src/p2_p2_title1_sub.png');
 }
 
-#reaction_phone {}
-
 #moving_phone {
     background-image: url('../src/p2_p2_moving_phone.png');
     border-radius: 50px 50px 0 0 / 50px 50px 0 0;
