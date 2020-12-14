@@ -52,7 +52,7 @@ function detectDevice() {
                 setTimeout(() => {
                     videoFinished = true
                     page1_init();
-                }, 15000)
+                }, 15000 - 15000)
                 console.log("ON LOAD")
                 init();
             }
@@ -327,7 +327,7 @@ function init() {
     importJQuery().then(() => {
         loadingMotion();
         setLoading();
-        setTimeout(loadingFinish, 5000);
+        setTimeout(loadingFinish, 5000 - 5000);
         page1_init();
         page2_init();
         part2_init();
@@ -1168,6 +1168,21 @@ function setSizeInit_PART2() {
                 top: getTop(top, false),
             })
         }
+
+        {
+            const width = 1920;
+            const height = 258 + 188;
+            $('#link_button').css({
+                position: 'absolute',
+                backgroundColor: 'blue',
+                width: getWidth(width, false),
+                height: getHeight(height, false),
+
+                opacity: 0,
+
+                zIndex: 2,
+            })
+        }
     }
 }
 
@@ -1993,7 +2008,7 @@ function part2_page3_effect(scrollY) {
         }
     }
 
-    const AFTER_MIDDLE_GAP = 210;
+    const AFTER_MIDDLE_GAP = 0;
 
     { // MIDDLE BOX
         const ID = ['1', '2', '3', '4', '5', '6'];

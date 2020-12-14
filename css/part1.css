@@ -11,6 +11,10 @@ div {
     cursor: url('ncursor.png') 0 0, auto;
 }
 
+button {
+    cursor: pointer;
+}
+
 /* PAGE #1 */
 #following {
     position: absolute;

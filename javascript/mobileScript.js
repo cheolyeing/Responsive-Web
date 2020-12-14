@@ -92,6 +92,18 @@ window.onload = function () {
         loadingMobile.zIndex = 4;
     }
 
+    {
+        const width = 2037;
+        const height = 1000;
+        var link = document.getElementById('footer_link').style;
+        link.position = 'absolute';
+        link.width = WIDTH + 'px';
+        link.height = height * WIDTH / width + 'px';
+        link.backgroundColor = 'red';
+        link.zIndex = 2;
+        link.opacity = 0.5;
+    }
+
     setTimeout(() => {
         document.getElementById('loading_back').style.display = 'none';
         document.getElementById('loading_front').style.display = 'none';
