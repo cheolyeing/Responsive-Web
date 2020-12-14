@@ -16,10 +16,10 @@ window.onload = function () {
 
     {
         var main = document.getElementById("main_box").style
-        const width = 2037;
+        const width = 2049;
         const height = 32768;
 
-        main.backgroundImage = 'url(./src/mobile.png)';
+        main.backgroundImage = 'url(./src/mobile_main.png)';
         main.width = WIDTH + 'px';
         main.height = height * WIDTH / width + 'px';
     }
@@ -93,15 +93,13 @@ window.onload = function () {
     }
 
     {
-        const width = 2037;
-        const height = 1000;
+        const width = 3840;
+        const height = 376;
         var link = document.getElementById('footer_link').style;
-        link.position = 'absolute';
+        link.backgroundColor = "#111114";
         link.width = WIDTH + 'px';
         link.height = height * WIDTH / width + 'px';
-        link.backgroundColor = 'red';
-        link.zIndex = 2;
-        link.opacity = 0.5;
+        link.backgroundImage = 'url(./src/mobile_footer.png)';
     }
 
     setTimeout(() => {
