@@ -29,7 +29,7 @@ function loadingMotion() {
         var loadingFace = document.getElementById('loading_face' + target).style;
         loadingFace.opacity = 1;
         index++;
-        if (index > 20) return;
+        if (index > 30) return;
     }, 300)
 }
 
@@ -50,7 +50,7 @@ function detectDevice() {
                 setTimeout(() => {
                     videoFinished = true
                     page1_init();
-                }, 15000 - 15000)
+                }, 15000)
                 init();
             }
         }
@@ -63,7 +63,7 @@ function setLoading() {
     $('loading_face1').css({
         width: getWidth(len, false),
         height: getWidth(len, false),
-        left: getLeft(844, false),
+        left: getLeft(844 + 5, false),
         top: getTop(458, false),
     })
 
@@ -77,7 +77,7 @@ function setLoading() {
     $('loading_face3').css({
         width: getWidth(len, false),
         height: getWidth(len, false),
-        right: getLeft(844, false),
+        right: getLeft(844 + 5, false),
         top: getTop(458, false),
     })
 
@@ -324,7 +324,7 @@ function init() {
     importJQuery().then(() => {
         loadingMotion();
         setLoading();
-        setTimeout(loadingFinish, 5000 - 5000);
+        setTimeout(loadingFinish, 6000);
         page1_init();
         page2_init();
         part2_init();
@@ -1014,7 +1014,7 @@ function setSizeInit_PART1() {
             const IMAGE_WIDTH = [0, 912 / 3, 1032 / 3, 1116 / 3, 1041 / 3];
             const IMAGE_HEIGHT = [0, 504 / 3, 693 / 3, 702 / 3, 486 / 3];
             const TOP = [0, 1374, 1793, 2736, 3010];
-            const LEFT = [0, 284, 1380, 223, 1380];
+            const LEFT = [0, 284, 1380 - 50, 223, 1380 - 50];
 
             const ARROW_SIZE = 21;
             const ARROW_LEFT = [0, 575, 1324, 575, 1324];
@@ -1223,21 +1223,7 @@ function part2_page1_effect(scrollY) {
     const top_video = 1080 * phone_top / 100 + top_gap;
 
     const F_TOP = 22 - (scrollY - FINISH);
-    // if (scrollY >= 1240) {
-    //     $('#livequest_phone_video1').css({
-    //         display: 'none',
-    //     })
-    //     $('#livequest_phone_video2').css({
-    //         display: 'block',
-    //     })
-    // } else {
-    //     $('#livequest_phone_video2').css({
-    //         display: 'none',
-    //     })
-    //     $('#livequest_phone_video1').css({
-    //         display: 'block',
-    //     })
-    // }
+
     if (scrollY < START) { // x < 1070
         $("#page1_livequest1").css({
             display: "none",
@@ -1435,6 +1421,8 @@ function part2_page1_effect(scrollY) {
 }
 
 function part2_page2_effect(scrollY) {
+    console.log(scrollY)
+
     { // REACTION
         const width = 1269; //193;
         const height = 163; //47;

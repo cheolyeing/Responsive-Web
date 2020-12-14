@@ -118,6 +118,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
+
 }
 
 #bottom1 {
@@ -155,7 +156,7 @@
 #memeplay_phone_inside,
 #agree_phone_inside {
     overflow: hidden;
-    border-radius: 45px 42px 55px 55px/ 60px 60px 55px 55px;
+    border-radius: 25px 25px 50px 50px/ 50px 50px 50px 50px
 }
 
 #memeplay_button,
@@ -298,6 +299,11 @@
     background-size: contain;
     overflow: hidden;
     display: block;
+}
+
+#livequest_phone_video1,
+#livequest_phone_video2 {
+    object-position: top;
 }
 
 #interlock_phone_video {
