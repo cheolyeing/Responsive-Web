@@ -16,13 +16,29 @@ var videoFinished = false;
 
 detectDevice()
 
+function loadingMotion() {
+    var index = 0;
+    setInterval(() => {
+
+        for (var i = 1; i < 4; i++) {
+            $('#loading_face' + i).css({
+                opacity: 0.2,
+            })
+        }
+        var target = index % 3 + 1;
+        var loadingFace = document.getElementById('loading_face' + target).style;
+        loadingFace.opacity = 1;
+        index++;
+        if (index > 20) return;
+    }, 300)
+}
+
 function detectDevice() {
     var filter = "win16|win32|win64|mac|macintel";
 
     if (navigator.platform) {
         if (filter.indexOf(navigator.platform.toLowerCase()) < 0) {
             //mobile
-            alert('Mobile Mode');
             location.href = "mobile.html";
         } else {
             //pc
@@ -36,7 +52,7 @@ function detectDevice() {
                 setTimeout(() => {
                     videoFinished = true
                     page1_init();
-                }, 36000)
+                }, 15000 - 15000)
                 console.log("ON LOAD")
                 init();
             }
@@ -103,7 +119,7 @@ function chattingDetailAppear() {
         $('#chatting_detail').css({
             display: 'block',
         })
-    }, 1000)
+    }, 500)
 }
 
 function interlockDetailAppear() {
@@ -112,7 +128,7 @@ function interlockDetailAppear() {
         $('#interlock_detail').css({
             display: 'block',
         })
-    }, 1000)
+    }, 500)
 }
 
 function mypageDetailAppear() {
@@ -121,13 +137,13 @@ function mypageDetailAppear() {
         $('#mypage_detail1').css({
             display: 'block',
         })
-    }, 1000)
+    }, 500)
 
     setTimeout(() => {
         $('#mypage_detail2').css({
             display: 'block',
         })
-    }, 2000)
+    }, 1000)
 }
 
 function fridayAppear() {
@@ -188,35 +204,35 @@ function cardAppear() {
         $('#page1_card5').css({
             display: 'block'
         })
-    }, 500)
+    }, 200)
 
     setTimeout(() => {
         show_card[2] = true;
         $('#page1_card2').css({
             display: 'block'
         })
-    }, 1000)
+    }, 400)
 
     setTimeout(() => {
         show_card[1] = true;
         $('#page1_card1').css({
             display: 'block'
         })
-    }, 1500)
+    }, 600)
 
     setTimeout(() => {
         show_card[3] = true;
         $('#page1_card3').css({
             display: 'block'
         })
-    }, 2000)
+    }, 800)
 
     setTimeout(() => {
         show_card[4] = true;
         $('#page1_card4').css({
             display: 'block'
         })
-    }, 2500)
+    }, 1000)
 }
 
 function tileFit() {
@@ -309,8 +325,9 @@ function importJQuery() {
 
 function init() {
     importJQuery().then(() => {
+        loadingMotion();
         setLoading();
-        setTimeout(loadingFinish, 4000);
+        setTimeout(loadingFinish, 5000 - 5000);
         page1_init();
         page2_init();
         part2_init();
@@ -971,7 +988,7 @@ function setSizeInit_PART1() {
 
             $('#page3_gradient').css({
                 width: width + 'px',
-                height: height * 0.52 + 'px',
+                height: height * 0.47 + 'px',
                 left: left + 'px',
                 top: top + height * 0.58 + 'px',
             })
@@ -1009,7 +1026,7 @@ function setSizeInit_PART1() {
             const APPEAR = [0, 610, 655, 750, 770];
 
             for (var i = 1; i < 5; i++) {
-                const top = TOP[i] * HEIGHT / 1080;
+                const top = (TOP[i]) * HEIGHT / 1080;
                 const left = LEFT[i] * WIDTH / 1920;
                 const arrow_top = ARROW_TOP[i] * HEIGHT / 1080;
                 const arrow_left = ARROW_LEFT[i] * WIDTH / 1920;
@@ -1729,22 +1746,6 @@ function part2_page2_effect(scrollY) {
             zIndex: scrollY >= 2250 ? 2 : memeplay ? 2 : 1,
             opacity: OPACITY,
         })
-        $('#memeplay_button').css({
-            position: scrollY >= START ? position[0] : position[1],
-            width: getWidth(35, false),
-            height: getHeight(35, false),
-            left: getLeft(memeLeft, false),
-            top: getTop(scrollY >= START ? top[0] + memeTop : top[1] + memeTop, false),
-            opacity: OPACITY,
-        })
-        $('#toss_button').css({
-            position: scrollY >= START ? position[0] : position[1],
-            width: getWidth(60, false),
-            height: getHeight(60, false),
-            left: getLeft(tossLeft, false),
-            top: getTop(scrollY >= START ? top[0] + tossTop : top[1] + tossTop, false),
-            opacity: OPACITY,
-        })
     }
 
     { // MEMEPLAY_DETAIL & POPUP
@@ -1992,7 +1993,7 @@ function part2_page3_effect(scrollY) {
         }
     }
 
-    const AFTER_MIDDLE_GAP = 324;
+    const AFTER_MIDDLE_GAP = 210;
 
     { // MIDDLE BOX
         const ID = ['1', '2', '3', '4', '5', '6'];
@@ -2160,9 +2161,10 @@ function part2_page3_effect(scrollY) {
                 height: getWidth(whlt[1], false),
                 left: getWidth(whlt[2], false),
                 top: getWidth(whlt[3] + gap - AFTER_MIDDLE_GAP, false),
+                zIndex: 2,
             })
         } { // phone inside
-            const whlt = [396, 858, 229, 111];
+            const whlt = [396, 858, 229, 108];
             $('#interlock_phone_video').css({
                 width: getWidth(whlt[0], false),
                 height: getWidth(whlt[1], false),
@@ -2170,7 +2172,7 @@ function part2_page3_effect(scrollY) {
                 top: getWidth(whlt[3] + gap - AFTER_MIDDLE_GAP, false),
             })
         } { // detail
-            const whlt = [388, 87, 687, 811];
+            const whlt = [412, 87, 687, 811];
             $('#interlock_detail').css({
                 width: getWidth(whlt[0], false),
                 height: getWidth(whlt[1], false),
