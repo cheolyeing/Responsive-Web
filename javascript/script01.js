@@ -43,9 +43,7 @@ function detectDevice() {
         } else {
             //pc
             document.onreadystatechange = () => {
-                if (document.readyState === 'complete') {
-                    console.log("READY")
-                }
+                if (document.readyState === 'complete') {}
             };
 
             window.onload = function () {
@@ -53,7 +51,6 @@ function detectDevice() {
                     videoFinished = true
                     page1_init();
                 }, 15000 - 15000)
-                console.log("ON LOAD")
                 init();
             }
         }
@@ -402,7 +399,6 @@ function page2_toNext() {
 function page2_effect() {
 
     const scrollY = getScrollY();
-    console.log("scrollY", scrollY)
 
 
     meme_effect(scrollY);
@@ -1177,9 +1173,7 @@ function setSizeInit_PART2() {
                 backgroundColor: 'blue',
                 width: getWidth(width, false),
                 height: getHeight(height, false),
-
                 opacity: 0,
-
                 zIndex: 2,
             })
         }
@@ -2008,7 +2002,7 @@ function part2_page3_effect(scrollY) {
         }
     }
 
-    const AFTER_MIDDLE_GAP = 0;
+    const AFTER_MIDDLE_GAP = 00;
 
     { // MIDDLE BOX
         const ID = ['1', '2', '3', '4', '5', '6'];
