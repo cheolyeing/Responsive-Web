@@ -1421,7 +1421,7 @@ function part2_page1_effect(scrollY) {
 }
 
 function part2_page2_effect(scrollY) {
-    console.log(scrollY)
+    //console.log(scrollY)
 
     { // REACTION
         const width = 1269; //193;
